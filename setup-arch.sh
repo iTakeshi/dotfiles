@@ -1,4 +1,4 @@
-ethernet = $(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p")
+ethernet=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p")
 systemctl start dhcpcd@$ethernet
 systemctl enable dhcpcd@$ethernet
 

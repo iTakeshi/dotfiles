@@ -1,11 +1,8 @@
-pacman -Syy
-pacman -Syu
-
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 hwclock --systohc
 
-sed -i -e "20,$s/^# *\(en_US\|ja_JP\)\.UTF-8/\1\.UTF-8/g" /etc/locale.gen
+sed -i -e "/UTF-8/s/^# \?\(en_US\|ja_JP\)/\1/g" /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
