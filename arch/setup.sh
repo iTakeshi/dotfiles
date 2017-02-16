@@ -29,5 +29,22 @@ vboxvideo
 EOF
 fi
 
-pacman -S xorg-server xorg-server-utils sddm plasma-meta phonon-qt5-vlc phonon-qt4-vlc kde-applications-meta neovim chromium git
+pacman -S \
+    xorg-server xorg-server-utils sddm plasma-meta phonon-qt5-vlc phonon-qt4-vlc kde-applications-meta \
+    noto-fonts-cjk fcitx fcitx-mozc fcitx-configtool fcitx-im dropbox alsa-utils evtest openssh \
+    scala sbt python-pip python2-pip tk unzip
+
+mkdir -p /home/$username/usr/aur
+cd /home/$username/usr/aur
+git clone https://aur.archlinux.org/google-chrome.git
+cd google-chrome
+makepkg -sri
+
+cat << EOF > /etc/udev/hwdb.d/90-custom-keyboard.hwdb
+evdev:input:b0003v0853p0100*
+  KEYBOARD_KEY_7008a=rightmeta
+EOF
+udevadm hwdb --update
+udevadm trigger
+
 systemctl enable sddm

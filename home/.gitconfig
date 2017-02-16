@@ -1,0 +1,25 @@
+[alias]
+  s = status
+  a = add
+  aa = add -A
+  c = commit -m
+  l = log
+  sl = shortlog
+  d = diff
+  b = branch
+  ba = branch -a
+  co = checkout
+  fp = fetch --prune
+  ds = diff --staged
+  ap = add -p
+[user]
+  name = iTakeshi
+  email = takeshi.ito.doraemon@gmail.com
+[color]
+  ui = true
+[push]
+  default = simple
+[core]
+  editor = vim
+  pager = less
+  excludesfile = /home/itakeshi/.gitignore_global
