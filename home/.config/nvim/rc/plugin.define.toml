@@ -1,0 +1,66 @@
+# TODO syntax checker like neomake/syntastic
+# NOTE: neocomplcache/neocomplete/deoplete are managed in plugin.vim
+# async library
+[[plugins]]
+repository = 'Shougo/vimproc.vim'
+build_commands = 'make'
+build = 'make'
+# tag window
+[[plugins]]
+repository = 'majutsushi/tagbar'
+external_commands = ['ctags']
+# manage 'surroundings'
+[[plugins]]
+repository = 'tpope/vim-surround'
+# undo history
+[[plugins]]
+repository = 'mbbill/undotree'
+
+# async syntax check
+[[plugins]]
+repository = 'thinca/vim-quickrun'
+[[plugins]]
+repository = 'osyo-manga/vim-watchdogs'
+[[plugins]]
+repository = 'dannyob/quickfixstatus'
+[[plugins]]
+repository = 'KazuakiM/vim-qfstatusline'
+#[[plugins]]
+#repository = 'KazuakiM/vim-qfsigns'
+[[plugins]]
+repository = 'osyo-manga/shabadou.vim'
+[[plugins]]
+repository = 'cohama/vim-hier'
+
+# insert snippet
+[[plugins]]
+repository = 'Shougo/neosnippet.vim'
+depends = ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim']
+
+# show document in echo area
+[[plugins]]
+repository = 'Shougo/echodoc.vim'
+
+# show the number of hit words
+[[plugins]]
+repository = 'osyo-manga/vim-anzu'
+
+# improve diff mode
+[[plugins]]
+repository = 'lambdalisue/vim-improve-diff'
+
+# improve diff mode with git
+[[plugins]]
+repository = 'lambdalisue/vim-unified-diff'
+external_commands = 'git'
+
+# vimshell
+[[plugins]]
+repository = 'Shougo/vimshell.vim'
+
+# improve commit message editor
+[[plugins]]
+repository = 'rhysd/committia.vim'
+# highlight nearest tag pair
+[[plugins]]
+repository = 'Valloric/MatchTagAlways'

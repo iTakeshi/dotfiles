@@ -39,6 +39,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias off='sudo shutdown -h now'
+alias vim='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -54,6 +55,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+source /usr/share/git/completion/git-prompt.sh
+source /usr/share/git/completion/git-completion.bash
+GIT_PS1_SHOWDIRTYSTATE=true
 
 PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 

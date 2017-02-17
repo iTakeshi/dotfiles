@@ -1,0 +1,44 @@
+"
+" Neovim configuration
+" Platform: Linux
+"
+" Acknowledgements
+" This configuration is greatly inspired by lambdalisue's one
+" https://github.com/lambdalisue/rook
+"
+
+" reset settings when reloading this configuration file
+augroup MyAutoCmd " reset autocmd grouped by MyAutoCmd
+  autocmd!
+augroup END
+set all&          " reset all settings
+
+" use bash
+set shell=/bin/bash
+
+" history ':' commands and search patterns as much as possible (max: 10000)
+set history=10000
+
+set t_Co=256
+set notimeout ttimeout ttimeoutlen=100
+
+" prefer UTF-8
+if has('multi_byte')
+  if has('vim_starting')
+    set encoding=utf-8
+  endif
+  scriptencoding utf-8
+  set fileencodings=ucs-bom,utf-8,euc-jp,iso-2022-jp,cp932,utf-16,utf-16le
+  set fileformats=unix,dos,mac
+endif
+
+let s:rc_dir = g:util#normpath('rc', 'config') . g:pathsep
+call g:util#source(s:rc_dir . 'legacy.vim')
+call g:util#source(s:rc_dir . 'search.vim')
+call g:util#source(s:rc_dir . 'edit.vim')
+call g:util#source(s:rc_dir . 'cursor.vim')
+call g:util#source(s:rc_dir . 'fold.vim')
+call g:util#source(s:rc_dir . 'interface.vim')
+call g:util#source(s:rc_dir . 'keymap.vim')
+call g:util#source(s:rc_dir . 'macro.vim')
+call g:util#source(s:rc_dir . 'plugin.vim')

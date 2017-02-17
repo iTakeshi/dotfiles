@@ -1,0 +1,73 @@
+[options]
+allow_bold = true
+audible_bell = false
+clickable_url = true
+dynamic_title = true
+font = FantasqueSansMono Nerd Font 13
+scrollback_lines = 10000
+fullscreen = true
+
+#geometry = 640x480
+#icon_name = terminal
+#mouse_autohide = false
+#scroll_on_output = false
+#scroll_on_keystroke = true
+#search_wrap = true
+#urgent_on_bell = true
+
+# "system", "on" or "off"
+#cursor_blink = system
+
+# "block", "underline" or "ibeam"
+#cursor_shape = block
+
+# Hide links that are no longer valid in url select overlay mode
+#filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+[colors]
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #dcdccc
+#cursor_foreground = #dcdccc
+
+background =      rgb( 45,  45,  45)
+foreground =      rgb(224, 224, 224)
+foreground_bold = rgb(250, 250, 250)
+
+# If unset, will reverse foreground and background
+#highlight = #2f2f2f
+
+# Colors from color0 to color254 can be set
+color0  = rgb( 45,  45,  45)
+color1  = rgb(255,  55,  55)
+color2  = rgb( 78, 154,   6)
+color3  = rgb(196, 160,   0)
+color4  = rgb( 52, 101, 164)
+color5  = rgb(221, 132, 255)
+color6  = rgb(6,152,154)
+color7  = rgb(204,204,204)
+color8  = rgb(96,96,96)
+color9  = rgb(255,131,131)
+color10 = rgb(138,226,52)
+color11 = rgb(252,233,79)
+color12 = rgb(113,204,221)
+color13 = rgb(235,182,255)
+color14 = rgb(52,226,226)
+color15 = rgb(238,238,238)
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
