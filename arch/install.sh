@@ -7,8 +7,7 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 while true; do
-    echo -n 'hostname? > '
-    read hostname
+    read -p 'hostname? > ' hostname
     if [ "$hostname" == "" ]; then
         continue
     else
@@ -49,8 +48,7 @@ passwd
 
 pacman -S sudo
 while true; do
-    echo -n 'username? > '
-    read username
+    read -p 'username? > ' username
     if [ "$username" == "" ]; then
         continue
     else
@@ -61,6 +59,40 @@ useradd -m -G wheel $username
 passwd $username
 echo -n 'Now, uncomment "%wheel ALL=(ALL) ALL" in the sudoers file to enable sudo. Press enter to open visudo.'
 read
-visudo
+EDITOR=vi visudo
 
-pacman -S xorg-server xorg-server-utils wpa_supplicant
+curl -L -o /home/$username/setup.sh https://goo.gl/wBttrl
+
+read -p 'setup wifi? [y/N] > ' setup_wifi
+if [ "$setup_wifi" == "Y" -o "$setup_wifi" == "y" ]; then
+    pacman -S wpa_supplicant
+
+    while true; do
+        read -p 'ssid? > ' ssid
+        if [ "$ssid" == "" ]; then
+            continue
+        else
+            break
+        fi
+    done
+
+    while true; do
+        read -s -p 'psk key? > ' psk
+        if [ "$psk" == "" ]; then
+            continue
+        else
+            break
+        fi
+    done
+
+    interface=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p")
+    cat << EOF > /etc/wpa_supplicant/wpa_supplicant-$interface.conf
+ctrl_interface=/var/run/wpa_supplicant
+ctrl_interface_group=wheel
+update_config=1
+fast_reauth=1
+ap_scan=1
+
+EOF
+    wpa_passphrase $ssid $psk >> /etc/wpa_supplicant/wpa_supplicant-$interface.conf
+fi
