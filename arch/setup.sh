@@ -67,7 +67,7 @@ git clone https://aur.archlinux.org/zoom.git
 cd zoom
 makepkg -sri
 
-cat << EOF | tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
+cat << EOF | sudo tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
 evdev:input:b0003v0853p0100*
   KEYBOARD_KEY_7008a=rightmeta
 
