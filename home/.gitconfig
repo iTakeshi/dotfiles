@@ -20,6 +20,6 @@
 [push]
   default = simple
 [core]
-  editor = vim
+  editor = nvim
   pager = less
   excludesfile = /home/itakeshi/.gitignore_global
