@@ -97,6 +97,6 @@ fi
 
 curl -L -o /home/$username/setup.sh https://goo.gl/wBttrl
 sed -i -e "1i username=$username" /home/$username/setup.sh
-sed -i -e "ia setup_wifi=$setup_wifi" /home/$username/setup.sh
+sed -i -e "1a setup_wifi=$setup_wifi" /home/$username/setup.sh
 sed -i -e "2a interface=$interface" /home/$username/setup.sh
 chown $username:$username /home/$username/setup.sh

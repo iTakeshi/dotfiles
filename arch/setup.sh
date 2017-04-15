@@ -5,14 +5,17 @@ fi
 sudo systemctl enable dhcpcd@$interface
 sudo systemctl start dhcpcd@$interface
 
-multilib_line=$(sed -n "/^\[multilib\]$/=" /etc/pacman.conf)
+multilib_line=$(sed -n "/^#\[multilib\]$/=" /etc/pacman.conf)
+if [ "$multilib_line" == "" ]; then
+    exit 1
+fi
 sudo sed -i -e "${multilib_line}s/^#//" /etc/pacman.conf
 sudo sed -i -e "$(expr $multilib_line + 1)s/^#//" /etc/pacman.conf
 
 sudo pacman -Syy
 
 sudo pacman -S \
-    xorg-server xorg-server-utils wpa_supplicant neovim
+    xorg-server xorg-server-utils wpa_supplicant neovim \
     lightdm lightdm-gtk-greeter awesome termite git wget openssh \
     fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip \
     evtest udisks2 hwinfo xorg-xev ntp cbatticon nginx mariadb \
