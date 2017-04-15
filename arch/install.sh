@@ -61,8 +61,7 @@ echo -n 'Now, uncomment "%wheel ALL=(ALL) ALL" in the sudoers file to enable sud
 read
 EDITOR=vi visudo
 
-curl -L -o /home/$username/setup.sh https://goo.gl/wBttrl
-
+interface=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p")
 read -p 'setup wifi? [y/N] > ' setup_wifi
 if [ "$setup_wifi" == "Y" -o "$setup_wifi" == "y" ]; then
     pacman -S wpa_supplicant
@@ -85,7 +84,6 @@ if [ "$setup_wifi" == "Y" -o "$setup_wifi" == "y" ]; then
         fi
     done
 
-    interface=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p")
     cat << EOF > /etc/wpa_supplicant/wpa_supplicant-$interface.conf
 ctrl_interface=/var/run/wpa_supplicant
 ctrl_interface_group=wheel
@@ -96,3 +94,9 @@ ap_scan=1
 EOF
     wpa_passphrase $ssid $psk >> /etc/wpa_supplicant/wpa_supplicant-$interface.conf
 fi
+
+curl -L -o /home/$username/setup.sh https://goo.gl/wBttrl
+sed -i -e "1i username=$username" /home/$username/setup.sh
+sed -i -e "ia setup_wifi=$setup_wifi" /home/$username/setup.sh
+sed -i -e "2a interface=$interface" /home/$username/setup.sh
+chown $username:$username /home/$username/setup.sh
