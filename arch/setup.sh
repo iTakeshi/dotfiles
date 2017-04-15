@@ -93,8 +93,9 @@ ln -sf /home/$username/dotfiles/home/.xinitrc .
 ln -sf /home/$username/dotfiles/home/.xprofile .
 
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-mysql_secure_installation
 sudo sed -i -e "/^\[mysqld\]$/a character-set-server = utf8" /etc/mysql/my.cnf
+sudo systemctl start mariadb
+mysql_secure_installation
 
 sudo systemctl enable lightdm
 sudo systemctl enable ntpd
