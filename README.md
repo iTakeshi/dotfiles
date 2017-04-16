@@ -12,11 +12,21 @@ as described in [Arch wiki](https://wiki.archlinux.org/index.php/Installation_gu
 TL; DR
 ```sh
 ls /sys/firmware/efi/efivars        # check EFI boot
+
+# if you have to setup wifi
+ip link                             # check wifi device
+ip link set <DEVICE> up
+wpa_passphrase <SSID> <PSK_KEY> > /etc/wpa_supplicant/wifi.conf
+wpa_supplicant -B -i <DEVICE> -c /etc/wpa_supplicant/wifi.conf
+dhcpcd -b <DEVICE>
+# end if
+
 ping archlinux.org                  # check internet connection
 timedatectl set-ntp true            # update the system clock
 gdisk /dev/sdx                      # create partitions
-mkfs.extf /dev/sdxn                 # format `/` with ext4
-mkfs.vfat /dev/sdxm                 # format `/boot` with fat32 (unless constructing dual-boot with Windows)
+mkfs.ext4 /dev/sdxi                 # format `/` with ext4
+mkfs.vfat /dev/sdxj                 # format `/boot` with fat32 (unless constructing dual-boot with Windows)
+mkswap /dev/sdxk                    # if you setup swap partition
 
 # mount filesystems
 mount /dev/sdxn /mnt
