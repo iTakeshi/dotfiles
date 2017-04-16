@@ -73,6 +73,7 @@ makepkg -sri
 cat << EOF | sudo tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
 evdev:input:b0003v0853p0100*
   KEYBOARD_KEY_7008a=rightmeta
+  KEYBOARD_KEY_7008b=leftmeta
 
 evdev:input:b0011v0001p0001*
   KEYBOARD_KEY_0e=backslash
