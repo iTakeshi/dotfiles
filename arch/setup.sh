@@ -21,7 +21,7 @@ sudo pacman -S \
     evtest udisks2 hwinfo xorg-xev ntp cbatticon nginx mariadb \
     jre8-openjdk jdk8-openjdk ruby ghc rust cargo scala sbt python-pip python2-pip nodejs npm r \
     mupdf nomacs thunar wine texlive-core texlive-lang imagemagick otf-ipafont \
-    alsa-utils pkgfile gdisk
+    alsa-utils pkgfile gdisk nfs-utils
 
 amixer sset Master unmute
 
