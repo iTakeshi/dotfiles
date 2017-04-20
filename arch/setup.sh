@@ -21,7 +21,7 @@ sudo pacman -S \
     evtest udisks2 hwinfo xorg-xev ntp cbatticon nginx mariadb \
     jre8-openjdk jdk8-openjdk ruby ghc rust cargo scala sbt python-pip python2-pip nodejs npm r \
     mupdf nomacs thunar wine texlive-core texlive-lang imagemagick otf-ipafont \
-    alsa-utils pkgfile gdisk nfs-utils
+    alsa-utils pkgfile gdisk nfs-utils arandr cups cups-filters
 
 amixer sset Master unmute
 
@@ -79,8 +79,8 @@ evdev:input:b0011v0001p0001*
   KEYBOARD_KEY_0e=backslash
   KEYBOARD_KEY_2b=backspace
   KEYBOARD_KEY_3a=leftctrl
-  KEYBOARD_KEY_9d=compose
-  KEYBOARD_KEY_dd=rightmeta
+  KEYBOARD_KEY_9d=rightmeta
+  KEYBOARD_KEY_dd=compose
 EOF
 sudo udevadm hwdb --update
 sudo udevadm trigger
@@ -105,6 +105,7 @@ mysql_secure_installation
 sudo systemctl enable lightdm
 sudo systemctl enable ntpd
 sudo systemctl enable mariadb
+sudo systemctl enable cups-browsed
 
 echo -n 'setup complete. press Enter to reboot.'
 read
