@@ -30,4 +30,8 @@ augroup filetypedetect
   au BufNewFile,BufRead *.jl setf julia
   " Scala
   au BufNewFile,BufRead *.scala setf scala
+  " Rust
+  au BufNewFile,BufRead *.rs setf rust
+  " GLSL
+  au BufNewFile,BufRead *.vert,*.tesc,*.tese,*.geom,*.frag,*.comp setf glsl
 augroup END

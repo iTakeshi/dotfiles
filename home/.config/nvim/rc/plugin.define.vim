@@ -45,6 +45,8 @@ call g:dein#add('hail2u/vim-css3-syntax')
 call g:dein#add('cakebaker/scss-syntax.vim')
 call g:dein#add('groenewege/vim-less')
 call g:dein#add('cespare/vim-toml')
+call g:dein#add('rust-lang/rust.vim')
+call g:dein#add('tikhomirov/vim-glsl')
 
 call g:dein#add('kana/vim-textobj-user')
 call g:dein#add('kana/vim-textobj-entire')
