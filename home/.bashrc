@@ -75,4 +75,4 @@ man() {
     man "$@"
 }
 
-export PATH="/home/itakeshi/usr/bin:$PATH"
+export PATH="/home/itakeshi/.gem/ruby/2.4.0/bin:/home/itakeshi/.cargo/bin:/home/itakeshi/usr/bin:$PATH"
