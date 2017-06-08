@@ -1,7 +1,5 @@
 call g:dein#add('Shougo/dein.vim')
 
-call g:dein#add('sudo.vim')
-call g:dein#add('restore_view.vim')
 call g:dein#add('banyan/recognize_charcode.vim')
 call g:dein#add('tpope/vim-capslock')
 call g:dein#add('junegunn/vim-easy-align')
