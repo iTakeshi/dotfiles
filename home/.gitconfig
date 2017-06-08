@@ -3,6 +3,7 @@
   a = add
   aa = add -A
   c = commit -m
+  ca = commit --amend
   l = log
   sl = shortlog
   d = diff
