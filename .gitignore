@@ -11,4 +11,5 @@
 
 !/home/.config/matplotlib/
 !/home/.config/nvim/
+*.add.spl
 !/home/.config/termite/
