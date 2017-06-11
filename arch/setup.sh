@@ -20,7 +20,7 @@ sudo pacman -S \
     fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip \
     evtest udisks2 hwinfo xorg-xev ntp cbatticon nginx mariadb \
     jre8-openjdk jdk8-openjdk ruby ghc rust cargo scala sbt python-pip python2-pip nodejs npm r \
-    mupdf nomacs thunar wine texlive-core texlive-lang imagemagick otf-ipafont \
+    mupdf nomacs thunar wine texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
     alsa-utils pkgfile gdisk nfs-utils arandr cups cups-filters
 
 amixer sset Master unmute
