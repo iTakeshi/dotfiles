@@ -1,4 +1,4 @@
-set number                " show line numbers
+set nonumber              " hide line numbers
 set list                  " show invisible characters
 set laststatus=2          " always shows statusline
 set scrolloff=4           " minimum number of screen lines to keep in scroll

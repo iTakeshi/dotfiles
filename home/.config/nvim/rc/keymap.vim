@@ -96,6 +96,7 @@ nnoremap <silent> <Plug>(my-toggle)e :<C-u>setl expandtab!<CR>:setl expandtab?<C
 nnoremap <silent> <Plug>(my-toggle)w :<C-u>setl wrap!<CR>:setl wrap?<CR>
 nnoremap <silent> <Plug>(my-toggle)p :<C-u>setl paste!<CR>:setl paste?<CR>
 nnoremap <silent> <Plug>(my-toggle)q :<C-u>copen<CR>
+nnoremap <silent> <Plug>(my-toggle)n :<C-u>setl number!<CR>:setl number?<CR>
 
 " tag navigation
 nnoremap [t  :<C-u>tprevious<CR>
