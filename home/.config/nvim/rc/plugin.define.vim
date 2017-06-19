@@ -45,6 +45,7 @@ call g:dein#add('cespare/vim-toml')
 call g:dein#add('rust-lang/rust.vim')
 call g:dein#add('tikhomirov/vim-glsl')
 call g:dein#add('lazywei/vim-matlab')
+call g:dein#add('elzr/vim-json')
 
 call g:dein#add('kana/vim-textobj-user')
 call g:dein#add('kana/vim-textobj-entire')

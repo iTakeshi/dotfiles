@@ -48,6 +48,9 @@ set nospell
 " suppress tex formula conversion
 let g:tex_conceal=''
 
+" show double quotation in json file
+let g:vim_json_syntax_conceal = 0
+
 " prefer UTF-8
 if has('multi_byte')
   if has('vim_starting')
