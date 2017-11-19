@@ -7,7 +7,6 @@
 !/home/.config/fcitx
 /home/.config/fcitx/*
 !/home/.config/fcitx/config
-!/home/.config/fcitx/profile
 
 !/home/.config/matplotlib/
 !/home/.config/nvim/
