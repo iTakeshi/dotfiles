@@ -87,6 +87,7 @@ if has('vim_starting')
   function s:reload_vimrc() abort
     execute printf('source %s', $MYVIMRC)
     redraw
+    syn on
     echo 'vimrc/init.vim has been reloaded.'
   endfunction
 endif

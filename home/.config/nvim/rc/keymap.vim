@@ -19,7 +19,7 @@ nnoremap <C-p> <Nop>
 nnoremap <C-q> <Nop>
 nnoremap <C-r> <C-r>
 nnoremap <C-s> :<C-u>w<CR>
-nnoremap <C-t> <Nop>
+" nnoremap <C-t> => default: `jump back` in help
 nnoremap <C-u> <Nop>
 nnoremap <C-v> <C-v>
 nnoremap <C-w> <C-w>
@@ -50,7 +50,7 @@ inoremap <C-l> <C-o>l
 inoremap <C-m> <CR>
 inoremap <C-n> <C-n>
 inoremap <C-o> <C-o>
-inoremap <C-p> <C-o>p
+inoremap <C-p> <Nop>
 inoremap <C-q> <Nop>
 inoremap <C-r> <C-r>
 inoremap <C-s> <C-o>:w<CR>
@@ -75,9 +75,6 @@ nnoremap gk k
 " move macro to Q and disable default q
 nnoremap Q q
 nnoremap q <Nop>
-
-" Y to yank until the end of line
-nnoremap Y y$
 
 " define <Leader> and <LocalLeader>
 let g:mapleader = "\<Space>"
