@@ -57,7 +57,7 @@ endif
 " operator
 " =====================================
 if g:dein#tap('vim-operator-replace')
-  map R <Plug>(operator-replace)
+  map gr <Plug>(operator-replace)
 endif
 
 if g:dein#tap('vim-operator-surround')

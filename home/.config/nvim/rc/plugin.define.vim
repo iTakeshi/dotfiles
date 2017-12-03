@@ -51,10 +51,10 @@ call g:dein#add('thinca/vim-textobj-comment')                              " cC
 call g:dein#add('saihoooooooo/vim-textobj-space')                          " S
 call g:dein#add('mattn/vim-textobj-url')                                   " u
 call g:dein#add('sgur/vim-textobj-parameter')                              " ,
-call g:dein#add('rbonvall/vim-textobj-latex', {'lazy': 1, 'on_ft': 'tex'}) "\$qQe
+call g:dein#add('rbonvall/vim-textobj-latex', {'lazy': 1, 'on_ft': 'tex'}) " \$qQe
 
 " operator
 call g:dein#add('kana/vim-operator-user')
-call g:dein#add('kana/vim-operator-replace')      " no default => R
+call g:dein#add('kana/vim-operator-replace')      " no default => g + r
 call g:dein#add('rhysd/vim-operator-surround')    " no default => S + adr
 call g:dein#add('haya14busa/vim-operator-flashy') " no default => yY

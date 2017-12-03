@@ -6,12 +6,10 @@ if g:dein#tap('vimfiler.vim')
   " vimfiler specific key mappings
   autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
-    " ^^ to go up
-    nmap <buffer> ^^ <Plug>(vimfiler_switch_to_parent_directory)
-    " overwrite C-j ignore <Plug>(vimfiler_switch_to_history_directory)
-    nmap <buffer> <C-j> <C-w>j
     " use R to refresh
     nmap <buffer> R <Plug>(vimfiler_redraw_screen)
+    " overwrite C-j ignore <Plug>(vimfiler_switch_to_history_directory)
+    nmap <buffer> <C-j> <C-w>j
     " overwrite C-l ignore <Plug>(vimfiler_redraw_screen)
     nmap <buffer> <C-l> <C-w>l
     " disable switch_to_root
@@ -21,13 +19,16 @@ if g:dein#tap('vimfiler.vim')
   function! s:exec_vimfiler()
     call vimfiler#custom#profile('default', 'context', {
           \ 'split'    : 1,
-          \ 'winwidth' : 30,
+          \ 'winwidth' : 50,
           \ 'no_quit'  : 1,
           \ 'columns'  : 'devicons',
           \ })
     VimFiler
     setl nonumber
   endfunction
+  command! ExecVimFiler :call s:exec_vimfiler()
+  nnoremap <silent> <Leader>f :<C-u>ExecVimFiler<CR>
+  nnoremap <silent> <Plug>(my-toggle)f :<C-u>ExecVimFiler<CR>
 
   function! s:exec_vimfiler_on_vimenter()
     if bufexists('COMMIT_EDITMSG')
@@ -39,9 +40,5 @@ if g:dein#tap('vimfiler.vim')
       wincmd h
     endif
   endfunction
-  command! ExecVimFiler :call s:exec_vimfiler()
-  nnoremap <Leader>e :<C-u>ExecVimFiler<CR>
   autocmd MyAutoCmd VimEnter * call s:exec_vimfiler_on_vimenter()
-
-  nnoremap <silent> <Plug>(my-toggle)f :<C-u>ExecVimFiler<CR>
 endif
