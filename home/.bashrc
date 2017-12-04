@@ -38,8 +38,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias off='sudo shutdown -h now'
-alias vim='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -75,6 +73,10 @@ man() {
     man "$@"
 }
 
-export PATH="/home/itakeshi/.gem/ruby/2.4.0/bin:/home/itakeshi/.cargo/bin:/home/itakeshi/usr/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$HOME/usr/bin:$PATH"
 
-export PYTHONSTARTUP=/home/itakeshi/dotfiles/scripts/startup.py
+export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
+
+if [ -f $HOME/.bashrc.local ]; then
+    source $HOME/.bashrc.local
+fi
