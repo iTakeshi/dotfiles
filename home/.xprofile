@@ -3,3 +3,11 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx-autostart
 dropbox
+
+KEY_FILENAME='id_rsa'
+eval `ssh-agent`;
+ssh-add $HOME/.ssh/$KEY_FILENAME
+
+xhost +
+
+sh $HOME/.screenlayout/lab.sh
