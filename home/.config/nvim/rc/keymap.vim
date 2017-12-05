@@ -27,10 +27,10 @@ nnoremap <C-x> <C-x>
 nnoremap <C-y> 5<C-y>
 nnoremap <C-z> <C-z>
 
-nnoremap <S-Left>  <C-w><
-nnoremap <S-Right> <C-w>>
-nnoremap <S-Up>    <C-w>-
-nnoremap <S-Down>  <C-w>+
+nnoremap <S-Left>  25<C-w><
+nnoremap <S-Right> 25<C-w>>
+nnoremap <S-Up>    25<C-w>-
+nnoremap <S-Down>  25<C-w>+
 " }}}
 
 " insert mode {{{

@@ -4,18 +4,26 @@ if g:dein#tap('vimfiler.vim')
   let g:vimfiler_ignore_pattern = ['^\.$', '^\.\.$', '^.*\.pyc$', '^bazel-.*$']
 
   " vimfiler specific key mappings
-  autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
-    " use R to refresh
-    nmap <buffer> R <Plug>(vimfiler_redraw_screen)
     " overwrite C-j ignore <Plug>(vimfiler_switch_to_history_directory)
     nmap <buffer> <C-j> <C-w>j
+
     " overwrite C-l ignore <Plug>(vimfiler_redraw_screen)
     nmap <buffer> <C-l> <C-w>l
+
+    " use R to refresh
+    nmap <buffer> R <Plug>(vimfiler_redraw_screen)
+
     " disable switch_to_root
     nmap <buffer> \ <Nop>
-  endfunction
 
+    " hide vimfiler on editting
+    nmap <buffer><silent> <Plug>(vimfiler_edit_file) :<C-u>call <SID>edit_file()<CR>
+    nmap <buffer><silent> <Plug>(vimfiler_split_edit_file) :<C-u>call <SID>split_edit_file()<CR>
+  endfunction
+  autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
+
+  " exec vimfiler in a split window
   function! s:exec_vimfiler()
     call vimfiler#custom#profile('default', 'context', {
           \ 'split'    : 1,
@@ -24,12 +32,14 @@ if g:dein#tap('vimfiler.vim')
           \ 'columns'  : 'devicons',
           \ })
     VimFiler
+    call lightline#update()
     setl nonumber
   endfunction
   command! ExecVimFiler :call s:exec_vimfiler()
   nnoremap <silent> <Leader>f :<C-u>ExecVimFiler<CR>
   nnoremap <silent> <Plug>(my-toggle)f :<C-u>ExecVimFiler<CR>
 
+  " auto-start
   function! s:exec_vimfiler_on_vimenter()
     if bufexists('COMMIT_EDITMSG')
       return 0
@@ -41,4 +51,25 @@ if g:dein#tap('vimfiler.vim')
     endif
   endfunction
   autocmd MyAutoCmd VimEnter * call s:exec_vimfiler_on_vimenter()
+
+  " auto-show
+  function! s:exec_vimfiler_on_wincmd()
+    if winnr() == 1
+      call s:exec_vimfiler()
+    else
+      wincmd h
+    endif
+  endfunction
+  nnoremap <silent> <C-h> :<C-u>call <SID>exec_vimfiler_on_wincmd()<CR>
+
+  " auto-hide
+  function! s:edit_file()
+    call vimfiler#mappings#do_switch_action(b:vimfiler, b:vimfiler.context.edit_action)
+    1close
+  endfunction
+
+  function! s:split_edit_file()
+    call vimfiler#mappings#do_action(b:vimfiler, b:vimfiler.context.split_action)
+    1close
+  endfunction
 endif
