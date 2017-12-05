@@ -9,7 +9,6 @@ if g:dein#tap('vimfiler.vim')
     nmap <buffer> <C-j> <C-w>j
 
     " overwrite C-l ignore <Plug>(vimfiler_redraw_screen)
-    nmap <buffer> <C-l> <C-w>l
 
     " use R to refresh
     nmap <buffer> R <Plug>(vimfiler_redraw_screen)
@@ -20,6 +19,7 @@ if g:dein#tap('vimfiler.vim')
     " hide vimfiler on editting
     nmap <buffer><silent> <Plug>(vimfiler_edit_file) :<C-u>call <SID>edit_file()<CR>
     nmap <buffer><silent> <Plug>(vimfiler_split_edit_file) :<C-u>call <SID>split_edit_file()<CR>
+    nmap <buffer><silent> <C-l> :<C-u>wincmd l<CR>:1quit<CR>
   endfunction
   autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
 
@@ -41,13 +41,8 @@ if g:dein#tap('vimfiler.vim')
 
   " auto-start
   function! s:exec_vimfiler_on_vimenter()
-    if bufexists('COMMIT_EDITMSG')
-      return 0
-    endif
-    call s:exec_vimfiler()
-    wincmd l
     if expand('%') == ''
-      wincmd h
+      call s:exec_vimfiler()
     endif
   endfunction
   autocmd MyAutoCmd VimEnter * call s:exec_vimfiler_on_vimenter()
