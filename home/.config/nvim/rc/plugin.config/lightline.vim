@@ -85,7 +85,7 @@ if g:dein#tap('lightline.vim')
   endfunction
 
   function! g:lightline.my.lineinfo() abort
-    return &filetype !~# 'vimfiler' && winwidth(0) >= 70 ? printf("\ue0a1% 3d \ue0a3% 3d", line('.'), col('.')) : ''
+    return &filetype !~# 'vimfiler' && winwidth(0) >= 70 ? printf("\ue0a1% 3d / %d \ue0a3% 3d", line('.'), line('$'), col('.')) : ''
   endfunction
 
   function! g:lightline.my.gina_branch() abort
