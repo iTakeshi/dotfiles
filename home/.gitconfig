@@ -10,7 +10,7 @@
   b = branch
   ba = branch -a
   co = checkout
-  fp = fetch --prune
+  f = fetch --prune --all
   ds = diff --staged
   ap = add -p
 [user]
