@@ -32,6 +32,15 @@ if g:dein#tap('vim-choosewin')
   nmap - <Plug>(choosewin)
 endif
 
+if g:dein#tap('LanguageClient-neovim')
+  set signcolumn=yes
+  let g:LanguageClient_autoStart = 1
+  let g:LanguageClient_serverCommands = {
+      \ 'scala': ['node', expand('~/dotfiles/scripts/sbt-server-stdio.js')]
+      \ }
+  nnoremap <silent> gd <C-u>:call LanguageClient_textDocument_definition()<CR>
+endif
+
 " =====================================
 " auto completion
 " =====================================
