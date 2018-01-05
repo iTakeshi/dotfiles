@@ -1,26 +1,29 @@
 [alias]
-  s = status
-  a = add
-  aa = add -A
-  c = commit -m
-  ca = commit --amend
-  l = log
-  sl = shortlog
-  d = diff
-  b = branch
-  ba = branch -a
-  co = checkout
-  f = fetch --prune --all
-  ds = diff --staged
-  ap = add -p
+    s = status
+    a = add
+    aa = add -A
+    c = commit -m
+    ca = commit --amend
+    l = log
+    sl = shortlog
+    d = diff
+    b = branch
+    ba = branch -a
+    co = checkout
+    f = fetch --prune --all
+    ds = diff --staged
+    ap = add -p
 [user]
-  name = iTakeshi
-  email = takeshi.ito.doraemon@gmail.com
+    name = iTakeshi
+    email = takeshi.ito.doraemon@gmail.com
 [color]
-  ui = true
+    ui = true
 [push]
-  default = simple
+    default = simple
 [core]
-  editor = nvim
-  pager = less
-  excludesfile = /home/itakeshi/.gitignore_global
+    editor = nvim
+    pager = less
+    excludesfile = /home/itakeshi/.gitignore_global
+[rebase]
+    autosquash = true
+    autostash = true
