@@ -1,29 +1,36 @@
-[alias]
-    s = status
-    a = add
-    aa = add -A
-    c = commit -m
-    ca = commit --amend
-    l = log
-    sl = shortlog
-    d = diff
-    b = branch
-    ba = branch -a
-    co = checkout
-    f = fetch --prune --all
-    ds = diff --staged
-    ap = add -p
+[core]
+    editor = nvim
+    pager = less
+    excludesfile = /home/itakeshi/.gitignore_global
 [user]
     name = iTakeshi
     email = takeshi.ito.doraemon@gmail.com
 [color]
     ui = true
+[alias]
+    a = add
+    aa = add -A
+    ap = add -p
+    b = branch -a
+    c = commit -m
+    ca = commit --amend
+    co = checkout
+    cp = cherry-pick
+    d = diff
+    ds = diff --staged
+    f = fetch --all
+    g = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h%Creset %cd %Cblue%cn%Creset %s%Cred%d%Creset'
+    l = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
+    s = status
+    st = stash
+    sp = stash pop
+    sl = stash list
 [push]
     default = simple
-[core]
-    editor = nvim
-    pager = less
-    excludesfile = /home/itakeshi/.gitignore_global
+[pull]
+    rebase = true
 [rebase]
     autosquash = true
     autostash = true
+[fetch]
+    prune = true
