@@ -11,7 +11,8 @@
     a = add
     aa = add -A
     ap = add -p
-    b = branch -a
+    b = branch
+    ba = branch -a
     c = commit -m
     ca = commit --amend
     co = checkout
