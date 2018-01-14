@@ -15,13 +15,15 @@ sudo sed -i -e "$(expr $multilib_line + 1)s/^#//" /etc/pacman.conf
 sudo pacman -Syy
 
 sudo pacman -S \
-    xorg-server xorg-server-utils wpa_supplicant neovim \
-    lightdm lightdm-gtk-greeter awesome termite git wget openssh \
-    fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip \
-    evtest udisks2 hwinfo xorg-xev ntp cbatticon nginx mariadb \
-    jre8-openjdk jdk8-openjdk ruby ghc rust cargo scala sbt python-pip python2-pip nodejs npm r \
-    mupdf nomacs thunar wine texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
-    alsa-utils pkgfile gdisk nfs-utils arandr cups cups-filters
+    xorg-server xorg-xev xorg-xhost neovim \
+    lightdm lightdm-gtk-greeter awesome termite git wget openssh openconnect \
+    fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip scrot \
+    evtest udisks2 hwinfo ntp cbatticon nginx hping htop smartmontools \
+    autoconf automake cloc cmake clang eigen nasm gdb \
+    jre8-openjdk jdk8-openjdk rust cargo scala sbt python-pip python2-pip nodejs npm tk \
+    mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
+    alsa-utils pkgfile gdisk nfs-utils arandr cups cups-filters gtk3-print-backends words \
+    gimp inkscape vlc libreoffice-fresh
 
 amixer sset Master unmute
 
@@ -38,37 +40,29 @@ else
     sudo /sbin/vboxreload
 fi
 
-sudo pip install mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim
-sudo pip2 install neovim
-sudo sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" /usr/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
-
 aur_dir=/home/$username/usr/aur
 mkdir -p $aur_dir
 
-cd $aur_dir
-git clone https://aur.archlinux.org/google-chrome.git
-cd google-chrome
-makepkg -sri
+function install_aur () {
+    cd $aur_dir
+    git clone https://aur.archlinux.org/$1.git
+    cd $1
+    makepkg -sri
+}
 
-cd $aur_dir
-git clone https://aur.archlinux.org/nerd-fonts-complete.git
-cd nerd-fonts-complete
-makepkg -sri
+install_aur arch-diff
+install_aur bazel
+install_aur dropbox
+install_aur google-chrome
+install_aur light-git
+install_aur mysql
+install_aur nerd-fonts-complete
+install_aur slack-desktop
+install_aur zoom
 
-cd $aur_dir
-git clone https://aur.archlinux.org/light-git.git
-cd light-git
-makepkg -sri
-
-cd $aur_dir
-git clone https://aur.archlinux.org/dropbox.git
-cd dropbox
-makepkg -sri
-
-cd $aur_dir
-git clone https://aur.archlinux.org/zoom.git
-cd zoom
-makepkg -sri
+sudo pip install mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim
+sudo pip2 install neovim
+sudo sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" /usr/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
 
 cat << EOF | sudo tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
 evdev:input:b0003v0853p0100*
@@ -97,14 +91,24 @@ ln -sf /home/$username/dotfiles/home/.gitignore_global .
 ln -sf /home/$username/dotfiles/home/.xinitrc .
 ln -sf /home/$username/dotfiles/home/.xprofile .
 
+sudo mkdir -p /var/log/mysql
+cat << EOF | sudo tee /etc/my.cnf
+[mysqld]
+general_log=1
+log_output=FILE
+general_log_file=/var/log/mysql/query.log
+
+character-set-server=utf8
+
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+EOF
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-sudo sed -i -e "/^\[mysqld\]$/a character-set-server = utf8" /etc/mysql/my.cnf
-sudo systemctl start mariadb
+sudo systemctl start mysqld
 mysql_secure_installation
 
 sudo systemctl enable lightdm
 sudo systemctl enable ntpd
-sudo systemctl enable mariadb
+sudo systemctl enable mysqld
 sudo systemctl enable cups-browsed
 
 echo -n 'setup complete. press Enter to reboot.'
