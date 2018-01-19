@@ -33,7 +33,7 @@ mount /dev/sdxn /mnt
 mkdir /mnt/boot
 mount /dev/sdxm /mnt/boot
 
-vi /etc/pacman.d/mirrorlist         # select the nearest mirror
+vi /etc/pacman.d/mirrorlist         # select the nearest mirror [jaist > tsukuba > aggregate (for fallback)]
 pacstrap /mnt base base-devel       # install system
 genfstab -U /mnt >> /mnt/etc/fstab  # configure fstab
 ```

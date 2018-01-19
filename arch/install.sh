@@ -17,13 +17,6 @@ done
 echo $hostname > /etc/hostname
 sed -i -e "/^::1/a 127.0.0.1\t$hostname.localdomain\t$hostname" /etc/hosts
 
-jaist=$(sed -n "/jaist/p" /etc/pacman.d/mirrorlist)
-tsukuba=$(sed -n "/tsukuba/p" /etc/pacman.d/mirrorlist)
-aggregate=$(sed -n "/aggregate/p" /etc/pacman.d/mirrorlist)
-sed -i -e "1i $jaist" /etc/pacman.d/mirrorlist
-sed -i -e "1a $tsukuba" /etc/pacman.d/mirrorlist
-sed -i -e "2a $aggregate" /etc/pacman.d/mirrorlist
-
 pacman -S intel-ucode
 bootctl --path=/boot install
 
