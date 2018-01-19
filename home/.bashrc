@@ -81,3 +81,5 @@ export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
 fi
+
+export EDITOR=vim
