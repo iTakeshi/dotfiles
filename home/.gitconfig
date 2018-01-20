@@ -8,21 +8,25 @@
 [color]
     ui = true
 [alias]
-    a = add
+    a  = add
     aa = add -A
     ap = add -p
-    b = branch
+    b  = branch
     ba = branch -a
-    c = commit -m
+    c  = commit -m
     ca = commit --amend
     co = checkout
     cp = cherry-pick
-    d = diff
+    d  = diff
     ds = diff --staged
-    f = fetch --all
-    g = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h%Creset %cd %Cblue%cn%Creset %s%Cred%d%Creset'
-    l = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
-    s = status
+    f  = fetch --all
+    g  = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h%Creset %cd %Cblue%cn%Creset %s%Cred%d%Creset'
+    l  = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
+    p  = push
+    pf = push -f
+    po = pull origin master
+    pu = pull upstream master
+    s  = status
     st = stash
     sp = stash pop
     sl = stash list
