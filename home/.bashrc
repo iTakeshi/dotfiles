@@ -82,4 +82,5 @@ if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
 fi
 
-export EDITOR=vim
+export EDITOR=nvim
+export SYSTEMD_EDITOR=nvim
