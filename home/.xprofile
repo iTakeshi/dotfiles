@@ -7,6 +7,4 @@ KEY_FILENAME='id_rsa'
 eval `ssh-agent`;
 ssh-add $HOME/.ssh/$KEY_FILENAME
 
-xhost +
-
-sh $HOME/.screenlayout/lab.sh
+sh $HOME/.screenlayout/default.sh
