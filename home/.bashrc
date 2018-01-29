@@ -78,9 +78,9 @@ export PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$HOME/usr/bin:$PATH"
 
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 
+export EDITOR=nvim
+export SYSTEMD_EDITOR=nvim
+
 if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
 fi
-
-export EDITOR=nvim
-export SYSTEMD_EDITOR=nvim
