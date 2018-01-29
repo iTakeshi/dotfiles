@@ -22,10 +22,11 @@
     f  = fetch --all
     g  = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h%Creset %cd %Cblue%cn%Creset %s%Cred%d%Creset'
     l  = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
-    p  = push
+    p  = push origin HEAD
     pf = push -f
     po = pull origin master
     pu = pull upstream master
+    ri = rebase -i
     s  = status
     st = stash
     sp = stash pop
