@@ -55,8 +55,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source /usr/share/git/completion/git-prompt.sh
-source /usr/share/git/completion/git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 
 PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
