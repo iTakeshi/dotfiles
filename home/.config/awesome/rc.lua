@@ -44,7 +44,7 @@ beautiful.init(awful.util.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "termite"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -340,8 +340,17 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
-              {description = "close", group = "client"}),
+    awful.key({ modkey, "Control" }, "c",
+        function (c)
+            awful.spawn.with_line_callback("ps -p"..c.pid.." -o comm=", {
+                stdout = function (line)
+                    if line ~= terminal then
+                        c:kill()
+                    end
+                end
+            })
+        end,
+        {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
