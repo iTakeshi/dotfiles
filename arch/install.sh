@@ -22,7 +22,7 @@ bootctl --path=/boot install
 
 cat << EOF > /boot/loader/loader.conf
 default	arch
-timeout	5
+timeout	2
 editor	0
 EOF
 
