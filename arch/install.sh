@@ -88,10 +88,10 @@ ap_scan=1
 
 EOF
     wpa_passphrase $ssid $psk >> /etc/wpa_supplicant/wpa_supplicant-$interface.conf
+    systemctl enable wpa_supplicant@$interface
 fi
+systemctl enable dhcpcd@$interface
 
 curl -L -o /home/$username/setup.sh https://goo.gl/wBttrl
 sed -i -e "1i username=$username" /home/$username/setup.sh
-sed -i -e "1a setup_wifi=$setup_wifi" /home/$username/setup.sh
-sed -i -e "2a interface=$interface" /home/$username/setup.sh
 chown $username:$username /home/$username/setup.sh

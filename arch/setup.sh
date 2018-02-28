@@ -1,10 +1,3 @@
-if [ "$setup_wifi" == "Y" -o "$setup_wifi" == "y" ]; then
-    sudo systemctl enable wpa_supplicant@$interface
-    sudo systemctl start wpa_supplicant@$interface
-fi
-sudo systemctl enable dhcpcd@$interface
-sudo systemctl start dhcpcd@$interface
-
 multilib_line=$(sed -n "/^#\[multilib\]$/=" /etc/pacman.conf)
 if [ "$multilib_line" == "" ]; then
     exit 1
@@ -15,10 +8,11 @@ sudo sed -i -e "$(expr $multilib_line + 1)s/^#//" /etc/pacman.conf
 sudo pacman -Syy
 
 sudo pacman -S \
-    xorg-server xorg-xev xorg-xhost neovim \
+    xorg-server xorg-xev xorg-xauth neovim \
     lightdm lightdm-gtk-greeter awesome termite git wget openssh openconnect \
     fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip scrot \
-    evtest udisks2 hwinfo ntp cbatticon nginx hping htop smartmontools \
+    fontforge freeglut tcpdump wireshark-qt \
+    evtest udevil hwinfo ntp cbatticon nginx hping htop smartmontools \
     autoconf automake cloc cmake clang eigen nasm gdb \
     jre8-openjdk jdk8-openjdk rust cargo scala sbt python-pip python2-pip nodejs npm tk \
     mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
@@ -57,6 +51,7 @@ install_aur google-chrome
 install_aur light-git
 install_aur mysql
 install_aur nerd-fonts-complete
+install_aur snowman-git
 install_aur slack-desktop
 install_aur zoom
 
@@ -110,6 +105,7 @@ sudo systemctl enable lightdm
 sudo systemctl enable ntpd
 sudo systemctl enable mysqld
 sudo systemctl enable cups-browsed
+sudo systemctl enable devmon@$username
 
 echo -n 'setup complete. press Enter to reboot.'
 read
