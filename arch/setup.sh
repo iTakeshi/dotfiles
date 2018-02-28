@@ -34,7 +34,7 @@ else
     sudo /sbin/vboxreload
 fi
 
-aur_dir=/home/$username/usr/aur
+aur_dir=/$HOME/usr/aur
 mkdir -p $aur_dir
 
 function install_aur () {
@@ -76,15 +76,17 @@ sudo udevadm trigger
 
 cd $HOME
 git clone https://github.com/iTakeshi/dotfiles.git
-ln -sf /home/$username/dotfiles/home/.bash_logout .
-ln -sf /home/$username/dotfiles/home/.bash_profile .
-ln -sf /home/$username/dotfiles/home/.bashrc .
-ln -sf /home/$username/dotfiles/home/.config .
-ln -sf /home/$username/dotfiles/home/.myclirc .
-ln -sf /home/$username/dotfiles/home/.gitconfig .
-ln -sf /home/$username/dotfiles/home/.gitignore_global .
-ln -sf /home/$username/dotfiles/home/.xinitrc .
-ln -sf /home/$username/dotfiles/home/.xprofile .
+ln -sf /$HOME/dotfiles/home/.bash_logout .
+ln -sf /$HOME/dotfiles/home/.bash_profile .
+ln -sf /$HOME/dotfiles/home/.bashrc .
+ln -sf /$HOME/dotfiles/home/.config .
+ln -sf /$HOME/dotfiles/home/.myclirc .
+ln -sf /$HOME/dotfiles/home/.gitconfig .
+ln -sf /$HOME/dotfiles/home/.gitignore_global .
+ln -sf /$HOME/dotfiles/home/.xinitrc .
+ln -sf /$HOME/dotfiles/home/.xprofile .
+cd $HOME/dotfiles
+git remote set-url --push origin github:iTakeshi/dotfiles.git
 
 sudo mkdir -p /var/log/mysql
 cat << EOF | sudo tee /etc/my.cnf
