@@ -23,7 +23,7 @@
     g  = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h%Creset %cd %Cblue%cn%Creset %s%Cred%d%Creset'
     l  = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
     p  = push origin HEAD
-    pf = push -f
+    pf = push --force-with-lease
     po = pull origin master
     pu = pull upstream master
     ri = rebase -i
