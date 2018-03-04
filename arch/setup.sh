@@ -55,9 +55,9 @@ install_aur snowman-git
 install_aur slack-desktop
 install_aur zoom
 
-sudo pip install mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim pipenv
-sudo pip2 install neovim
-sudo sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" /usr/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
+pip install --user mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim pipenv
+pip2 install --user neovim
+sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" $HOME/.local/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
 
 cat << EOF | sudo tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
 evdev:input:b0003v0853p0100*

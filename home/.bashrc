@@ -74,7 +74,7 @@ man() {
     man "$@"
 }
 
-export PATH="$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$HOME/usr/bin:$PATH"
+export PATH="$HOME/usr/bin:$HOME/.local/bin:$PATH"
 
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 
