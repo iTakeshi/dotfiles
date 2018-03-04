@@ -38,7 +38,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias vim='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -78,6 +77,10 @@ export PATH="$HOME/usr/bin:$HOME/.local/bin:$PATH"
 
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 
+# use nvim everywhere
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
 export EDITOR=nvim
 export SYSTEMD_EDITOR=nvim
 
