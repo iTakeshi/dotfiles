@@ -11,7 +11,7 @@ sudo pacman -S \
     xorg-server xorg-xev xorg-xauth neovim \
     lightdm lightdm-gtk-greeter awesome termite git wget openssh openconnect \
     fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip scrot \
-    fontforge freeglut tcpdump wireshark-qt \
+    fontforge freeglut tcpdump wireshark-qt mariadb \
     evtest udevil hwinfo ntp cbatticon nginx hping htop smartmontools \
     autoconf automake cloc cmake clang eigen nasm gdb \
     jre8-openjdk jdk8-openjdk rust cargo scala sbt python-pip python2-pip nodejs npm tk \
@@ -49,7 +49,6 @@ install_aur bazel
 install_aur dropbox
 install_aur google-chrome
 install_aur light-git
-install_aur mysql
 install_aur nerd-fonts-complete
 install_aur snowman-git
 install_aur slack-desktop
@@ -88,20 +87,10 @@ ln -sf /$HOME/dotfiles/home/.xprofile .
 cd $HOME/dotfiles
 git remote set-url --push origin github:iTakeshi/dotfiles.git
 
-sudo mkdir -p /var/log/mysql
-cat << EOF | sudo tee /etc/my.cnf
-[mysqld]
-general_log=1
-log_output=FILE
-general_log_file=/var/log/mysql/query.log
-
-character-set-server=utf8
-
-sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
-EOF
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-sudo systemctl start mysqld
-mysql_secure_installation
+sudo sed -i -e "/^\[mysqld\]$/a character-set-server = utf8" /etc/mysql/my.cnf
+sudo systemctl start mariadb
+sudo mysql_secure_installation
 
 sudo systemctl enable lightdm
 sudo systemctl enable ntpd
