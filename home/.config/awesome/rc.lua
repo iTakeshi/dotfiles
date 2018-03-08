@@ -344,13 +344,17 @@ clientkeys = gears.table.join(
               {description = "Toggle title bar", group = "client"}),
     awful.key({ modkey, "Control" }, "c",
         function (c)
-            awful.spawn.with_line_callback("ps -p"..c.pid.." -o comm=", {
-                stdout = function (line)
-                    if line ~= terminal then
-                        c:kill()
+            if (c.pid == nil) then
+                c:kill()
+            else
+                awful.spawn.with_line_callback("ps -p"..c.pid.." -o comm=", {
+                    stdout = function (line)
+                        if line ~= terminal then
+                            c:kill()
+                        end
                     end
-                end
-            })
+                })
+            end
         end,
         {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
