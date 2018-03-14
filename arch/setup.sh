@@ -13,7 +13,7 @@ sudo pacman -S \
     fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip scrot \
     fontforge freeglut tcpdump wireshark-qt mariadb \
     evtest udevil hwinfo ntp cbatticon nginx hping htop smartmontools \
-    autoconf automake cloc cmake clang eigen nasm gdb \
+    autoconf automake cloc cmake clang bazel eigen nasm gdb \
     jre8-openjdk jdk8-openjdk rust cargo scala sbt python-pip python2-pip nodejs npm tk \
     mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
     alsa-utils pkgfile gdisk nfs-utils arandr cups cups-filters gtk3-print-backends words \
@@ -45,7 +45,6 @@ function install_aur () {
 }
 
 install_aur arch-diff
-install_aur bazel
 install_aur dropbox
 install_aur google-chrome
 install_aur light-git
