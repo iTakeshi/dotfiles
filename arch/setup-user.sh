@@ -95,7 +95,7 @@ sudo systemctl enable lightdm
 sudo systemctl enable ntpd
 sudo systemctl enable mysqld
 sudo systemctl enable cups-browsed
-sudo systemctl enable devmon@$username
+sudo systemctl enable devmon@$USER
 
 echo -n 'setup complete. press Enter to reboot.'
 read

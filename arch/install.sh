@@ -39,24 +39,7 @@ initrd	/initramfs-linux.img
 options	root=PARTUUID=$partuuid rw
 EOF
 
-passwd
-
-pacman -S sudo
-while true; do
-    read -p 'username? > ' username
-    if [ "$username" == "" ]; then
-        continue
-    else
-        break
-    fi
-done
-useradd -m -G wheel $username
-passwd $username
-echo -n 'Now, uncomment "%wheel ALL=(ALL) ALL" in the sudoers file to enable sudo. Press enter to open visudo.'
-read
-EDITOR=vi visudo
-
-interface=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p")
+interface=$( echo $(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \(.*\): <BROADCAST.*$/\1/p") | cut -f 1 -d " ")
 read -p 'setup wifi? [y/N] > ' setup_wifi
 if [ "$setup_wifi" == "Y" -o "$setup_wifi" == "y" ]; then
     pacman -S wpa_supplicant
@@ -92,6 +75,11 @@ EOF
 fi
 systemctl enable dhcpcd@$interface
 
-curl -L -o /home/$username/setup.sh https://goo.gl/wBttrl
-sed -i -e "1i username=$username" /home/$username/setup.sh
-chown $username:$username /home/$username/setup.sh
+passwd
+pacman -S sudo
+echo -n 'Now, uncomment "%wheel ALL=(ALL) ALL" in the sudoers file to enable sudo. Press enter to open visudo.'
+read
+EDITOR=vi visudo
+
+curl -o setup-root.sh https://raw.githubusercontent.com/iTakeshi/dotfiles/master/arch/setup-root.sh
+echo -n 'Installation has been successfully done. Reboot the machine and login as the root user.'
