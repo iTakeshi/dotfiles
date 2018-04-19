@@ -5,35 +5,6 @@ fi
 sudo sed -i -e "${multilib_line}s/^#//" /etc/pacman.conf
 sudo sed -i -e "$(expr $multilib_line + 1)s/^#//" /etc/pacman.conf
 
-sudo pacman -Syy
-
-sudo pacman -S \
-    xorg-server xorg-xev xorg-xauth neovim \
-    lightdm lightdm-gtk-greeter awesome termite git wget openssh openconnect \
-    fcitx fcitx-mozc fcitx-configtool fcitx-im bash-completion xsel unzip scrot \
-    fontforge freeglut tcpdump wireshark-qt mariadb \
-    evtest udevil hwinfo ntp cbatticon nginx hping htop smartmontools \
-    autoconf automake cloc cmake clang bazel eigen nasm gdb \
-    jre8-openjdk jdk8-openjdk rust cargo scala sbt python-pip python2-pip nodejs npm tk \
-    mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
-    alsa-utils pkgfile gdisk nfs-utils arandr cups cups-filters gtk3-print-backends words \
-    gimp inkscape vlc libreoffice-fresh
-
-amixer sset Master unmute
-
-read -p 'Am I running on the virtualbox? [y/N] > ' is_virtualbox
-if [ "$is_virtualbox" == "Y" -o "$is_virtualbox" == "y" ]; then
-    sudo pacman -S virtualbox-guest-utils virtualbox-guest-modules-arch
-    sudo cat << EOF > /etc/modules-load.d/virtualbox.conf
-vboxguest
-vboxsf
-vboxvideo
-EOF
-else
-    sudo pacman -S virtualbox virtualbox-host-modules-arch
-    sudo /sbin/vboxreload
-fi
-
 aur_dir=/$HOME/usr/aur
 mkdir -p $aur_dir
 
@@ -44,14 +15,15 @@ function install_aur () {
     makepkg -sri
 }
 
+sudo pacman -Syy
+
+sudo pacman -S \
+    pkgfile gdisk nfs-utils neovim git wget openssh openconnect bash-completion words \
+    xsel unzip evtest udevil hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
+    autoconf automake bazel cmake clang nasm gdb cloc \
+    jre8-openjdk jdk8-openjdk rust cargo python-pip python2-pip tk eigen
+
 install_aur arch-diff
-install_aur dropbox
-install_aur google-chrome
-install_aur light-git
-install_aur nerd-fonts-complete
-install_aur snowman-git
-install_aur slack-desktop
-install_aur zoom
 
 pip install --user mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim pipenv
 pip2 install --user neovim
@@ -91,11 +63,45 @@ sudo sed -i -e "/^\[mysqld\]$/a character-set-server = utf8" /etc/mysql/my.cnf
 sudo systemctl start mariadb
 sudo mysql_secure_installation
 
-sudo systemctl enable lightdm
 sudo systemctl enable ntpd
 sudo systemctl enable mysqld
-sudo systemctl enable cups-browsed
 sudo systemctl enable devmon@$USER
+
+read -p 'setup GUI? [Y/n] > ' setup_gui
+if [ "$setup_gui" != "N" -a "$setup_gui" != "n" ]; then
+    sudo pacman -S \
+        xorg-server xorg-xev xorg-xauth lightdm lightdm-gtk-greeter awesome termite \
+        fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
+        cbatticon freeglut alsa-utils arandr cups cups-filters "gtk3-print-backends" \
+        mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
+        gimp inkscape vlc libreoffice-fresh
+
+    amixer sset Master unmute
+
+    install_aur dropbox
+    install_aur google-chrome
+    install_aur light-git
+    install_aur nerd-fonts-complete
+    install_aur snowman-git
+    install_aur slack-desktop
+    install_aur zoom
+
+    sudo systemctl enable lightdm
+    sudo systemctl enable cups-browsed
+fi
+
+read -p 'Am I running on the virtualbox? [y/N] > ' is_virtualbox
+if [ "$is_virtualbox" == "Y" -o "$is_virtualbox" == "y" ]; then
+    sudo pacman -S virtualbox-guest-utils virtualbox-guest-modules-arch
+    sudo cat << EOF > /etc/modules-load.d/virtualbox.conf
+vboxguest
+vboxsf
+vboxvideo
+EOF
+else
+    sudo pacman -S virtualbox virtualbox-host-modules-arch
+    sudo /sbin/vboxreload
+fi
 
 echo -n 'setup complete. press Enter to reboot.'
 read
