@@ -84,6 +84,9 @@ alias vim=nvim
 export EDITOR=nvim
 export SYSTEMD_EDITOR=nvim
 
+# lock
+alias lock="light-locker-command -l"
+
 if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
 fi

@@ -70,8 +70,8 @@ sudo systemctl enable devmon@$USER
 read -p 'setup GUI? [Y/n] > ' setup_gui
 if [ "$setup_gui" != "N" -a "$setup_gui" != "n" ]; then
     sudo pacman -S \
-        xorg-server xorg-xev xorg-xauth lightdm lightdm-gtk-greeter awesome termite \
-        fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
+        xorg-server xorg-xev xorg-xauth lightdm lightdm-gtk-greeter light-locker awesome \
+        termite fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
         cbatticon freeglut alsa-utils arandr cups cups-filters "gtk3-print-backends" \
         mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
         gimp inkscape vlc libreoffice-fresh

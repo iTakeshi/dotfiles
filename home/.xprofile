@@ -8,3 +8,5 @@ eval `ssh-agent`;
 ssh-add $HOME/.ssh/$KEY_FILENAME
 
 sh $HOME/.screenlayout/default.sh
+
+light-locker &
