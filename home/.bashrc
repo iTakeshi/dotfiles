@@ -76,6 +76,7 @@ man() {
 export PATH="$HOME/usr/bin:$HOME/.local/bin:$PATH"
 
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
+export PIPENV_VENV_IN_PROJECT=true
 
 # use nvim everywhere
 alias v=nvim
