@@ -9,7 +9,7 @@ done
 read -p 'setup LDAP? [y/N] > ' setup_ldap
 if [ "$setup_ldap" == "Y" -o "$setup_ldap" == "y" ]; then
     pacman -S sssd unzip
-    curl -o etc.zip https://github.com/iTakeshi/dotfiles/raw/master/arch/ldap/etc.zip
+    curl -o etc.zip -L https://github.com/iTakeshi/dotfiles/raw/master/arch/ldap/etc.zip
     unzip etc.zip
     cp etc/sssd/sssd.conf    /etc/sssd/sssd.conf
     cp etc/nscd.conf         /etc/nscd.conf
