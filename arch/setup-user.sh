@@ -29,21 +29,6 @@ pip install --user mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim pip
 pip2 install --user neovim
 sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" $HOME/.local/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
 
-cat << EOF | sudo tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
-evdev:input:b0003v0853p0100*
-  KEYBOARD_KEY_7008a=rightmeta
-  KEYBOARD_KEY_7008b=leftmeta
-
-evdev:input:b0011v0001p0001*
-  KEYBOARD_KEY_0e=backslash
-  KEYBOARD_KEY_2b=backspace
-  KEYBOARD_KEY_3a=leftctrl
-  KEYBOARD_KEY_9d=rightmeta
-  KEYBOARD_KEY_dd=compose
-EOF
-sudo udevadm hwdb --update
-sudo udevadm trigger
-
 cd $HOME
 git clone https://github.com/iTakeshi/dotfiles.git
 ln -sf /$HOME/dotfiles/home/.bash_logout .
@@ -101,6 +86,21 @@ EOF
 else
     sudo pacman -S virtualbox virtualbox-host-modules-arch
     sudo /sbin/vboxreload
+
+    cat << EOF | sudo tee /etc/udev/hwdb.d/90-custom-keyboard.hwdb
+evdev:input:b0003v0853p0100*
+  KEYBOARD_KEY_7008a=rightmeta
+  KEYBOARD_KEY_7008b=leftmeta
+
+evdev:input:b0011v0001p0001*
+  KEYBOARD_KEY_0e=backslash
+  KEYBOARD_KEY_2b=backspace
+  KEYBOARD_KEY_3a=leftctrl
+  KEYBOARD_KEY_9d=rightmeta
+  KEYBOARD_KEY_dd=compose
+EOF
+    sudo udevadm hwdb --update
+    sudo udevadm trigger
 fi
 
 echo -n 'setup complete. press Enter to reboot.'
