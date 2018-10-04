@@ -93,7 +93,7 @@ fi
 read -p 'Am I running on the virtualbox? [y/N] > ' is_virtualbox
 if [ "$is_virtualbox" == "Y" -o "$is_virtualbox" == "y" ]; then
     sudo pacman -S virtualbox-guest-utils virtualbox-guest-modules-arch
-    sudo cat << EOF > /etc/modules-load.d/virtualbox.conf
+    cat << EOF | sudo tee /etc/modules-load.d/virtualbox.conf
 vboxguest
 vboxsf
 vboxvideo
