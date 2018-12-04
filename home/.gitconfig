@@ -1,7 +1,6 @@
 [core]
     editor = nvim
     pager = less
-    excludesfile = /home/itakeshi/.gitignore_global
 [user]
     name = iTakeshi
     email = itakeshi.net@gmail.com

@@ -8,7 +8,11 @@
 /home/.config/fcitx/*
 !/home/.config/fcitx/config
 
+!/home/.config/git
+
 !/home/.config/matplotlib/
+
 !/home/.config/nvim/
 *.add.spl
+
 !/home/.config/termite/
