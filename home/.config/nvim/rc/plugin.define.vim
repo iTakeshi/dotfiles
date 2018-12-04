@@ -38,6 +38,7 @@ call g:dein#add('tikhomirov/vim-glsl',    {'lazy': 1, 'on_ft': 'glsl'})
 call g:dein#add('lazywei/vim-matlab',     {'lazy': 1, 'on_ft': 'matlab'})
 call g:dein#add('elzr/vim-json',          {'lazy': 1, 'on_ft': 'json'})
 call g:dein#add('https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git')
+call g:dein#add('leafgarland/typescript-vim', {'lazy': 1, 'on_ft': 'typescript'})
 
 " textobj
 " Default text objexts are: wWspt(b){B}[]<>`'"

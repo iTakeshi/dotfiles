@@ -16,4 +16,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.rs setf rust
   " GLSL
   au BufNewFile,BufRead *.vert,*.tesc,*.tese,*.geom,*.frag,*.comp setf glsl
+  " Typescript
+  au BufNewFile,BufRead *.ts,*.tsx setf typescript
 augroup END
