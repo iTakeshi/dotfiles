@@ -22,9 +22,9 @@ nnoremap <C-s> :<C-u>w<CR>
 " nnoremap <C-t> => default: `jump back` in help
 nnoremap <C-u> <Nop>
 nnoremap <C-v> <C-v>
-nnoremap <C-w> <C-w>
+nnoremap <C-w> 5<C-y>
 nnoremap <C-x> <C-x>
-nnoremap <C-y> 5<C-y>
+nnoremap <C-y> <Nop>
 nnoremap <C-z> <C-z>
 
 nnoremap <S-Left>  25<C-w><
