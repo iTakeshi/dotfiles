@@ -4,6 +4,7 @@
 [user]
     name = iTakeshi
     email = itakeshi.net@gmail.com
+    signingkey = BED00E72F284285B039A5BA42FFAB6CA1706DC15
 [color]
     ui = true
 [alias]
