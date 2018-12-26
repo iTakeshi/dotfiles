@@ -20,7 +20,7 @@
     d  = diff
     ds = diff --staged
     f  = fetch --all
-    g  = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h%Creset %cd %Cblue%cn%Creset %s%Cred%d%Creset'
+    g  = log --graph --all --format='%C(cyan bold)%an%Creset %C(yellow)%h%Creset %Cred%d%Creset %s'
     l  = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
     p  = push origin HEAD
     pf = push --force-with-lease
