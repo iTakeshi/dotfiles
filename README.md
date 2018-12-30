@@ -3,7 +3,7 @@ iTakeshi's dotfiles
 
 ## DISCLAIMER
 THIS REPOSITORY IS DEVELOPED FOR MY PERSONAL USE.
-You can use it freely under, but ABSOLUTELY NO WARRANTY AND SUPPORT.
+You can use it freely, but with ABSOLUTELY NO WARRANTY AND SUPPORT.
 
 ## Automated ArchLinux Installation
 You have to do by yourself until `arch-chroot`,
