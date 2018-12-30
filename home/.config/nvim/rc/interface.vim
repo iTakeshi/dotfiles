@@ -38,7 +38,7 @@ if has('patch-7.4.314')
 endif
 
 " Conceal
-set conceallevel=2
+set conceallevel=0
 set concealcursor=c
 set colorcolumn=80
 
