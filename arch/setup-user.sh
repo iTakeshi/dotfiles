@@ -36,8 +36,6 @@ ln -sf /$HOME/dotfiles/home/.bash_profile .
 ln -sf /$HOME/dotfiles/home/.bashrc .
 ln -sf /$HOME/dotfiles/home/.config .
 ln -sf /$HOME/dotfiles/home/.myclirc .
-ln -sf /$HOME/dotfiles/home/.gitconfig .
-ln -sf /$HOME/dotfiles/home/.gitignore_global .
 ln -sf /$HOME/dotfiles/home/.xinitrc .
 ln -sf /$HOME/dotfiles/home/.xprofile .
 cd $HOME/dotfiles
