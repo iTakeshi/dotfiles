@@ -21,9 +21,11 @@ sudo pacman -S \
     pkgfile gdisk nfs-utils neovim git wget openssh openconnect bash-completion words \
     xsel unzip evtest udevil hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     autoconf automake bazel cmake clang nasm gdb cloc \
-    jre8-openjdk jdk8-openjdk rust cargo python-pip python2-pip tk eigen
+    jre8-openjdk jdk8-openjdk rust cargo python-pip python2-pip scala sbt tk eigen
 
+install_aur ammonite
 install_aur arch-diff
+install_aur tym
 
 pip install --user mycli numpy scipy PyQt5 matplotlib seaborn chainer neovim pipenv
 pip2 install --user neovim
@@ -67,7 +69,6 @@ if [ "$setup_gui" != "N" -a "$setup_gui" != "n" ]; then
     install_aur nerd-fonts-complete
     install_aur snowman-git
     install_aur slack-desktop
-    install_aur tym
     install_aur zoom
 
     sudo systemctl enable lightdm
