@@ -12,6 +12,8 @@
 
 !/home/.config/matplotlib/
 
+!/home/.config/npm/
+
 !/home/.config/nvim/
 *.add.spl
 

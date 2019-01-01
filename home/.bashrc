@@ -78,6 +78,26 @@ export SYSTEMD_EDITOR=nvim
 # lock
 alias lock="light-locker-command -l"
 
+# XDG Base Directory
+# ref: https://wiki.archlinux.org/index.php/XDG_Base_Directory
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+export HISTFILE="$XDG_DATA_HOME/bash/history"
+export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle" BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle" BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export LESSHISTFILE=-
+export GEM_HOME="$XDG_DATA_HOME/gem" GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+
+alias amm="amm -h $XDG_DATA_HOME/ammonite"
+alias sbt="sbt -ivy $XDG_DATA_HOME/ivy2 -sbt-dir $XDG_DATA_HOME/sbt"
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+
+# Load machine-specific config
 if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
 fi
