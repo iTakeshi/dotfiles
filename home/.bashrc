@@ -61,18 +61,7 @@ GIT_PS1_SHOWDIRTYSTATE=true
 
 PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 
-export MANPAGER='less -R'
-man() {
-  env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
-    man "$@"
-}
+export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 export PATH="$HOME/usr/bin:$HOME/.local/bin:$PATH"
 
