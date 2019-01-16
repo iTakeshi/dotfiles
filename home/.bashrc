@@ -1,3 +1,6 @@
+# Use English UI
+export LANG=en_US.utf8
+
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
