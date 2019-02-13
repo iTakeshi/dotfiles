@@ -15,7 +15,6 @@ if [ "$setup_ldap" == "Y" -o "$setup_ldap" == "y" ]; then
     cp etc/nscd.conf         /etc/nscd.conf
     cp etc/nsswitch.conf     /etc/nsswitch.conf
     cp etc/pam.d/system-auth /etc/pam.d/system-auth
-    cp etc/pam.d/sudo        /etc/pam.d/sudo
     cp etc/pam.d/passwd      /etc/pam.d/passwd
     chmod 600 /etc/sssd/sssd.conf
     echo -n 'Now, edit ldap_uri and ldap_search_base in sssd.conf. Press enter to open vi.'
