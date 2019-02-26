@@ -66,7 +66,8 @@ PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 
 export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
-export PATH="$HOME/usr/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.gem/ruby/$(ruby -v | sed -e "s/^ruby \([0-9]\.[0-9]\+\).*$/\1.0/")/bin:$PATH"
 
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 export PIPENV_VENV_IN_PROJECT=true
@@ -91,7 +92,6 @@ export HISTFILE="$XDG_DATA_HOME/bash/history"
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle" BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle" BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export LESSHISTFILE=-
-export GEM_HOME="$XDG_DATA_HOME/gem" GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
