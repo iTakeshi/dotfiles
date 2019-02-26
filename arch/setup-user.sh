@@ -18,7 +18,7 @@ function install_aur () {
 sudo pacman -Syy
 
 sudo pacman -S \
-    pkgfile gdisk nfs-utils neovim git wget openssh openconnect bash-completion words \
+    pacman-contrib pkgfile gdisk nfs-utils neovim git wget openssh openconnect bash-completion words \
     xsel unzip evtest udevil hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     autoconf automake bazel cmake clang nasm gdb cloc \
     jre8-openjdk jdk8-openjdk rust cargo python-pip python2-pip scala sbt tk eigen
