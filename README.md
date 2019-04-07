@@ -24,6 +24,7 @@ dhcpcd -b <DEVICE>
 ping archlinux.org                  # check internet connection
 timedatectl set-ntp true            # update the system clock
 gdisk /dev/sdx                      # create partitions
+# setup RAID if you need
 mkfs.ext4 /dev/sdxi                 # format `/` with ext4
 mkfs.vfat /dev/sdxj                 # format `/boot` with fat32 (unless constructing dual-boot with Windows)
 mkswap /dev/sdxk                    # if you setup swap partition
@@ -33,7 +34,7 @@ mount /dev/sdxn /mnt
 mkdir /mnt/boot
 mount /dev/sdxm /mnt/boot
 
-vi /etc/pacman.d/mirrorlist         # select the nearest mirror [jaist > tsukuba > aggregate (for fallback)]
+vi /etc/pacman.d/mirrorlist         # select the nearest mirror(s)
 pacstrap /mnt base base-devel       # install system
 genfstab -U /mnt >> /mnt/etc/fstab  # configure fstab
 ```
