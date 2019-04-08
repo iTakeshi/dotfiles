@@ -4,13 +4,7 @@
 /home/.config/awesome/themes/*
 !/home/.config/awesome/themes/my
 
-!/home/.config/fcitx
-/home/.config/fcitx/*
-!/home/.config/fcitx/config
-
 !/home/.config/git
-
-!/home/.config/matplotlib/
 
 !/home/.config/npm/
 
