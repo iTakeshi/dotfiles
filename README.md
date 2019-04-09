@@ -37,13 +37,19 @@ mount /dev/sdxm /mnt/boot
 vi /etc/pacman.d/mirrorlist         # select the nearest mirror(s)
 pacstrap /mnt base base-devel       # install system
 genfstab -U /mnt >> /mnt/etc/fstab  # configure fstab
+
+# if you use RAID
+mdadm --detail --scan >> /mnt/etc/mdadm.conf
 ```
 
 Then chroot to the new system, download custom install script, and execute it.
 ```sh
 arch-chroot /mnt
-curl -L -o install.sh https://goo.gl/wkKyfT
-bash install.sh
+curl -L -o /root/install.sh https://goo.gl/wkKyfT
+bash /root/install.sh
+
+# if you use RAID
+mkinitcpio -p linux # after `HOOKS="base udev autodetect block mdadm_udev filesystems usbinput fsck"` in /etc/mkinitcpio.conf
 ```
 From this point, what you have to do is just hitting RETURN key (...and supplying some information about you)
 
