@@ -2,6 +2,7 @@ let s:plugin_config_dir =
       \ g:util#normpath('rc/plugin.config', 'config')
 call g:util#source(s:plugin_config_dir . '/lightline.vim')
 call g:util#source(s:plugin_config_dir . '/vimfiler.vim')
+call g:util#source(s:plugin_config_dir . '/textobj.vim')
 
 " =====================================
 " utility
@@ -16,16 +17,6 @@ if g:dein#tap('vim-unified-diff') && executable('git')
         \   '--histogram',
         \ ]
   set diffexpr=unified_diff#diffexpr()
-endif
-
-if g:dein#tap('vim-easy-align')
-  xmap ga <Plug>(EasyAlign)
-  nmap ga <Plug>(EasyAlign)
-endif
-
-if g:dein#tap('caw.vim')
-  nmap <Leader>c <Plug>(caw:i:toggle)
-  vmap <Leader>c <Plug>(caw:i:toggle)
 endif
 
 if g:dein#tap('vim-choosewin')
@@ -66,6 +57,25 @@ endif
 " =====================================
 " operator
 " =====================================
+if g:dein#tap('vim-easy-align')
+  map ga <Plug>(EasyAlign)
+endif
+
+if g:dein#tap('caw.vim')
+  let g:caw_no_default_keymappings = 1
+  map gc   <Plug>(caw:prefix)
+  map gcc  <Plug>(caw:hatpos:toggle:operator)
+  map gci  <Plug>(caw:hatpos:comment:operator)
+  map gcui <Plug>(caw:hatpos:uncomment:operator)
+  map gcI  <Plug>(caw:zeropos:comment:operator)
+  map gcuI <Plug>(caw:zeropos:uncomment:operator)
+  map gca  <Plug>(caw:dollarpos:comment:operator)
+  map gcua <Plug>(caw:dollarpos:uncomment:operator)
+  map gcw  <Plug>(caw:wrap:comment:operator)
+  map gcuw <Plug>(caw:wrap:uncomment:operator)
+  map gcb  <Plug>(caw:box:comment:operator)
+endif
+
 if g:dein#tap('vim-operator-replace')
   map gr <Plug>(operator-replace)
 endif
@@ -80,13 +90,12 @@ if g:dein#tap('vim-operator-surround')
         \     'keys' : ['`']
         \   },
         \ ]}
-
-  map Sa <Plug>(operator-surround-append)
-  map Sd <Plug>(operator-surround-delete)
-  map Sr <Plug>(operator-surround-replace)
+  map gsa <Plug>(operator-surround-append)
+  map gsd <Plug>(operator-surround-delete)
+  map gsr <Plug>(operator-surround-replace)
 endif
 
 if g:dein#tap('vim-operator-flashy')
-  map y <Plug>(operator-flashy)
+  map  y <Plug>(operator-flashy)
   nmap Y <Plug>(operator-flashy)$
 endif
