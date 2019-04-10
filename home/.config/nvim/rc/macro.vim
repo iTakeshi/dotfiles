@@ -52,23 +52,6 @@ highlight MyZenkakuSpace
       \ cterm=reverse ctermfg=DarkMagenta
       \ gui=reverse guifg=DarkMagenta
 
-" automaticaly remove trailing whitespaces
-function! s:remove_trailing_whitespace() abort
-  let whitespace_ignored_filetypes = ['markdown', 'unite']
-  for ft in whitespace_ignored_filetypes
-    if ft ==# &filetype
-      return 0
-    endif
-  endfor
-
-  let cursor_position = getpos('.')
-  %s/\s\+$//e
-  call setpos('.', cursor_position)
-
-  return 0
-endfunction
-autocmd MyAutoCmd InsertLeave * call s:remove_trailing_whitespace()
-
 " edit vimrc
 if has('vim_starting')
   function s:edit_vimrc() abort

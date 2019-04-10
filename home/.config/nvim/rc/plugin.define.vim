@@ -15,6 +15,7 @@ call g:dein#add('t9md/vim-choosewin')
 call g:dein#add('Shougo/unite.vim')
 call g:dein#add('Shougo/vimfiler.vim')
 "call g:dein#add('eed3si9n/LanguageClient-neovim')
+call g:dein#add('ntpeters/vim-better-whitespace')
 
 " auto completion
 call g:dein#add('Shougo/deoplete.nvim')
