@@ -1,9 +1,11 @@
 let s:plugin_config_dir =
-      \ g:util#normpath('rc'. g:pathsep . 'plugin.config', 'config')
-      \ . g:pathsep
-call g:util#source(s:plugin_config_dir . 'lightline.vim')
-call g:util#source(s:plugin_config_dir . 'vimfiler.vim')
+      \ g:util#normpath('rc/plugin.config', 'config')
+call g:util#source(s:plugin_config_dir . '/lightline.vim')
+call g:util#source(s:plugin_config_dir . '/vimfiler.vim')
 
+" =====================================
+" utility
+" =====================================
 if g:dein#tap('vim-unified-diff') && executable('git')
   let g:unified_diff#arguments = [
         \   'diff',
