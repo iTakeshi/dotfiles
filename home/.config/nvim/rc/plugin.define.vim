@@ -27,19 +27,9 @@ call g:dein#add('ujihisa/neco-look')
 
 " language support
 call g:dein#add('tyru/caw.vim') " comment syntax
-call g:dein#add('derekwyatt/vim-scala',   {'lazy': 1, 'on_ft': 'scala'})
-call g:dein#add('vim-ruby/vim-ruby',      {'lazy': 1, 'on_ft': 'ruby'})
-call g:dein#add('othree/html5.vim',       {'lazy': 1, 'on_ft': 'html'})
-call g:dein#add('hail2u/vim-css3-syntax', {'lazy': 1, 'on_ft': 'css'})
-call g:dein#add('groenewege/vim-less',    {'lazy': 1, 'on_ft': 'less'})
-call g:dein#add('cespare/vim-toml',       {'lazy': 1, 'on_ft': 'toml'})
-call g:dein#add('rust-lang/rust.vim',     {'lazy': 1, 'on_ft': 'rust'})
-call g:dein#add('tikhomirov/vim-glsl',    {'lazy': 1, 'on_ft': 'glsl'})
+call g:dein#add('sheerun/vim-polyglot')
 call g:dein#add('lazywei/vim-matlab',     {'lazy': 1, 'on_ft': 'matlab'})
-call g:dein#add('elzr/vim-json',          {'lazy': 1, 'on_ft': 'json'})
 call g:dein#add('https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git')
-call g:dein#add('leafgarland/typescript-vim', {'lazy': 1, 'on_ft': 'typescript'})
-call g:dein#add('stephpy/vim-yaml',       {'lazy': 1, 'on_ft': 'yaml'})
 
 " textobj
 " Default text objexts are: wWspt(b){B}[]<>`'"
