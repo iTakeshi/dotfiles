@@ -55,6 +55,17 @@ if g:dein#tap('neosnippet.vim')
 endif
 
 " =====================================
+" language support
+" =====================================
+if g:dein#tap('vim-polyglot')
+  let g:polyglot_disabled = ['latex']
+endif
+
+if g:dein#tap('vimtex')
+  let g:tex_flavor = 'latex'
+endif
+
+" =====================================
 " operator
 " =====================================
 if g:dein#tap('vim-easy-align')

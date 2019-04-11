@@ -26,8 +26,8 @@ call g:dein#add('ujihisa/neco-look')
 
 " language support
 call g:dein#add('sheerun/vim-polyglot')
-call g:dein#add('lazywei/vim-matlab',     {'lazy': 1, 'on_ft': 'matlab'})
-call g:dein#add('https://fedorapeople.org/cgit/wwoods/public_git/vim-scripts.git')
+call g:dein#add('lervag/vimtex'      , {'on_ft': ['tex', 'bib']})
+call g:dein#add('lazywei/vim-matlab' , {'on_ft': 'matlab'})
 
 " textobj
 " Default text objexts are: wWspt(b){B}[]<>`'"
