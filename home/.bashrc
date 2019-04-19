@@ -61,6 +61,7 @@ fi
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM="auto"
 . $HOME/dotfiles/scripts/git-prompt.sh
 . $HOME/dotfiles/scripts/git-completion.bash
 
