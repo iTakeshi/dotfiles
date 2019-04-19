@@ -8,29 +8,31 @@
 [color]
     ui = true
 [alias]
-    a  = add
-    aa = add -A
-    ap = add -p
-    b  = branch
-    ba = branch -a
-    c  = commit -m
-    ca = commit --amend
-    co = checkout
-    cp = cherry-pick
-    d  = diff
-    ds = diff --staged
-    f  = fetch --all
-    g  = log --graph --all --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(red)%d%C(reset) %s'
-    l  = log               --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %C(blue)%ar%C(reset) %C(red)%d%C(reset) %s' --date=iso
-    p  = push origin HEAD --tags
-    pf = push --force-with-lease
-    po = pull origin master
-    pu = pull upstream master
-    ri = rebase -i
-    s  = status
-    st = stash
-    sp = stash pop
-    sl = stash list
+    a   = add
+    aa  = add -A
+    ap  = add -p
+    b   = branch
+    ba  = branch -a
+    c   = commit -m
+    ca  = commit --amend
+    co  = checkout
+    cp  = cherry-pick
+    d   = diff
+    dw  = diff          --word-diff
+    ds  = diff --staged
+    dsw = diff --staged --word-diff
+    f   = fetch --all
+    g   = log --graph --all --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(red)%d%C(reset) %s'
+    l   = log               --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %C(blue)%ar%C(reset) %C(red)%d%C(reset) %s' --date=iso
+    p   = push origin HEAD --tags
+    pf  = push --force-with-lease
+    po  = pull origin master
+    pu  = pull upstream master
+    ri  = rebase -i
+    s   = status
+    st  = stash
+    sp  = stash pop
+    sl  = stash list
 [push]
     default = simple
 [pull]
