@@ -5,7 +5,7 @@ nnoremap <C-b> <C-b>
 nnoremap <C-c> <C-c>
 nnoremap <C-d> <C-l>
 nnoremap <C-e> 5<C-e>
-nnoremap <C-f> <C-f>
+" nnoremap <C-f> => used for Defx
 nnoremap <C-g> <Nop>
 nnoremap <C-h> <C-w>h
 nnoremap <C-i> <Nop>

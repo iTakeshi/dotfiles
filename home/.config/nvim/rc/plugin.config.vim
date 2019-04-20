@@ -1,7 +1,7 @@
 let s:plugin_config_dir =
       \ g:util#normpath('rc/plugin.config', 'config')
 call g:util#source(s:plugin_config_dir . '/lightline.vim')
-call g:util#source(s:plugin_config_dir . '/vimfiler.vim')
+call g:util#source(s:plugin_config_dir . '/defx.vim')
 call g:util#source(s:plugin_config_dir . '/textobj.vim')
 
 " =====================================

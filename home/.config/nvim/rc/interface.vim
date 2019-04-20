@@ -7,7 +7,6 @@ set cmdheight=2           " the number of screen lines to use for command line
 set showcmd               " show command on statusline
 set lazyredraw            " do not redraw while command execution
 set nosplitbelow          " split to top
-set splitright            " vsplit to right
 set report=0              " report any changes
 set display=lastline      " display last line in a window AMAP
 set showtabline=2         " always show tabline"
