@@ -78,3 +78,6 @@ nnoremap <F4> :<C-u>call <SID>reload_vimrc()<CR>
 
 " open help in vertically split window
 autocmd MyAutoCmd FileType help wincmd L
+
+" no conceal
+autocmd BufEnter * setl cole=0

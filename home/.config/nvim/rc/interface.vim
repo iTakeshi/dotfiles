@@ -13,6 +13,7 @@ set display=lastline      " display last line in a window AMAP
 set showtabline=2         " always show tabline"
 
 set nowrap                " wrap long text
+set colorcolumn=80
 set textwidth=0           " do not automatically break
 set breakat=\ \ ;:,!?     " characters which might cause a line break
 
@@ -32,15 +33,7 @@ set completeopt=menu,longest
 set complete=.            " don't complete from other buffer
 set pumheight=20          " height of popup menu
 set showfulltag           " show both the tag name and the search pattern
-if has('patch-7.4.314')
-  " don't give ins-completion-menu messages
-  set shortmess+=c
-endif
-
-" Conceal
-set conceallevel=0
-set concealcursor=c
-set colorcolumn=80
+set shortmess+=c          " don't give ins-completion-menu messages
 
 " ambiwidth
 set emoji

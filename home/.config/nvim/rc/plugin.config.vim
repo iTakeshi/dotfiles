@@ -49,9 +49,6 @@ if g:dein#tap('neosnippet.vim')
   imap <C-t> <Plug>(neosnippet_expand_or_jump)
   smap <C-t> <Plug>(neosnippet_expand_or_jump)
   xmap <C-t> <Plug>(neosnippet_expand_target)
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
 endif
 
 " =====================================
