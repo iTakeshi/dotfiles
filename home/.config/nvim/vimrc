@@ -32,6 +32,9 @@ if has('multi_byte')
   set fileformats=unix,dos,mac
 endif
 
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+
 let s:rc_dir = g:util#normpath('rc', 'config')
 call g:util#source(s:rc_dir . '/legacy.vim')
 call g:util#source(s:rc_dir . '/search.vim')

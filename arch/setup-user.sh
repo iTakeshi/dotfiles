@@ -30,7 +30,7 @@ yay -S \
     openssh openconnect bash-completion words \
     xsel unzip evtest udevil hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     autoconf automake bazel cmake clang nasm gdb cloc docker docker-compose \
-    jre8-openjdk jdk8-openjdk python-pip python2-pip ruby scala sbt ammonite tk eigen
+    jre8-openjdk jdk8-openjdk python-pip python2-pip poetry ruby scala sbt ammonite tk eigen
 
 pip install --user mycli numpy PyQt5 matplotlib pynvim
 pip2 install --user pynvim

@@ -20,4 +20,4 @@ atexit.register(save, h_len, histfile)
 # read numpy and mpl
 import numpy as np
 import matplotlib.pyplot as plt
-np.set_printoptions(threshold=np.nan, linewidth=250, precision=3, suppress=True)
+np.set_printoptions(threshold=np.inf, linewidth=250, precision=3, suppress=True)

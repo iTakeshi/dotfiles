@@ -11,4 +11,7 @@
 !/home/.config/nvim/
 *.add.spl
 
+!/home/.config/pypoetry/
+/home/.config/pypoetry/auth.toml
+
 !/home/.config/tym/

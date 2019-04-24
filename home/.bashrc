@@ -58,6 +58,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.gem/ruby/$(ruby -v | sed -e "s/^ruby \([0-9]\.[0-9]\+\).*$/\1.0/")/bin:$PATH"
+
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
@@ -65,15 +68,23 @@ GIT_PS1_SHOWUPSTREAM="auto"
 . $HOME/dotfiles/scripts/git-prompt.sh
 . $HOME/dotfiles/scripts/git-completion.bash
 
-PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
+__virtualenv_ps1() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv="${VIRTUAL_ENV%/.venv}"
+        venv="${venv##*/}"
+    else
+        venv=''
+    fi
+    [[ -n "$venv" ]] && echo " (venv:$venv)"
+}
+eval "$(pip completion --bash)"
+eval "$(poetry completion bash)"
+export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+PS1='\[\033[01;33m\]\u@\h$(__virtualenv_ps1) \[\033[01;31m\]\w$(__git_ps1) \$\[\033[00m\] '
 
 export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.gem/ruby/$(ruby -v | sed -e "s/^ruby \([0-9]\.[0-9]\+\).*$/\1.0/")/bin:$PATH"
-
-export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
-export PIPENV_VENV_IN_PROJECT=true
 
 # use nvim everywhere
 alias v=nvim
