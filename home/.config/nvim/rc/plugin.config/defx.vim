@@ -1,5 +1,5 @@
 if g:dein#tap('defx.nvim')
-  let s:height = 60
+  let s:height = 50
   let s:width = 50
 
   call defx#custom#column('icon', {
@@ -18,16 +18,19 @@ if g:dein#tap('defx.nvim')
         \ 'columns'       : 'mark:icon:filename:icons',
         \ 'split'         : 'floating',
         \ 'ignored_files' : '*.[ado],*.l[ao],*.py[cdo],bazel-.*',
+        \ 'listed'        : 1,
+        \ 'resume'        : 1,
         \ 'auto_cd'       : 1,
-        \ 'winheight'     : s:height,
         \ 'winwidth'      : s:width + 7,
         \})
 
   " open defx at the center of the window
   function! s:open_defx()
+    let l:height = min([&lines - 4, s:height])
     call defx#custom#option('_', {
-        \ 'winrow' : (&lines - s:height) / 2,
-        \ 'wincol' : (&columns - s:width) / 2,
+        \ 'winheight' : l:height,
+        \ 'winrow'    : (&lines - l:height) / 2,
+        \ 'wincol'    : (&columns - s:width) / 2,
         \})
     Defx
   endfunction
@@ -40,25 +43,28 @@ if g:dein#tap('defx.nvim')
     setl nospell
 
     " TODO choose-win
-    nnoremap <silent><buffer><expr> e defx#do_action('multi', ['drop', 'quit'])
-    nnoremap <silent><buffer><expr> E defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
-    nnoremap <silent><buffer><expr> o defx#do_action('execute_system')
+    nnoremap <silent><buffer><expr> e       defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
+    nnoremap <silent><buffer><expr> <CR>    defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
+    nnoremap <silent><buffer><expr> E       defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
+    nnoremap <silent><buffer><expr> o       defx#do_action('execute_system')
 
-    nnoremap <silent><buffer><expr> l defx#is_directory() ? defx#do_action('open') : ""
-    nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> l       defx#is_directory() ? defx#do_action('open') : ""
+    nnoremap <silent><buffer><expr> h       defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> <BS>    defx#do_action('cd', ['..'])
 
     nnoremap <silent><buffer><expr> <SPACE> defx#do_action('toggle_select') . 'j'
-    nnoremap <silent><buffer><expr> <C-d> defx#do_action('remove')
-    nnoremap <silent><buffer><expr> <C-x> defx#do_action('move')
-    nnoremap <silent><buffer><expr> <C-c> defx#do_action('copy')
-    nnoremap <silent><buffer><expr> <C-v> defx#do_action('paste')
-    nnoremap <silent><buffer><expr> <C-r> defx#do_action('rename')
-    nnoremap <silent><buffer><expr> <C-n> defx#do_action('new_multiple_files')
-    nnoremap <silent><buffer><expr> Y defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> <C-d>   defx#do_action('remove')
+    nnoremap <silent><buffer><expr> <C-x>   defx#do_action('move')
+    nnoremap <silent><buffer><expr> <C-c>   defx#do_action('copy')
+    nnoremap <silent><buffer><expr> <C-v>   defx#do_action('paste')
+    nnoremap <silent><buffer><expr> <C-r>   defx#do_action('rename')
+    nnoremap <silent><buffer><expr> <C-n>   defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> Y       defx#do_action('yank_path')
 
     nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> <C-l> defx#do_action('redraw')
     nnoremap <silent><buffer><expr> <C-f> defx#do_action('quit')
+    nnoremap <silent><buffer><expr> <ESC><ESC> defx#do_action('quit')
   endfunction
   autocmd FileType defx call <SID>config_defx()
 
