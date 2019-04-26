@@ -36,6 +36,10 @@ pip install --user mycli numpy PyQt5 matplotlib pynvim
 pip2 install --user pynvim
 sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" $HOME/.local/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
 
+gem install neovim
+
+npm install -g neovim
+
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo sed -i -e "/^\[mysqld\]$/a character-set-server = utf8" /etc/mysql/my.cnf
 sudo systemctl start mariadb
