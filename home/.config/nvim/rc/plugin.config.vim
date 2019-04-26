@@ -31,6 +31,13 @@ if g:dein#tap('vim-better-whitespace')
   let g:strip_whitespace_confirm = 0
   let g:strip_whitelines_at_eof = 1
   let g:show_spaces_that_precede_tabs = 1
+
+  function! s:disable_whitespace_if_readonly() abort
+    if &readonly
+      DisableWhitespace
+    endif
+  endfunction
+  autocmd BufRead,BufEnter * call s:disable_whitespace_if_readonly()
 endif
 
 " =====================================
