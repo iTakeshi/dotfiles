@@ -17,7 +17,15 @@ def save(prev_h_len, histfile):
     readline.append_history_file(new_h_len - prev_h_len, histfile)
 atexit.register(save, h_len, histfile)
 
-# read numpy and mpl
-import numpy as np
-import matplotlib.pyplot as plt
-np.set_printoptions(threshold=np.inf, linewidth=250, precision=3, suppress=True)
+# numpy
+try:
+    import numpy as np
+except ImportError:
+    pass
+
+# mpl
+try:
+    import matplotlib.pyplot as plt
+    np.set_printoptions(threshold=np.inf, linewidth=250, precision=3, suppress=True)
+except ImportError:
+    pass
