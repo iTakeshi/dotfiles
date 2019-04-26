@@ -28,7 +28,7 @@ makepkg -sri
 yay -S \
     arch-diff pacman-contrib pkgfile gdisk nfs-utils neovim wget bat hexyl tym \
     openssh openconnect bash-completion words \
-    xsel unzip evtest udevil hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
+    xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     autoconf automake bazel cmake clang nasm gdb cloc docker docker-compose \
     jre8-openjdk jdk8-openjdk python-pip python2-pip poetry ruby scala sbt ammonite tk eigen
 
