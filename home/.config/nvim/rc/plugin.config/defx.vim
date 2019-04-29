@@ -35,6 +35,20 @@ if g:dein#tap('defx.nvim')
     Defx
   endfunction
 
+  function! DefxChoosewin(context)
+    if winnr('$') > 2
+      " hide defx window, except for a single line showing target filename
+      call nvim_win_set_config(win_getid(), { 'height': 1 })
+      redraw
+      " choose target window with defx excluded, whose window number is always
+      " equal to winnr('$')
+      call choosewin#start(range(1, winnr('$') - 1))
+    else
+      1wincmd w
+    endif
+    exec 'edit ' . a:context.targets[0]
+  endfunction
+
   " window-local config
   function! s:config_defx()
     IndentLinesDisable
@@ -42,28 +56,32 @@ if g:dein#tap('defx.nvim')
     setl nonumber
     setl nospell
 
-    " TODO choose-win
-    nnoremap <silent><buffer><expr> e       defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
-    nnoremap <silent><buffer><expr> <CR>    defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
-    nnoremap <silent><buffer><expr> E       defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
-    nnoremap <silent><buffer><expr> o       defx#do_action('execute_system')
+    if g:dein#tap('vim-choosewin')
+      nnoremap <silent><buffer><expr> e        defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['call', 'DefxChoosewin'], 'quit'])
+      nnoremap <silent><buffer><expr> <CR>     defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['call', 'DefxChoosewin'], 'quit'])
+    else
+      nnoremap <silent><buffer><expr> e        defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
+      nnoremap <silent><buffer><expr> <CR>     defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
+    endif
+    nnoremap <silent><buffer><expr> E          defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
+    nnoremap <silent><buffer><expr> o          defx#do_action('execute_system')
 
-    nnoremap <silent><buffer><expr> l       defx#is_directory() ? defx#do_action('open') : ""
-    nnoremap <silent><buffer><expr> h       defx#do_action('cd', ['..'])
-    nnoremap <silent><buffer><expr> <BS>    defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> l          defx#is_directory() ? defx#do_action('open') : ""
+    nnoremap <silent><buffer><expr> h          defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> <BS>       defx#do_action('cd', ['..'])
 
-    nnoremap <silent><buffer><expr> <SPACE> defx#do_action('toggle_select') . 'j'
-    nnoremap <silent><buffer><expr> <C-d>   defx#do_action('remove')
-    nnoremap <silent><buffer><expr> <C-x>   defx#do_action('move')
-    nnoremap <silent><buffer><expr> <C-c>   defx#do_action('copy')
-    nnoremap <silent><buffer><expr> <C-v>   defx#do_action('paste')
-    nnoremap <silent><buffer><expr> <C-r>   defx#do_action('rename')
-    nnoremap <silent><buffer><expr> <C-n>   defx#do_action('new_multiple_files')
-    nnoremap <silent><buffer><expr> Y       defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> <SPACE>    defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> <C-d>      defx#do_action('remove')
+    nnoremap <silent><buffer><expr> <C-x>      defx#do_action('move')
+    nnoremap <silent><buffer><expr> <C-c>      defx#do_action('copy')
+    nnoremap <silent><buffer><expr> <C-v>      defx#do_action('paste')
+    nnoremap <silent><buffer><expr> <C-r>      defx#do_action('rename')
+    nnoremap <silent><buffer><expr> <C-n>      defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> Y          defx#do_action('yank_path')
 
-    nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> <C-l> defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> <C-f> defx#do_action('quit')
+    nnoremap <silent><buffer><expr> .          defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> <C-l>      defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> <C-f>      defx#do_action('quit')
     nnoremap <silent><buffer><expr> <ESC><ESC> defx#do_action('quit')
   endfunction
   autocmd FileType defx call <SID>config_defx()
