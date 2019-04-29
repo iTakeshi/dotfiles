@@ -77,8 +77,8 @@ __virtualenv_ps1() {
     fi
     [[ -n "$venv" ]] && echo " (venv:$venv)"
 }
-eval "$(pip completion --bash)"
-eval "$(poetry completion bash)"
+. $HOME/dotfiles/scripts/pip-completion.bash
+. $HOME/dotfiles/scripts/poetry-completion.bash
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
