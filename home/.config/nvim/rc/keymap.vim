@@ -31,6 +31,9 @@ nnoremap <S-Left>  25<C-w><
 nnoremap <S-Right> 25<C-w>>
 nnoremap <S-Up>    25<C-w>-
 nnoremap <S-Down>  25<C-w>+
+
+nnoremap L <C-w>L
+nnoremap H <C-w>H
 " }}}
 
 " insert mode {{{

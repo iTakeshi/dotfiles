@@ -79,5 +79,11 @@ nnoremap <F4> :<C-u>call <SID>reload_vimrc()<CR>
 " open help in vertically split window
 autocmd MyAutoCmd FileType help wincmd L
 
+function! s:fix_layout() abort
+  exec 100 . 'wincmd +'
+  wincmd =
+endfunction
+command FixLayout call <SID>fix_layout()
+
 " no conceal
 autocmd BufEnter * setl cole=0
