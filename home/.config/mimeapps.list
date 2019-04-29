@@ -1,0 +1,21 @@
+[Default Applications]
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/mailto=google-chrome.desktop
+x-scheme-handler/webcal=google-chrome.desktop
+
+application/pdf=google-chrome.desktop;mupdf.desktop
+text/html=google-chrome.desktop
+
+image/bmp=nomacs.desktop
+image/png=nomacs.desktop
+image/gif=nomacs.desktop
+image/jpeg=nomacs.desktop
+
+video/mp4=mpv.desktop;
+video/mpeg=mpv.desktop;
+video/ogg=mpv.desktop;
+
+[Added Associations]

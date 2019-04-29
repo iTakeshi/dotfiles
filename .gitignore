@@ -6,6 +6,8 @@
 
 !/home/.config/git
 
+!/home/.config/mimeapps.list
+
 !/home/.config/npm/
 
 !/home/.config/nvim/
