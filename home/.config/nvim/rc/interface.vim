@@ -41,4 +41,4 @@ set ambiwidth=single " for devicons; ignore double-width simbols
 " set fillchars=vert: fold:-
 set listchars=tab:>-,trail:_,extends:&,precedes:&,nbsp:%,eol:$
 
-colorscheme desertEx
+colorscheme desert
