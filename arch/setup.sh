@@ -48,6 +48,9 @@ sudo systemctl enable ntpd
 sudo systemctl enable mysqld
 sudo systemctl enable devmon@$USER
 
+sudo usermod -aG docker $USER
+sudo systemctl enable docker
+
 read -p 'Am I equipped with nvidia GPU(s)? [y/N] > ' setup_nvidia
 if [ "$setup_nvidia" == "Y" -o "$setup_nvidia" == "y" ]; then
     yay -S nvidia nvidia-utils nvidia-settings cuda cudnn
