@@ -34,7 +34,7 @@ mount /dev/sdxn /mnt
 mkdir /mnt/boot
 mount /dev/sdxm /mnt/boot
 
-vi /etc/pacman.d/mirrorlist         # select the nearest mirror(s)
+curl -L -o /etc/pacman.d/mirrorlist https://bit.ly/30uIB6X
 pacstrap /mnt base base-devel       # install system
 genfstab -U /mnt >> /mnt/etc/fstab  # configure fstab
 
@@ -45,7 +45,7 @@ mdadm --detail --scan >> /mnt/etc/mdadm.conf
 Then chroot to the new system, download custom install script, and execute it.
 ```sh
 arch-chroot /mnt
-curl -L -o /root/install.sh https://goo.gl/wkKyfT
+curl -L -o /root/install.sh https://bit.ly/2HpwrVJ
 bash /root/install.sh
 
 # if you use RAID
