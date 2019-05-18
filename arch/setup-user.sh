@@ -14,7 +14,6 @@ ln -sf $HOME/dotfiles/home/.bash_profile .
 ln -sf $HOME/dotfiles/home/.bashrc .
 ln -sf $HOME/dotfiles/home/.config .
 ln -sf $HOME/dotfiles/home/.myclirc .
-ln -sf $HOME/dotfiles/home/.xinitrc .
 ln -sf $HOME/dotfiles/home/.xprofile .
 mkdir -p $HOME/.local/share/bash
 mkdir -p $HOME/.local/share/python
