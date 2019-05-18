@@ -81,5 +81,17 @@ echo -n 'Now, uncomment "%wheel ALL=(ALL) ALL" in the sudoers file to enable sud
 read
 EDITOR=vi visudo
 
-curl -o /root/setup-root.sh https://raw.githubusercontent.com/iTakeshi/dotfiles/master/arch/setup-root.sh
-echo -n 'Installation has been successfully done. Reboot the machine and login as the root user.'
+while true; do
+    read -p 'username? > ' username
+    if [ "$username" == "" ]; then
+        continue
+    else
+        break
+    fi
+done
+useradd -m -G wheel $username
+passwd $username
+
+curl -o /home/$username/setup.sh https://raw.githubusercontent.com/iTakeshi/dotfiles/master/arch/setup.sh
+chown $username /home/$username/setup.sh
+echo -n 'Installation has been successfully done. Reboot the machine and login as $username.'

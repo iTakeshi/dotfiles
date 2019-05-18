@@ -60,15 +60,9 @@ umount -R /mnt  # can be skipped
 reboot          # ...and remove installation media
 ```
 
-Then, login as the root user and do another setup. In this process, you can set up LDAP authentication.
-```sh
-bash setup-root.sh
-# CTRL-D to log out
-```
-
 Now you can login with your username (not root).
 The install script should have created another setup script in your home directory,
-so execute it with `bash setup-user.sh`.
+so execute it with `bash setup.sh`.
 Again, just hit the RETURN key.
 This setup script automatically reboots the machine.
 
