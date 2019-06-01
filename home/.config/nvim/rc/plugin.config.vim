@@ -41,24 +41,6 @@ if g:dein#tap('vim-better-whitespace')
 endif
 
 " =====================================
-" auto completion
-" =====================================
-if g:dein#tap('deoplete.nvim')
-  " Disable AutoComplPop.
-  let g:acp_enableAtStartup = 0
-  " Use deoplete
-  let g:deoplete#enable_at_startup = 1
-  " Use smartcase.
-  let g:deoplete_enable_smart_case = 1
-endif
-
-if g:dein#tap('neosnippet.vim')
-  imap <C-t> <Plug>(neosnippet_expand_or_jump)
-  smap <C-t> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-t> <Plug>(neosnippet_expand_target)
-endif
-
-" =====================================
 " language support
 " =====================================
 if g:dein#tap('vim-polyglot')

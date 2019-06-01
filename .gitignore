@@ -4,6 +4,12 @@
 /home/.config/awesome/themes/*
 !/home/.config/awesome/themes/my
 
+!/home/.config/coc
+/home/.config/coc/*
+!/home/.config/coc/extensions
+/home/.config/coc/extensions/*
+!/home/.config/coc/extensions/package.json
+
 !/home/.config/git
 
 !/home/.config/mimeapps.list

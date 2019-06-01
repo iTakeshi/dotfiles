@@ -13,15 +13,7 @@ call g:dein#add('t9md/vim-choosewin')
 call g:dein#add('Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' })
 call g:dein#add('kristijanhusak/defx-icons')
 call g:dein#add('ntpeters/vim-better-whitespace')
-
-" auto completion
-call g:dein#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
-call g:dein#add('Shougo/neosnippet.vim')
-call g:dein#add('Shougo/neosnippet-snippets')
-call g:dein#add('Shougo/neoinclude.vim')
-call g:dein#add('Shougo/neco-syntax')
-call g:dein#add('Shougo/neco-vim')
-call g:dein#add('ujihisa/neco-look')
+call g:dein#add('neoclide/coc.nvim', { 'merge':0, 'build': './install.sh nightly' })
 
 " language support
 call g:dein#add('sheerun/vim-polyglot')
