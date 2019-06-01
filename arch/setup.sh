@@ -1,3 +1,5 @@
+#!/bin/bash -eu
+
 multilib_line=$(sed -n "/^#\[multilib\]$/=" /etc/pacman.conf)
 if [ "$multilib_line" == "" ]; then
     exit 1
