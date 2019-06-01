@@ -25,7 +25,7 @@ cd /tmp/yay
 makepkg -sri
 
 yay -S \
-    arch-diff pacman-contrib pkgfile gdisk nfs-utils neovim wget bat hexyl tym \
+    arch-diff pacman-contrib pkgfile gdisk nfs-utils neovim-nightly wget bat hexyl tym \
     openssh openconnect bash-completion words \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     autoconf automake bazel cmake clang nasm gdb cloc docker docker-compose \
