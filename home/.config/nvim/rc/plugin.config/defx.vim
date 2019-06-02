@@ -49,6 +49,12 @@ if g:dein#tap('defx.nvim')
     exec 'edit ' . a:context.targets[0]
   endfunction
 
+  " forcibly reset window layout
+  function! ResetWindowHeight(context)
+    resize +100
+    wincmd =
+  endfunction
+
   " window-local config
   function! s:config_defx()
     IndentLinesDisable
@@ -57,13 +63,13 @@ if g:dein#tap('defx.nvim')
     setl nospell
 
     if g:dein#tap('vim-choosewin')
-      nnoremap <silent><buffer><expr> e        defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['call', 'DefxChoosewin'], 'quit'])
-      nnoremap <silent><buffer><expr> <CR>     defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['call', 'DefxChoosewin'], 'quit'])
+      nnoremap <silent><buffer><expr> e        defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['call', 'DefxChoosewin'], 'quit', ['call', 'ResetWindowHeight']])
+      nnoremap <silent><buffer><expr> <CR>     defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', [['call', 'DefxChoosewin'], 'quit', ['call', 'ResetWindowHeight']])
     else
-      nnoremap <silent><buffer><expr> e        defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
-      nnoremap <silent><buffer><expr> <CR>     defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit'])
+      nnoremap <silent><buffer><expr> e        defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit', ['call', 'ResetWindowHeight']])
+      nnoremap <silent><buffer><expr> <CR>     defx#is_directory() ? defx#do_action('open') : defx#do_action('multi', ['drop', 'quit', ['call', 'ResetWindowHeight']])
     endif
-    nnoremap <silent><buffer><expr> E          defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
+    nnoremap <silent><buffer><expr> E          defx#do_action('multi', [['drop', 'vsplit'], 'quit', ['call', 'ResetWindowHeight']])
     nnoremap <silent><buffer><expr> o          defx#do_action('execute_system')
 
     nnoremap <silent><buffer><expr> l          defx#is_directory() ? defx#do_action('open') : ""
@@ -81,8 +87,8 @@ if g:dein#tap('defx.nvim')
 
     nnoremap <silent><buffer><expr> .          defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> <C-l>      defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> <C-f>      defx#do_action('quit')
-    nnoremap <silent><buffer><expr> <ESC><ESC> defx#do_action('quit')
+    nnoremap <silent><buffer><expr> <C-f>      defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
+    nnoremap <silent><buffer><expr> <ESC><ESC> defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
   endfunction
   autocmd FileType defx call <SID>config_defx()
 
@@ -95,5 +101,5 @@ if g:dein#tap('defx.nvim')
   autocmd MyAutoCmd VimEnter * call <SID>open_defx_on_vimenter()
 
   " shortcut
-  nnoremap <C-f> :<C-u>call <SID>open_defx()<CR>
+  nnoremap <silent> <C-f> :<C-u>call <SID>open_defx()<CR>
 endif
