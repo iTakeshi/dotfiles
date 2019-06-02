@@ -22,6 +22,7 @@ if g:dein#tap('lightline.vim')
         \     ['tabs'],
         \   ],
         \   'right': [
+        \     ['cocstatus'],
         \     ['gina_branch', 'gina_traffic', 'gina_status'],
         \   ]
         \ },
@@ -33,6 +34,7 @@ if g:dein#tap('lightline.vim')
         \   'fileencoding': 'g:lightline.my.fileencoding',
         \   'filetype':     'g:lightline.my.filetype',
         \   'lineinfo':     'g:lightline.my.lineinfo',
+        \   'cocstatus':    'coc#status',
         \   'gina_branch':  'g:lightline.my.gina_branch',
         \   'gina_traffic': 'g:lightline.my.gina_traffic',
         \   'gina_status':  'g:lightline.my.gina_status',
