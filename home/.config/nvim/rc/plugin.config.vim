@@ -40,6 +40,12 @@ if g:dein#tap('vim-better-whitespace')
   autocmd BufRead,BufEnter * call s:disable_whitespace_if_readonly()
 endif
 
+if g:dein#tap('indentLine')
+  let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+  let g:indentLine_setConceal = 0
+  let g:indentLine_setColors = 0
+endif
+
 " =====================================
 " language support
 " =====================================

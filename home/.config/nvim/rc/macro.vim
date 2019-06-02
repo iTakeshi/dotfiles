@@ -84,6 +84,3 @@ function! s:fix_layout() abort
   wincmd =
 endfunction
 command FixLayout call <SID>fix_layout()
-
-" no conceal
-autocmd BufEnter * setl cole=0

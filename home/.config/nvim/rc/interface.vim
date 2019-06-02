@@ -10,6 +10,7 @@ set nosplitbelow          " split to top
 set report=0              " report any changes
 set display=lastline      " display last line in a window AMAP
 set showtabline=2         " always show tabline"
+set conceallevel=1        " indentLines requires conceallevel > 0
 
 set nowrap                " wrap long text
 set colorcolumn=80
