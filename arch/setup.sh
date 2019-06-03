@@ -66,7 +66,7 @@ if [ "$setup_gui" != "N" -a "$setup_gui" != "n" ]; then
         xorg-server xorg-xev xorg-xauth lightdm lightdm-gtk-greeter awesome \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
         cbatticon freeglut alsa-utils arandr cups cups-filters "gtk3-print-backends" \
-        mupdf nomacs thunar texlive-core texlive-lang ghostscript imagemagick otf-ipafont \
+        mupdf nomacs thunar texlive-core texlive-lang texlive-localmanager-git ghostscript imagemagick otf-ipafont \
         gimp inkscape vlc libreoffice-fresh \
         nerd-fonts-fantasque-sans-mono dropbox google-chrome light-git snowman-git slack-desktop zoom
 
