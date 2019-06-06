@@ -84,3 +84,11 @@ function! s:fix_layout() abort
   wincmd =
 endfunction
 command FixLayout call <SID>fix_layout()
+
+" re-generate *.add.spl file on startup, if *.add file is modified
+for d in glob(g:config_root . '/spell/*.add', 1, 1)
+  if filereadable(d) && (!filereadable(d . '.spl') || getftime(d) > getftime(d . '.spl'))
+    exec 'mkspell! ' . fnameescape(d)
+    echom 'generated '. d
+  endif
+endfor
