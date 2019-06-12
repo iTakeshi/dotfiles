@@ -22,7 +22,7 @@
     ds  = diff --staged
     dsw = diff --staged --word-diff
     f   = fetch --all
-    g   = log --graph --all --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)'
+    g   = log --graph --all --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %s %C(red)%d%C(reset)'
     l   = log               --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %C(blue)%ar%C(reset) %s %C(red)%d%C(reset)' --date=iso
     p   = push origin HEAD --tags
     pf  = push --force-with-lease
