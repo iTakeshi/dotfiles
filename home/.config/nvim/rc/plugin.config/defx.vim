@@ -98,9 +98,7 @@ if g:dein#tap('defx.nvim')
       call <SID>open_defx()
     endif
   endfunction
-  " TODO nvim hangs when closing a floating window if there are no other
-  " buffers opened.
-  " autocmd MyAutoCmd VimEnter * call <SID>open_defx_on_vimenter()
+  autocmd MyAutoCmd VimEnter * call <SID>open_defx_on_vimenter()
 
   " shortcut
   nnoremap <silent> <C-f> :<C-u>call <SID>open_defx()<CR>

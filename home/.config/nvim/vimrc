@@ -11,7 +11,6 @@
 augroup MyAutoCmd " reset autocmd grouped by MyAutoCmd
   autocmd!
 augroup END
-set all&          " reset all settings
 
 " use bash
 set shell=/bin/bash
