@@ -12,6 +12,8 @@
 
 !/home/.config/git
 
+!/home/.config/latexmk
+
 !/home/.config/mimeapps.list
 
 !/home/.config/npm/

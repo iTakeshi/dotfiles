@@ -56,6 +56,17 @@ endif
 if g:dein#tap('vimtex')
   let g:tex_flavor = 'latex'
   let g:vimtex_view_method = 'mupdf'
+  let g:vimtex_compiler_progname = 'nvr'
+  let g:vimtex_compiler_method = 'latexmk'
+  let g:vimtex_compiler_latexmk = {
+      \ 'background': 1,
+      \ 'build_dir': 'build',
+      \ 'continuous': 1,
+      \ 'options': [
+      \    '-verbose',
+      \    '-file-line-error',
+      \],
+      \}
 endif
 
 " =====================================
