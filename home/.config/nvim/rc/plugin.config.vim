@@ -26,18 +26,17 @@ if g:dein#tap('vim-choosewin')
 endif
 
 if g:dein#tap('vim-better-whitespace')
-  let g:better_whitespace_enabled = 1
   let g:strip_whitespace_on_save = 1
   let g:strip_whitespace_confirm = 0
   let g:strip_whitelines_at_eof = 1
   let g:show_spaces_that_precede_tabs = 1
 
-  function! s:disable_whitespace_if_readonly() abort
+  function! s:disable_whitespace_strip_if_readonly() abort
     if &readonly
-      DisableWhitespace
+      DisableStripWhitespaceOnSave
     endif
   endfunction
-  autocmd BufRead,BufEnter * call s:disable_whitespace_if_readonly()
+  autocmd BufRead,BufEnter * call s:disable_whitespace_strip_if_readonly()
 endif
 
 if g:dein#tap('indentLine')
