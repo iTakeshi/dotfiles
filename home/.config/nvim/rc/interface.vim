@@ -12,8 +12,8 @@ set display=lastline      " display last line in a window AMAP
 set showtabline=2         " always show tabline"
 set conceallevel=1        " indentLines requires conceallevel > 0
 
-set nowrap                " wrap long text
-set colorcolumn=80
+set nowrap                " do not wrap long text
+set colorcolumn=120
 set textwidth=0           " do not automatically break
 set breakat=\ \ ;:,!?     " characters which might cause a line break
 
