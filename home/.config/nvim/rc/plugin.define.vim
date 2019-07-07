@@ -10,10 +10,11 @@ call g:dein#add('itchyny/lightline.vim')
 call g:dein#add('Yggdroot/indentLine')
 call g:dein#add('tpope/vim-repeat')
 call g:dein#add('t9md/vim-choosewin')
-call g:dein#add('Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' })
+call g:dein#add('Shougo/defx.nvim'              , {'do': ':UpdateRemotePlugins'})
 call g:dein#add('kristijanhusak/defx-icons')
 call g:dein#add('ntpeters/vim-better-whitespace')
-call g:dein#add('neoclide/coc.nvim', { 'merge':0, 'build': './install.sh nightly' })
+call g:dein#add('neoclide/coc.nvim'             , {'merge':0, 'build': './install.sh nightly'})
+call g:dein#add('cocopon/inspecthi.vim'         , {'on_cmd': ['Inspecthi', 'InspecthiShowInspector']})
 
 " language support
 call g:dein#add('sheerun/vim-polyglot')

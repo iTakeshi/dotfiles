@@ -45,6 +45,10 @@ if g:dein#tap('indentLine')
   let g:indentLine_setColors = 0
 endif
 
+if g:dein#tap('inspecthi.vim')
+  nnoremap <silent> <Leader>h :<C-u>Inspecthi<CR>
+endif
+
 " =====================================
 " language support
 " =====================================

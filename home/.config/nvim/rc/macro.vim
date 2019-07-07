@@ -92,11 +92,3 @@ for d in glob(g:config_root . '/spell/*.add', 1, 1)
     echom 'generated '. d
   endif
 endfor
-
-" check the syntax group of the word under the cursor
-function! s:syn_id() abort
-    echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">" .
-          \ "trans<" . synIDattr(synID(line("."),col("."),0),"name") . ">" .
-          \ "lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
-endfunction
-command CheckSynId call <SID>syn_id()
