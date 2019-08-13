@@ -63,7 +63,6 @@ if g:dein#tap('vimtex')
   let g:vimtex_compiler_method = 'latexmk'
   let g:vimtex_compiler_latexmk = {
       \ 'background': 1,
-      \ 'build_dir': 'build',
       \ 'continuous': 1,
       \ 'options': [
       \    '-verbose',

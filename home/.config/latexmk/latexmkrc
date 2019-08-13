@@ -12,3 +12,4 @@ $dvips         = 'dvips %O -z -f %S | convbkmk -u > %D';
 $ps2pdf        = 'ps2pdf %O %S %D';
 $pdf_mode      = 5;
 $pdf_previewer = 'mupdf';
+$out_dir       = 'build';
