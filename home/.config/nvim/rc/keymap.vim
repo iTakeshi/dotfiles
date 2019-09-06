@@ -4,7 +4,7 @@ nnoremap <C-a> <C-a>
 nnoremap <C-b> <C-b>
 nnoremap <C-c> <C-c>
 nnoremap <C-d> <C-l>
-nnoremap <C-e> 5<C-e>
+nnoremap <C-e> 10<C-e>
 " nnoremap <C-f> => used for Defx
 nnoremap <C-g> <Nop>
 nnoremap <C-h> <C-w>h
@@ -22,7 +22,7 @@ nnoremap <C-s> :<C-u>w<CR>
 " nnoremap <C-t> => default: `jump back` in help
 nnoremap <C-u> <Nop>
 nnoremap <C-v> <C-v>
-nnoremap <C-w> 5<C-y>
+nnoremap <C-w> 10<C-y>
 nnoremap <C-x> <C-x>
 nnoremap <C-y> <Nop>
 nnoremap <C-z> <C-z>
