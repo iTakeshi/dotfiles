@@ -96,6 +96,8 @@ export SYSTEMD_EDITOR=nvim
 # lock
 alias lock="light-locker-command -l"
 
+alias checknoascii="grep --color='auto' -P -n \"[^\x00-\x7F]\""
+
 # XDG Base Directory
 # ref: https://wiki.archlinux.org/index.php/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
