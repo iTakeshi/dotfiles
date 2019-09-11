@@ -18,6 +18,8 @@
     co  = checkout
     cp  = cherry-pick
     d   = diff
+    dc  = diff --color-words --word-diff-regex='\\w+|[^[:space:]]'
+    dn  = diff --name-only
     dw  = diff          --word-diff
     ds  = diff --staged
     dsw = diff --staged --word-diff
