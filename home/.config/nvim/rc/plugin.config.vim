@@ -53,7 +53,7 @@ endif
 " language support
 " =====================================
 if g:dein#tap('vim-polyglot')
-  let g:polyglot_disabled = ['latex']
+  let g:polyglot_disabled = ['c', 'cpp', 'latex']
 endif
 
 if g:dein#tap('vimtex')

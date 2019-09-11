@@ -18,6 +18,7 @@ call g:dein#add('cocopon/inspecthi.vim'         , {'on_cmd': ['Inspecthi', 'Insp
 
 " language support
 call g:dein#add('sheerun/vim-polyglot')
+call g:dein#add('bfrg/vim-cpp-modern', {'on_ft': ['c', 'cpp']})
 call g:dein#add('lervag/vimtex'      , {'on_ft': ['tex', 'bib']})
 call g:dein#add('lazywei/vim-matlab' , {'on_ft': 'matlab'})
 
