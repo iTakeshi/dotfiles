@@ -15,6 +15,7 @@ GNNs
 GPU
 GRU
 ITOH
+Ikoma
 Itoh
 JVM
 Kensington
@@ -22,7 +23,10 @@ Maxon
 NMDA
 NMT
 NN
+Nara
+NeurIPS
 PDG
+Ph
 RNA
 RNAs
 RNN
@@ -38,12 +42,15 @@ arg
 arteriosclerotic
 aspartate
 asts
+attentional
 bci
+binarized
 callee
 chainer
 chebyshev
 code2seq
 code2vec
+compositionality
 convolutional
 coriolis
 corynebacterium
@@ -58,10 +65,12 @@ eq
 ethernet
 exciton
 excitons
+fMRI
 familiality
 functionalities
 gaussian
 germline
+hackathon
 hyperparameter
 hyperparameters
 iLQR
@@ -98,6 +107,7 @@ pre
 preprocessing
 pretraining
 realtime
+recalibration
 refactoring
 reinforcement
 ribonucleoprotein
@@ -106,6 +116,7 @@ rnas
 scala
 sigmoid
 softmax
+spatiotemporal
 subcomponent
 subcomponents
 submatrices
