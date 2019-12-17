@@ -78,7 +78,6 @@ fi
 systemctl enable dhcpcd@$interface
 
 passwd
-pacman -S sudo
 echo -n 'Now, uncomment "%wheel ALL=(ALL) ALL" in the sudoers file to enable sudo. Press enter to open visudo.'
 read
 EDITOR=vi visudo

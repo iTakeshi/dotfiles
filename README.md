@@ -35,7 +35,7 @@ mkdir /mnt/boot
 mount /dev/sdxm /mnt/boot
 
 curl -L -o /etc/pacman.d/mirrorlist https://bit.ly/30uIB6X
-pacstrap /mnt base base-devel       # install system
+pacstrap /mnt base base-devel linux # install system
 genfstab -U /mnt >> /mnt/etc/fstab  # configure fstab
 
 # if you use RAID
