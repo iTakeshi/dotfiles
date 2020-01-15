@@ -15,7 +15,7 @@
     ba  = branch -a
     c   = commit -m
     ca  = commit --amend
-    co  = checkout
+    co  = switch
     cp  = cherry-pick
     d   = diff
     dc  = diff --color-words --word-diff-regex='\\w+|[^[:space:]]'
@@ -31,10 +31,12 @@
     po  = pull origin master
     pu  = pull upstream master
     ri  = rebase -i
+    re  = restore
     s   = status
     st  = stash
     sp  = stash pop
     sl  = stash list
+    sw  = switch
 [push]
     default = simple
 [pull]
