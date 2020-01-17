@@ -31,8 +31,8 @@ if has('multi_byte')
   set fileformats=unix,dos,mac
 endif
 
-let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/home/itakeshi/.local/share/pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/itakeshi/.local/share/pyenv/versions/neovim3/bin/python'
 
 let s:rc_dir = g:util#normpath('rc', 'config')
 call g:util#source(s:rc_dir . '/legacy.vim')

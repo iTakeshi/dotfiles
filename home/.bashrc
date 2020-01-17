@@ -134,6 +134,13 @@ alias amm="amm -h $XDG_DATA_HOME/ammonite"
 alias sbt="sbt -ivy $XDG_DATA_HOME/ivy2 -sbt-dir $XDG_DATA_HOME/sbt"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 
+export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
+export PATH="$PYENV_ROOT/bin:$HOME/.local/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Load machine-specific config
 if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
