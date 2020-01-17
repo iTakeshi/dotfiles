@@ -31,16 +31,10 @@ yay -S \
     arch-diff pacman-contrib pkgfile gdisk nfs-utils neovim-nightly wget bat hexyl tym \
     openssh openconnect bash-completion words \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
-    autoconf automake bazel cmake clang nasm gdb cloc docker docker-compose \
-    jre8-openjdk jdk8-openjdk python-pip python2-pip poetry tk ruby \
-    eigen scala sbt ammonite nodejs npm yarn rustup
-
-pip install --user mycli numpy PyQt5 matplotlib pynvim
-pip2 install --user pynvim
-sed -i -e "/^backend/s/^\(backend[ ]\+: \).*/\1Qt5Agg/" $HOME/.local/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
+    bazel cmake clang nasm gdb cloc docker docker-compose \
+    jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup
 
 gem install neovim
-
 npm install -g neovim
 
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -67,9 +61,9 @@ if [ "$setup_gui" != "N" -a "$setup_gui" != "n" ]; then
         xorg-server xorg-xev xorg-xauth lightdm lightdm-gtk-greeter awesome \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
         cbatticon freeglut alsa-utils arandr cups cups-filters "gtk3-print-backends" \
-        mupdf nomacs thunar texlive-core texlive-lang texlive-localmanager-git ghostscript imagemagick otf-ipafont \
-        gimp inkscape vlc libreoffice-fresh \
-        nerd-fonts-fantasque-sans-mono dropbox google-chrome light-git snowman-git slack-desktop zoom
+        mupdf nomacs thunar texlive-core texlive-langjapanese texlive-localmanager-git ghostscript imagemagick otf-ipafont \
+        gimp inkscape mpv libreoffice-fresh \
+        nerd-fonts-fantasque-sans-mono dropbox google-chrome light-git slack-desktop zoom
 
     amixer sset Master unmute
 
