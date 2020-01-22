@@ -46,7 +46,8 @@ Then chroot to the new system, download custom install script, and execute it.
 ```sh
 arch-chroot /mnt
 curl -L -o /root/install.sh https://bit.ly/2HpwrVJ
-bash /root/install.sh
+chmod +x /root/install.sh
+/root/install.sh
 
 # if you use RAID
 mkinitcpio -p linux # after `HOOKS="base udev autodetect block mdadm_udev filesystems usbinput fsck"` in /etc/mkinitcpio.conf
@@ -62,7 +63,7 @@ reboot          # ...and remove installation media
 
 Now you can login with your username (not root).
 The install script should have created another setup script in your home directory,
-so execute it with `bash setup.sh`.
+so execute it with `./setup.sh`.
 Again, just hit the RETURN key.
 This setup script automatically reboots the machine.
 
