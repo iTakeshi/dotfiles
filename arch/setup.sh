@@ -32,11 +32,11 @@ cd /tmp/yay
 makepkg -sri
 
 yay --removemake --S \
-    arch-diff pacman-contrib pkgfile gdisk nfs-utils neovim-nightly wget bat hexyl tym \
-    openssh openconnect bash-completion words man \
+    arch-diff pacman-contrib pkgfile gdisk nfs-utils ntfs-3g neovim wget bat hexyl tym \
+    openssh openconnect bash-completion words man ddrescue pdftk plantuml tmux \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
-    bazel cmake clang nasm gdb cloc docker \
-    jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go
+    bazel cmake clang ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
+    jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go dotnet-runtime
 
 gem install neovim
 npm install --userconfig "$XDG_CONFIG_HOME/npm/npmrc" -g neovim
@@ -73,8 +73,8 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
         xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
-        mupdf nomacs thunar texlive-core texlive-langjapanese ghostscript imagemagick otf-ipafont \
-        gimp inkscape mpv libreoffice-fresh \
+        mupdf nomacs thunar texlive-core texlive-langjapanese ghostscript imagemagick otf-ipafont noto-fonts-cjk \
+        gimp inkscape mpv libreoffice-fresh-ja \
         nerd-fonts-fantasque-sans-mono dropbox google-chrome light-git slack-desktop zoom
 
 # TODO 2020-01-22

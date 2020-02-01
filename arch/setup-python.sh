@@ -16,3 +16,5 @@ pyenv global "$python3_latest"
 pip install pipx numpy matplotlib PyQt5
 pipx install poetry
 pipx install mycli
+pipx install mypy
+pipx install flake8
