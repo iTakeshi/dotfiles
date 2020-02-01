@@ -19,11 +19,11 @@ ln -sf "$HOME/dotfiles/home/.bash_logout" "$HOME"
 ln -sf "$HOME/dotfiles/home/.bash_profile" "$HOME"
 ln -sf "$HOME/dotfiles/home/.bashrc" "$HOME"
 ln -sf "$HOME/dotfiles/home/.config" "$HOME"
-ln -sf "$HOME/dotfiles/home/.myclirc" "$HOME"
-ln -sf "$HOME/dotfiles/home/.tmux.conf" "$HOME"
 ln -sf "$HOME/dotfiles/home/.xprofile" "$HOME"
 mkdir -p "$HOME/.local/share/bash"
+mv "$HOME/.bash_history" "$HOME/.local/share/bash/history"
 mkdir -p "$HOME/.local/share/python"
+mkdir -p "$HOME/.local/share/mycli"
 cd "$HOME/dotfiles"
 git remote set-url --push origin github:iTakeshi/dotfiles.git
 

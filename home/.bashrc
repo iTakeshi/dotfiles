@@ -127,11 +127,13 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/node/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export GOPATH="$HOME/projects/go"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 
 export PATH="$GOPATH/bin:$PATH"
 
 alias amm="amm -h $XDG_DATA_HOME/ammonite"
 alias sbt="sbt -ivy $XDG_DATA_HOME/ivy2 -sbt-dir $XDG_DATA_HOME/sbt"
+alias tmux="tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"

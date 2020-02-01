@@ -16,6 +16,8 @@
 
 !/home/.config/mimeapps.list
 
+!/home/.config/mycli
+
 !/home/.config/npm/
 
 !/home/.config/nvim/
@@ -23,5 +25,7 @@
 
 !/home/.config/pypoetry/
 /home/.config/pypoetry/auth.toml
+
+!/home/.config/tmux
 
 !/home/.config/tym/
