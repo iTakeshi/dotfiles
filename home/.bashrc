@@ -68,8 +68,11 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=true
-. $HOME/dotfiles/scripts/git-prompt.sh
-. $HOME/dotfiles/scripts/git-completion.bash
+GIT_COMPLETION_CHECKOUT_NO_GUESS=1
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+    . /usr/share/git/completion/git-prompt.sh
+    . /usr/share/git/completion/git-completion.bash
+fi
 
 __virtualenv_ps1() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -80,8 +83,14 @@ __virtualenv_ps1() {
     fi
     [[ -n "$venv" ]] && echo "(venv:$venv) "
 }
-. $HOME/dotfiles/scripts/pip-completion.bash
 . $HOME/dotfiles/scripts/poetry-completion.bash
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 ) )
+}
+complete -o default -F _pip_completion pip
 export PYTHONSTARTUP=$HOME/dotfiles/scripts/startup.py
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 

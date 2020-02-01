@@ -15,7 +15,7 @@
     ba  = branch -a
     c   = commit -m
     ca  = commit --amend
-    co  = switch
+    co  = checkout
     cp  = cherry-pick
     d   = diff
     dc  = diff --color-words --word-diff-regex='\\w+|[^[:space:]]'
