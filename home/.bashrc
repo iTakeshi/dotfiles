@@ -132,6 +132,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export KAGGLE_CONFIG_DIR="$HOME/projects/kaggle"
 export LESSHISTFILE=-
+export MYCLI_HISTFILE="$XDG_DATA_HOME/mycli/history"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
