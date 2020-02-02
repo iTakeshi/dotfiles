@@ -33,9 +33,9 @@ makepkg -sri
 
 yay --removemake --S \
     arch-diff pacman-contrib pkgfile gdisk nfs-utils ntfs-3g neovim wget bat hexyl tym \
-    openssh openconnect bash-completion words man ddrescue pdftk plantuml tmux \
+    openssh openconnect bash-completion words man ddrescue pdftk plantuml tmux rlwrap \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
-    bazel cmake clang ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
+    bazel cmake clang maven ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
     jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go dotnet-runtime
 
 gem install neovim
