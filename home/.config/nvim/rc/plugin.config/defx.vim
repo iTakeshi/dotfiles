@@ -19,20 +19,37 @@ if g:dein#tap('defx.nvim')
         \ 'split'         : 'floating',
         \ 'ignored_files' : '*.[ado],*.l[ao],*.py[cdo],bazel-.*',
         \ 'listed'        : 1,
-        \ 'resume'        : 1,
-        \ 'auto_cd'       : 1,
         \ 'winwidth'      : s:width + 7,
         \})
 
   " open defx at the center of the window
   function! s:open_defx()
-    let l:height = min([&lines - 4, s:height])
-    call defx#custom#option('_', {
-        \ 'winheight' : l:height,
-        \ 'winrow'    : (&lines - l:height) / 2,
-        \ 'wincol'    : (&columns - s:width) / 2,
-        \})
-    Defx
+    " re-calculate window center position everytime
+    let l:height = min([&lines - 6, s:height])
+    let l:winrow = ((&lines - 1) - l:height) / 2
+    let l:wincol = (&columns - s:width) / 2
+    " if there is already a defx buffer in the current tab, reuse it.
+    " otherwise create a new one.
+    " perhaps Defx itself should have `resume-by-bufnr` functionality.
+    if get(t:, 'defxbufnr', 0) > 0
+      call nvim_open_win(t:defxbufnr, v:true, {
+            \ 'relative' : 'editor',
+            \ 'row'      : l:winrow,
+            \ 'col'      : l:wincol,
+            \ 'width'    : s:width + 7,
+            \ 'height'   : l:height,
+            \})
+    else
+      call defx#custom#option('_', {
+            \ 'new'       : 1,
+            \ 'winheight' : l:height,
+            \ 'winrow'    : l:winrow,
+            \ 'wincol'    : l:wincol,
+            \})
+      Defx
+      let t:defxbufnr = bufnr()
+      call defx#custom#option('_', 'new', 0) " reset
+    endif
   endfunction
 
   function! DefxChoosewin(context)
