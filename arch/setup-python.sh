@@ -15,6 +15,8 @@ pip2 install pynvim
 pyenv global "$python3_latest"
 pip install pipx numpy matplotlib PyQt5
 pipx install poetry
-pipx install mycli
+# TODO waiting https://github.com/dbcli/mycli/pull/808
+# pipx install mycli
+pipx install git+git://github.com/iTakeshi/mycli.git@xdg-base-dir
 pipx install mypy
 pipx install flake8
