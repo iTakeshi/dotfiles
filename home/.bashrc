@@ -138,6 +138,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export GOPATH="$HOME/projects/go"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export RLWRAP_HOME="$XDG_DATA_HOME/rlwrap"
 
 export PATH="$GOPATH/bin:$PATH"
 

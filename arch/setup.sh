@@ -24,6 +24,7 @@ mkdir -p "$HOME/.local/share/bash"
 mv "$HOME/.bash_history" "$HOME/.local/share/bash/history"
 mkdir -p "$HOME/.local/share/python"
 mkdir -p "$HOME/.local/share/mycli"
+mkdir -p "$HOME/.local/share/rlwrap"
 cd "$HOME/dotfiles"
 git remote set-url --push origin github:iTakeshi/dotfiles.git
 
