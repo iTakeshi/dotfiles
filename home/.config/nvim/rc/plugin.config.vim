@@ -37,6 +37,16 @@ if g:dein#tap('vim-better-whitespace')
     endif
   endfunction
   autocmd BufRead,BufEnter * call s:disable_whitespace_strip_if_readonly()
+
+  function! s:toggle_strip_whitespace() abort
+    ToggleStripWhitespaceOnSave
+    if b:strip_whitespace_on_save == 1
+      echo "Whitespace strip enabled"
+    else
+      echo "Whitespace strip disabled"
+    endif
+  endfunction
+  nnoremap <silent> <Plug>(my-toggle)W :<C-u>call <SID>toggle_strip_whitespace()<CR>
 endif
 
 if g:dein#tap('indentLine')
