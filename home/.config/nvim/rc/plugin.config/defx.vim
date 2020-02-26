@@ -103,8 +103,11 @@ if g:dein#tap('defx.nvim')
     nnoremap <silent><buffer><expr> Y          defx#do_action('yank_path')
 
     nnoremap <silent><buffer><expr> .          defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> <C-l>      defx#do_action('redraw')
     nnoremap <silent><buffer><expr> <C-f>      defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
+    nnoremap <silent><buffer><expr> <C-h>      defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
+    nnoremap <silent><buffer><expr> <C-j>      defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
+    nnoremap <silent><buffer><expr> <C-k>      defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
+    nnoremap <silent><buffer><expr> <C-l>      defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
     nnoremap <silent><buffer><expr> <ESC><ESC> defx#do_action('multi', ['quit', ['call', 'ResetWindowHeight']])
   endfunction
   autocmd FileType defx call <SID>config_defx()
