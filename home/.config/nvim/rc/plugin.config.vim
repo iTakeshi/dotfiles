@@ -49,6 +49,19 @@ if g:dein#tap('vim-better-whitespace')
   nnoremap <silent> <Plug>(my-toggle)W :<C-u>call <SID>toggle_strip_whitespace()<CR>
 endif
 
+if g:dein#tap('coc.nvim')
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+endif
+
 if g:dein#tap('indentLine')
   let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   let g:indentLine_setConceal = 0
