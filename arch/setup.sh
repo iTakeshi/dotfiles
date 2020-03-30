@@ -72,7 +72,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
     gpg --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E  # for dropbox
     yay --removemake -S \
         xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome \
-        fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt \
+        fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt xdotool \
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
         mupdf nomacs thunar texlive-core texlive-langjapanese ghostscript imagemagick otf-ipafont noto-fonts-cjk \
         gimp inkscape mpv libreoffice-fresh-ja \
