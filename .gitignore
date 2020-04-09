@@ -10,6 +10,8 @@
 /home/.config/coc/extensions/*
 !/home/.config/coc/extensions/package.json
 
+!/home/.config/flake8
+
 !/home/.config/git
 
 !/home/.config/latexmk
