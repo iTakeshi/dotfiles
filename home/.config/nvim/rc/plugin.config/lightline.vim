@@ -101,4 +101,6 @@ if g:dein#tap('lightline.vim')
   function! g:lightline.my.gina_status() abort
     return gina#component#traffic#preset('fancy')
   endfunction
+
+  autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 endif
