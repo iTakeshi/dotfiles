@@ -114,6 +114,8 @@ EOF
     sudo udevadm trigger
 fi
 
+echo "HandlePowerKey=suspend" >> /etc/systemd/logind.conf
+
 cat << EOF
 setup complete. press Enter to reboot.
 
