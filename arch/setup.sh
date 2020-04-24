@@ -31,7 +31,7 @@ git clone https://aur.archlinux.org/yay.git /tmp/yay
 cd /tmp/yay
 makepkg -sri
 
-yay --removemake --S \
+yay --needed --removemake --S \
     arch-diff pacman-contrib pkgfile gdisk nfs-utils ntfs-3g neovim wget bat hexyl tym \
     openssh openconnect bash-completion words man ddrescue pdftk plantuml tmux rlwrap \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
@@ -73,7 +73,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
     gpg --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
     install -dm0 ~/.dropbox-dist
 
-    yay --removemake -S \
+    yay --needed --removemake -S \
         xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt xdotool \
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
