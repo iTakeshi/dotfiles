@@ -45,25 +45,28 @@ read -r -p "setup wifi? [y/N] > " setup_wifi
 if [ "$setup_wifi" == "Y" ] || [ "$setup_wifi" == "y" ]; then
     pacman -S wpa_supplicant
 
-    while true; do
-        read -r -p "ssid? > " ssid
-        if [ "$ssid" == "" ]; then
-            continue
-        else
-            break
-        fi
-    done
+    if [ -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
+        mv /etc/wpa_supplicant/wpa_supplicant.conf "/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
+    else
+        while true; do
+            read -r -p "ssid? > " ssid
+            if [ "$ssid" == "" ]; then
+                continue
+            else
+                break
+            fi
+        done
 
-    while true; do
-        read -r -s -p "psk key? > " psk
-        if [ "$psk" == "" ]; then
-            continue
-        else
-            break
-        fi
-    done
+        while true; do
+            read -r -s -p "psk key? > " psk
+            if [ "$psk" == "" ]; then
+                continue
+            else
+                break
+            fi
+        done
 
-    cat << EOF > "/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
+        cat << EOF > "/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
 ctrl_interface=/var/run/wpa_supplicant
 ctrl_interface_group=wheel
 update_config=1
@@ -71,11 +74,34 @@ fast_reauth=1
 ap_scan=1
 
 EOF
-    wpa_passphrase "$ssid" "$psk" >> "/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
+        wpa_passphrase "$ssid" "$psk" >> "/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
+    fi
+
+    cat << EOF > "/etc/systemd/network/30-wireless.network"
+[Match]
+Name=$interface
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+RouteMetric=20
+EOF
     systemctl enable "wpa_supplicant@$interface"
+else
+    cat << EOF > "/etc/systemd/network/20-wired.network"
+[Match]
+Name=$interface
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+RouteMetric=10
+EOF
 fi
-pacman -S dhcpcd
-systemctl enable "dhcpcd@$interface"
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
 
 passwd
 pacman -S vi

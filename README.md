@@ -13,11 +13,11 @@ TL; DR
 ```sh
 ls /sys/firmware/efi/efivars        # check EFI boot
 
-# if you have to setup wifi
+# if you have to setup wifi for the installer
 ip link                             # check wifi device
 ip link set <DEVICE> up
-wpa_passphrase <SSID> <PSK_KEY> > /etc/wpa_supplicant/wifi.conf
-wpa_supplicant -B -i <DEVICE> -c /etc/wpa_supplicant/wifi.conf
+wpa_passphrase <SSID> <PSK_KEY> > /etc/wpa_supplicant/wpa_supplicant.conf
+wpa_supplicant -B -i <DEVICE> -c /etc/wpa_supplicant/wpa_supplicant.conf
 dhcpcd -b <DEVICE>
 # end if
 
@@ -37,6 +37,10 @@ mount /dev/sdxm /mnt/boot
 curl -L -o /etc/pacman.d/mirrorlist https://bit.ly/30uIB6X
 pacstrap /mnt base base-devel linux # install system
 genfstab -U /mnt >> /mnt/etc/fstab  # configure fstab
+
+# if you have to setup wifi for installed OS and you have pre-configured wpa_supplicant.conf
+mkdir /mnt/etc/wpa_supplicant
+cp /path/to/wpa_supplicant.conf /mnt/etc/wpa_supplicant/wpa_supplicant.conf
 
 # if you use RAID
 mdadm --detail --scan >> /mnt/etc/mdadm.conf
