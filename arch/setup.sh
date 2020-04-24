@@ -76,7 +76,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
         mupdf pdfmod nomacs thunar texlive-core texlive-langjapanese ghostscript imagemagick otf-ipafont noto-fonts-cjk \
         gimp inkscape mpv libreoffice-fresh-ja \
-        nerd-fonts-fantasque-sans-mono dropbox google-chrome light-git slack-desktop zoom
+        nerd-fonts-fantasque-sans-mono dropbox google-chrome light slack-desktop zoom
 
 # TODO 2020-01-22
 # PKGBUILD for texlive-localmanager-git is broken now
