@@ -36,7 +36,8 @@ yay --removemake --S \
     openssh openconnect bash-completion words man ddrescue pdftk plantuml tmux rlwrap \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     bazel cmake clang maven ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
-    jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go dotnet-runtime
+    jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go dotnet-runtime \
+    dstat logrotate lsof i2c-tools jq lhasa lzip p7zip libsixel protobuf
 
 gem install neovim
 npm install --userconfig "$XDG_CONFIG_HOME/npm/npmrc" -g neovim
@@ -73,12 +74,21 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
         xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt xdotool \
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
-        mupdf pdfmod nomacs thunar texlive-core texlive-langjapanese ghostscript imagemagick otf-ipafont noto-fonts-cjk \
-        gimp inkscape mpv libreoffice-fresh-ja \
-        nerd-fonts-fantasque-sans-mono dropbox google-chrome light slack-desktop zoom
+        mupdf pdfmod nomacs thunar texlive-core texlive-langjapanese texlive-localmanager-git ghostscript pstoedit imagemagick \
+        gimp inkscape mpv libreoffice-fresh-ja simplescreenrecorder \
+        noto-fonts-cjk nerd-fonts-fantasque-sans-mono otf-ipafont \
+        dropbox google-chrome light slack-desktop zoom discord ghex
 
-# TODO 2020-01-22
-# PKGBUILD for texlive-localmanager-git is broken now
+    tllocalmgr install algorithms
+    tllocalmgr install biblatex
+    tllocalmgr install ebproof
+    tllocalmgr install enumitem
+    tllocalmgr install lipsum
+    tllocalmgr install logreq
+    tllocalmgr install mnsymbol
+    tllocalmgr install multirow
+    tllocalmgr install pgfopts
+    tllocalmgr install type1cm
 
     amixer sset Master unmute
 
