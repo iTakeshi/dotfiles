@@ -18,7 +18,7 @@ done
 echo "$hostname" > /etc/hostname
 sed -i -e "/^::1/a 127.0.0.1\t$hostname.localdomain\t$hostname" /etc/hosts
 
-pacman -S intel-ucode
+pacman -S intel-ucode --overwrite /boot/intel-ucode.img
 bootctl --path=/boot install
 
 cat << EOF > /boot/loader/loader.conf
