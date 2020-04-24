@@ -41,8 +41,12 @@ options	root=PARTUUID=$partuuid rw
 EOF
 
 interface=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \\(.*\\): <BROADCAST.*$/\\1/p" | cut -f 1 -d " ")
-read -r -p "setup wifi? [y/N] > " setup_wifi
-if [ "$setup_wifi" == "Y" ] || [ "$setup_wifi" == "y" ]; then
+if echo "$interface" | grep wlan > /dev/null; then
+    # wireless
+    # NOTE https://bbs.archlinux.org/viewtopic.php?id=255008
+
+    interface=$(udevadm test-builtin net_id "/sys/class/net/$interface" 2>&1 | grep ID_NET_NAME_PATH | cut -f 2 -d "=")
+
     pacman -S wpa_supplicant
 
     if [ -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
@@ -89,6 +93,8 @@ RouteMetric=20
 EOF
     systemctl enable "wpa_supplicant@$interface"
 else
+    # wired
+
     cat << EOF > "/etc/systemd/network/20-wired.network"
 [Match]
 Name=$interface
