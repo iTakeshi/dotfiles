@@ -47,7 +47,7 @@ if echo "$interface" | grep wlan > /dev/null; then
 
     interface=$(udevadm test-builtin net_id "/sys/class/net/$interface" 2>&1 | grep ID_NET_NAME_PATH | cut -f 2 -d "=")
 
-    pacman -S wpa_supplicant
+    pacman -S wpa_supplicant iw
 
     if [ -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
         mv /etc/wpa_supplicant/wpa_supplicant.conf "/etc/wpa_supplicant/wpa_supplicant-$interface.conf"
