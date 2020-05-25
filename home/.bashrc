@@ -119,6 +119,7 @@ export SYSTEMD_EDITOR=nvim
 alias checknoascii="grep --color='auto' -P -n \"[^\x00-\x7F]\""
 alias disable_sleep="xset s off -dpms"
 alias display_off="xset dpms force off"
+alias scp="echo -e \"scp is officially deprecated. use rsync instead.\n\""
 
 # XDG Base Directory
 # ref: https://wiki.archlinux.org/index.php/XDG_Base_Directory
