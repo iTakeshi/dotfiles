@@ -115,10 +115,10 @@ alias vim=nvim
 export EDITOR=nvim
 export SYSTEMD_EDITOR=nvim
 
-# lock
-alias lock="light-locker-command -l"
-
+# misc alias
 alias checknoascii="grep --color='auto' -P -n \"[^\x00-\x7F]\""
+alias disable_sleep="xset s off -dpms"
+alias display_off="xset dpms force off"
 
 # XDG Base Directory
 # ref: https://wiki.archlinux.org/index.php/XDG_Base_Directory
