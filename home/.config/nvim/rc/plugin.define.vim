@@ -14,14 +14,14 @@ call g:dein#add('t9md/vim-choosewin')
 call g:dein#add('Shougo/defx.nvim'              , {'do': ':UpdateRemotePlugins'})
 call g:dein#add('kristijanhusak/defx-icons')
 call g:dein#add('ntpeters/vim-better-whitespace')
-call g:dein#add('neoclide/coc.nvim'             , {'merge':0, 'build': './install.sh nightly'})
+call g:dein#add('neoclide/coc.nvim'             , {'merged': 0, 'rev': 'release'})
 call g:dein#add('cocopon/inspecthi.vim'         , {'on_cmd': ['Inspecthi', 'InspecthiShowInspector']})
 
 " language support
-call g:dein#add('sheerun/vim-polyglot')
-call g:dein#add('bfrg/vim-cpp-modern', {'on_ft': ['c', 'cpp']})
-call g:dein#add('lervag/vimtex'      , {'on_ft': ['tex', 'bib']})
-call g:dein#add('lazywei/vim-matlab' , {'on_ft': 'matlab'})
+call g:dein#add('sheerun/vim-polyglot'          , {'merged': 0})
+call g:dein#add('bfrg/vim-cpp-modern'           , {'on_ft': ['c', 'cpp']})
+call g:dein#add('lervag/vimtex'                 , {'on_ft': ['tex', 'bib']})
+call g:dein#add('lazywei/vim-matlab'            , {'on_ft': 'matlab'})
 
 " textobj
 " Default text objexts are: wWspt(b){B}[]<>`'"
