@@ -59,6 +59,7 @@ if g:dein#tap('coc.nvim')
   endfunction
   nmap <silent> [g <Plug>(coc-diagnostic-prev)
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
+  nmap <leader>rn <Plug>(coc-rename)
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 endif
 
