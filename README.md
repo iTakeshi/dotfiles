@@ -69,8 +69,6 @@ Now you can login with your username (not root).
 Do some additional setup and then run `setup.sh` which is automatically created in your `$HOME` by `install.sh`.
 ```sh
 export HISTFILE="$HOME/.local/share/bash/history"
-sudo rm /etc/resolv.conf
-sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 ./setup.sh
 ```
 Again, just continue hitting the RETURN key.
