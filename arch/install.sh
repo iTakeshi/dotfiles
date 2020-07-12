@@ -40,7 +40,7 @@ initrd	/initramfs-linux.img
 options	root=PARTUUID=$partuuid rw
 EOF
 
-interface=$(ip link | sed -n -e "/<BROADCAST/s/^[0-9]: \\(.*\\): <BROADCAST.*$/\\1/p" | cut -f 1 -d " ")
+interface=$(ip route | sed -n -e "/^default/s/^default .* dev \\(.*\\) proto .*$/\\1/p")
 if echo "$interface" | grep wlan > /dev/null; then
     # wireless
     # NOTE https://bbs.archlinux.org/viewtopic.php?id=255008
