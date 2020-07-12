@@ -37,7 +37,7 @@ yay --needed --removemake --S \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     bazel cmake clang maven ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
     jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go dotnet-runtime \
-    dstat logrotate lsof i2c-tools jq lhasa lzip p7zip libsixel protobuf dos2unix
+    dstat logrotate lsof i2c-tools jq lhasa lzip p7zip protobuf dos2unix
 
 gem install neovim
 npm install --userconfig "$XDG_CONFIG_HOME/npm/npmrc" -g neovim
@@ -92,6 +92,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
     tllocalmgr install multirow
     tllocalmgr install pgfopts
     tllocalmgr install type1cm
+    sudo texhash
 
     amixer sset Master unmute
 
@@ -127,7 +128,7 @@ EOF
     sudo udevadm trigger
 fi
 
-echo "HandlePowerKey=suspend" >> /etc/systemd/logind.conf
+echo "HandlePowerKey=suspend" | sudo tee -a /etc/systemd/logind.conf
 
 cat << EOF
 setup complete. press Enter to reboot.
