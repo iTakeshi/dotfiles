@@ -95,6 +95,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
     sudo texhash
 
     amixer sset Master unmute
+    alsactl store
 
     sudo systemctl enable lightdm
     sudo systemctl enable cups-browsed
