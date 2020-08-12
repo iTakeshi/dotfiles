@@ -511,6 +511,25 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+
+    -- https://github.com/awesomeWM/awesome/issues/977
+    {
+      rule = { class = "Unity", type = "dialog" },
+      properties = { focus = true, focusable = false },
+      callback = function(c)
+        if c.name == "Unity" then
+          local f
+          f = function(_c)
+            _c:disconnect_signal("property::name", f)
+            if not string.match(_c.name, "UnityEditor%.Popup.*") then
+              _c.focus = false
+              _c.focusable = true
+            end
+          end
+          c:connect_signal("property::name", f)
+        end
+      end
+    },
 }
 -- }}}
 
