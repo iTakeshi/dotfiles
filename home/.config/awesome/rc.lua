@@ -521,7 +521,7 @@ awful.rules.rules = {
           local f
           f = function(_c)
             _c:disconnect_signal("property::name", f)
-            if not string.match(_c.name, "UnityEditor%.Popup.*") then
+            if not (string.match(_c.name, "UnityEditor%.Popup.*") or string.match(_c.name, "UnityEditor%.U2D.*")) then
               _c.focus = false
               _c.focusable = true
             end
