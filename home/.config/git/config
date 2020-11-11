@@ -1,6 +1,6 @@
 [core]
     editor = nvim
-    pager = less
+    pager = delta
 [user]
     name = iTakeshi
     email = itakeshi.net@gmail.com
@@ -47,3 +47,5 @@
     autostash = true
 [fetch]
     prune = true
+[interactive]
+    diffFilter = delta --color-only
