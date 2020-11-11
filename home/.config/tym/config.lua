@@ -5,6 +5,7 @@ tym.set_config({
     font              = "FantasqueSansMono Nerd Font 13",
     scrollback_length = 10000,
     silent            = true,
+    uri_schemes       = "http https file mailto git git+https",
 })
 
 tym.set_keymaps({
