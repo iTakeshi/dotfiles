@@ -93,7 +93,7 @@ if g:dein#tap('vimtex')
       \    '-file-line-error',
       \],
       \}
-  let g:vimtex_quickfix_latexlog = {'underfull' : 0}
+  let g:vimtex_quickfix_ignore_filters = ['Underfull']
 endif
 
 " =====================================
