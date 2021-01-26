@@ -1,5 +1,10 @@
 #!/bin/bash -euvx
 
+# https://wiki.archlinux.org/index.php/Systemd-resolved#DNS
+# The original /etc/resolv.conf cannot be removed in `chroot`-ed environment
+sudo rm /etc/resolv.conf
+sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"

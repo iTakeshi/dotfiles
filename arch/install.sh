@@ -108,8 +108,6 @@ EOF
 fi
 systemctl enable systemd-networkd
 systemctl enable systemd-resolved
-rm /etc/resolv.conf
-ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 passwd
 pacman -S vi
