@@ -126,6 +126,8 @@ done
 useradd -m -G wheel "$username"
 passwd "$username"
 
+pacman -S mdadm
+
 curl -o "/home/$username/setup.sh" https://raw.githubusercontent.com/iTakeshi/dotfiles/master/arch/setup.sh
 chown "$username" "/home/$username/setup.sh"
 chmod +x "/home/$username/setup.sh"
