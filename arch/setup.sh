@@ -42,7 +42,7 @@ yay --needed --removemake --S \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     bazel cmake clang maven ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
     jre8-openjdk jdk8-openjdk tk ruby eigen scala sbt nodejs npm yarn rustup go dotnet-runtime \
-    dstat logrotate lsof i2c-tools jq lhasa lzip p7zip protobuf dos2unix
+    dstat logrotate lsof i2c-tools jq lhasa lzip p7zip protobuf dos2unix rsync
 
 gem install neovim
 npm install --userconfig "$XDG_CONFIG_HOME/npm/npmrc" -g neovim
