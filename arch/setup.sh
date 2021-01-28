@@ -51,6 +51,10 @@ git clone https://github.com/pyenv/pyenv.git ~/.local/share/pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.local/share/pyenv/plugins/pyenv-virtualenv
 git clone https://github.com/momo-lab/pyenv-install-latest.git ~/.local/share/pyenv/plugins/pyenv-install-latest
 
+export POETRY_HOME="$XDG_DATA_HOME/poetry"
+curl -sSL -o /tmp/get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+python /tmp/get-poetry.py --no-modify-path
+
 sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 sudo sed -i -e "/^\[mysqld\]$/a collation-server = utf8mb4_unicode_ci" /etc/my.cnf.d/server.cnf
 sudo sed -i -e "/^\[mysqld\]$/a init-connect = 'SET NAMES utf8mb4'" /etc/my.cnf.d/server.cnf
