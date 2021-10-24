@@ -530,6 +530,22 @@ awful.rules.rules = {
         end
       end
     },
+
+    {
+      rule = { class = "zoom", type = "normal", name = "zoom" },
+      properties = { focus = false, focusable = false, floating = true },
+      callback = function(c)
+        f = function(_c)
+          _c:disconnect_signal("property::name", f)
+          if _c.name ~= "zoom" then
+            _c.focus = false
+            _c.focusable = true
+            _c.floating = false
+          end
+        end
+        c:connect_signal("property::name", f)
+      end
+    },
 }
 -- }}}
 
