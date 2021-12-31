@@ -1,5 +1,8 @@
 #!/bin/bash -euvx
 
+cd $PYENV_ROOT
+git pull origin master
+
 python2_latest=$(pyenv install-latest --print 2)
 python3_latest=$(pyenv install-latest --print 3)
 
