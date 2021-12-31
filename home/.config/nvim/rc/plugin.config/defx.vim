@@ -114,7 +114,7 @@ if g:dein#tap('defx.nvim')
 
   " auto-start
   function! s:open_defx_on_vimenter()
-    if expand('%') == ''
+    if expand('%') == '' && &ft != 'man'
       call <SID>open_defx()
     endif
   endfunction
