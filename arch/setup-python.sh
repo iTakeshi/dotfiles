@@ -24,10 +24,13 @@ fi
 
 pyenv virtualenv "$python3_latest" neovim3
 pyenv global neovim3
+pyenv rehash
 pip install pynvim
 pyenv virtualenv "$python2_latest" neovim2
 pyenv global neovim2
+pyenv rehash
 pip2 install pynvim
 
 pyenv global "$python3_latest"
+pyenv rehash
 pip install numpy matplotlib PyQt5
