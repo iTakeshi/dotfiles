@@ -163,3 +163,5 @@ export PIPX_HOME="$XDG_DATA_HOME/pipx"
 if [ -f $HOME/.bashrc.local ]; then
     source $HOME/.bashrc.local
 fi
+
+export DOCKER_BUILDKIT=1
