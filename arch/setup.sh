@@ -37,7 +37,7 @@ cd /tmp/yay
 makepkg -sri
 
 yay --needed --removemake --S \
-    arch-diff pacman-contrib pkgfile gdisk nfs-utils ntfs-3g neovim wget bat hexyl tym \
+    arch-diff pacman-contrib pkgfile gdisk nfs-utils ntfs-3g neovim wget bat hexyl \
     openssh openconnect bash-completion words man ddrescue pdftk plantuml tmux rlwrap \
     xsel unzip evtest devmon hwinfo ntp nginx mariadb hping htop smartmontools tcpdump \
     bazel cmake clang maven ninja nasm gdb cloc doxygen graphviz docker docker-compose docker-machine \
@@ -83,7 +83,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
     install -dm0 ~/.dropbox-dist
 
     yay --needed --removemake -S \
-        xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome \
+        xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome tym-git \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt xdotool \
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
         mupdf pdfmod nomacs thunar texlive-core texlive-langjapanese texlive-localmanager-git ghostscript pstoedit imagemagick \
