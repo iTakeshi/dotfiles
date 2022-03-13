@@ -1,6 +1,6 @@
 if g:dein#tap('defx.nvim')
   let s:height = 50
-  let s:width = 50
+  let s:width = 100
 
   call defx#custom#column('icon', {
         \ 'directory_icon' : "\u25be",
