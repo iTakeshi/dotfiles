@@ -61,6 +61,12 @@ if g:dein#tap('coc.nvim')
   nmap <silent> ]g <Plug>(coc-diagnostic-next)
   nmap <leader>rn <Plug>(coc-rename)
   nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+  if !empty($PYENV_VIRTUAL_ENV)
+    call coc#config('python', {
+    \   'pythonPath': $PYENV_VIRTUAL_ENV . '/bin/python'
+    \ })
+  endif
 endif
 
 if g:dein#tap('indentLine')
