@@ -1,4 +1,7 @@
 {
+    "hover.floatConfig": {
+        "maxWidth": 200,
+    },
     "python.jediEnabled": false,
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
