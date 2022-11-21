@@ -43,7 +43,7 @@ fi
 if command -v exa 1>/dev/null 2>&1; then
   alias ls="exa"
   alias ll="exa -alF"
-  alias lt="exa -alFt modified"
+  alias lt="exa -alFs modified"
 else
   alias ls="ls --color=auto"
   alias ll="ls --color=auto -alF"
