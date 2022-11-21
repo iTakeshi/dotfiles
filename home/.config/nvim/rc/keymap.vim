@@ -51,9 +51,9 @@ inoremap <C-j> <C-o>gj
 inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>l
 inoremap <C-m> <CR>
-inoremap <C-n> <C-n>
+" inoremap <C-n> <C-n>
 inoremap <C-o> <C-o>
-inoremap <C-p> <Nop>
+" inoremap <C-p> <Nop>
 inoremap <C-q> <Nop>
 inoremap <C-r> <C-r>
 inoremap <C-s> <C-o>:w<CR>
