@@ -2,8 +2,6 @@
 call g:dein#add('Shougo/dein.vim')
 
 " utility
-call g:dein#add('lambdalisue/vim-improve-diff')
-call g:dein#add('lambdalisue/vim-unified-diff')
 call g:dein#add('rickhowe/diffchar.vim')
 call g:dein#add('ryanoasis/vim-devicons')
 call g:dein#add('lambdalisue/gina.vim')

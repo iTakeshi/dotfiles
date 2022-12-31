@@ -43,3 +43,5 @@ set ambiwidth=single " for devicons; ignore double-width simbols
 set listchars=tab:>-,trail:_,extends:&,precedes:&,nbsp:%,eol:$
 
 colorscheme pastel
+
+set diffopt+=internal,algorithm:patience

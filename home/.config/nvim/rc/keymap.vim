@@ -14,7 +14,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-m> <Nop>
 nnoremap <C-n> <C-w>n
-nnoremap <C-o> <C-w>v
+" nnoremap <C-o> <C-w>v
 nnoremap <C-p> <Nop>
 nnoremap <C-q> <Nop>
 nnoremap <C-r> <C-r>
