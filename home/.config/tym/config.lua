@@ -10,9 +10,9 @@ tym.set_config({
 
 tym.set_keymaps({
   ["<Ctrl><Shift>Up"] = function()
-      tym.set("scale", tym.get("scale") + 20)
+      tym.set("scale", math.floor(tym.get("scale") * 1.1))
   end,
   ["<Ctrl><Shift>Down"] = function()
-      tym.set("scale", tym.get("scale") - 20)
+      tym.set("scale", math.floor(tym.get("scale") / 1.1))
   end,
 })
