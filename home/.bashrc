@@ -25,7 +25,6 @@ shopt -s checkwinsize
 ###############################################################################
 
 if command -v nvim 1>/dev/null 2>&1; then
-  alias vi=nvim
   alias vim=nvim
   export EDITOR=nvim
   export SYSTEMD_EDITOR=nvim
