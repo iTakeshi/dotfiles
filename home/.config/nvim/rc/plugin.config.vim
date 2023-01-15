@@ -99,7 +99,13 @@ if g:dein#tap('vimtex')
       \    '-file-line-error',
       \],
       \}
-  let g:vimtex_quickfix_ignore_filters = ['Underfull']
+  " let g:vimtex_quickfix_ignore_filters = ['Underfull', 'contains only floats']
+  let g:vimtex_quickfix_ignore_filters = [
+      \ 'Underfull',
+      \ 'contains only floats',
+      \ 'LaTeX Font Warning: Font shape',
+      \ 'Package hyperref Warning: Difference'
+      \]
 endif
 
 " =====================================

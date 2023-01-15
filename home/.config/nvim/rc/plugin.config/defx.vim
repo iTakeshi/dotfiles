@@ -17,7 +17,7 @@ if g:dein#tap('defx.nvim')
   call defx#custom#option('_', {
         \ 'columns'       : 'mark:icon:filename:icons',
         \ 'split'         : 'floating',
-        \ 'ignored_files' : '*.[ado],*.l[ao],*.py[cdo],bazel-.*',
+        \ 'ignored_files' : '*.[ao],*.l[ao],*.py[cdo],bazel-.*',
         \ 'listed'        : 1,
         \ 'winwidth'      : s:width + 7,
         \})
