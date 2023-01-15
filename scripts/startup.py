@@ -29,3 +29,8 @@ try:
     np.set_printoptions(threshold=np.inf, linewidth=250, precision=3, suppress=True)
 except ImportError:
     pass
+
+from math import sqrt
+from collections import deque
+from itertools import permutations, combinations, product
+from heapq import heappush, heappop, heappushpop
