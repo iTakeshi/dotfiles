@@ -29,17 +29,10 @@ return {
         sync_install = false,
         auto_install = true,
         highlight = { enable = true },
-        indent = { enable = false },
-        yati = { enalble = true },
+        indent = { enable = true },
         context_commentstring = { enable = true, enable_autocmd = false },
       })
     end,
-  },
-
-  {
-    "yioneko/nvim-yati",
-    event = "VeryLazy",
-    dependencies = { "nvim-treesitter" },
   },
 
   {
