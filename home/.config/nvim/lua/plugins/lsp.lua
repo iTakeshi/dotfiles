@@ -11,7 +11,12 @@ return {
       local mason_lspconfig = require("mason-lspconfig")
       local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities()
       mason_lspconfig.setup({
-        ensure_installed = { "sumneko_lua", "tsserver" },
+        ensure_installed = {
+          "lua_ls",
+          "pyright",
+          "tsserver",
+          "yamlls",
+        },
       })
       mason_lspconfig.setup_handlers({
         function(server_name)
@@ -19,8 +24,8 @@ return {
             capabilities = cmp_capabilities,
           })
         end,
-        ["sumneko_lua"] = function()
-          lspconfig.sumneko_lua.setup({
+        ["lua_ls"] = function()
+          lspconfig.lua_ls.setup({
             settings = {
               Lua = {
                 workspace = {
@@ -30,6 +35,38 @@ return {
             },
           })
         end,
+        ["yamlls"] = function()
+          lspconfig.yamlls.setup({
+            capabilities = cmp_capabilities,
+            settings = {
+              yaml = {
+                schemas = {
+                  ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "*.cfn.yaml",
+                },
+                customTags = {
+                  "!And",
+                  "!Base64",
+                  "!Cidr",
+                  "!Equals",
+                  "!FindInMap sequence",
+                  "!GetAZs",
+                  "!GetAtt",
+                  "!If",
+                  "!ImportValue",
+                  "!Join sequence",
+                  "!Not",
+                  "!Or",
+                  "!Ref Scalar",
+                  "!Ref",
+                  "!Select",
+                  "!Split",
+                  "!Sub",
+                  "!fn",
+                },
+              },
+            },
+          })
+        end
       })
       Map("n", "gf", vim.lsp.buf.format)
       vim.api.nvim_exec_autocmds("FileType", {})
