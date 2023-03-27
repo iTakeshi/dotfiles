@@ -9,7 +9,6 @@ return {
       local height = vim.fn.min({ vim.o.lines - 8, 50 })
       local api = require("nvim-tree.api")
       require("nvim-tree").setup({
-        open_on_setup = true,
         git = {
           enable = false,
         },
@@ -52,6 +51,8 @@ return {
               { key = "<c-c>", action = "copy" },
               { key = "<c-v>", action = "paste" },
               { key = "<c-r>", action = "rename" },
+              { key = "q", action = "close" },
+              { key = "<esc><esc>", action = "close" },
             },
           },
         },
