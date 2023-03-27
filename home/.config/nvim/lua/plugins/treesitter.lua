@@ -40,7 +40,7 @@ return {
     event = "VeryLazy",
     dependencies = "nvim-treesitter",
     opts = {
-      char = "┊",
+      char = "│",
       char_blankline = " ",
       context_char = "│",
       show_current_context = true,
