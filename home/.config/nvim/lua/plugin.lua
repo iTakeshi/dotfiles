@@ -73,14 +73,6 @@ require("lazy").setup({
     },
 
     {
-      "echasnovski/mini.cursorword",
-      event = "VeryLazy",
-      config = function()
-        require("mini.cursorword").setup({})
-      end,
-    },
-
-    {
       "echasnovski/mini.surround",
       event = "VeryLazy",
       config = function()
