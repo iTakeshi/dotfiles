@@ -47,6 +47,7 @@ vim.opt.smartcase       = true                -- automatically switch to case-se
 vim.opt.softtabstop     = 2                   -- insert 2 whitespaces for a tab
 vim.opt.swapfile        = false               -- do not use swap files
 vim.opt.tabstop         = 8                   -- a tab character is equivalent to 8 single-width characters
+vim.opt.termguicolors   = true                -- enable 24-bit colors
 vim.opt.timeout         = false               -- wait for key sequence indefinitely
 vim.opt.ttimeoutlen     = 100                 -- wait 100 ms for key code sequence
 vim.opt.undofile        = true                -- keep undo history
