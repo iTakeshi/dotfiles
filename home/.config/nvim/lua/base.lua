@@ -2,7 +2,6 @@
 vim.g.loaded_gzip = true
 vim.g.loaded_man  = true
 vim.g.loaded_matchit = true
-vim.g.loaded_matchparen = true
 vim.g.loaded_netrw = true
 vim.g.loaded_netrwFileHandlers = true
 vim.g.loaded_netrwPlugin = true
@@ -33,6 +32,7 @@ vim.opt.ignorecase      = true                -- case-insensitive search
 vim.opt.linebreak       = true                -- wrap lines at breakat characters
 vim.opt.list            = true                -- show invisible characters
 vim.opt.listchars       = "eol:$,tab:>-,trail:_,extends:&,nbsp:%" -- invisible character mappings
+vim.opt.matchtime       = 1                   -- flash very briefly on showmatch
 vim.opt.modeline        = false               -- do not check modeline
 vim.opt.preserveindent  = true                -- preserve indent structure when manipulating indentation
 vim.opt.report          = 0                   -- report all changes
@@ -41,6 +41,7 @@ vim.opt.shiftround      = true                -- round indent to multiple of shi
 vim.opt.shiftwidth      = 2                   -- the number of spaces of an indent
 vim.opt.shortmess:append("acI")               -- do not display greeting message
 vim.opt.showbreak       = "> "                -- indicate line continuation
+vim.opt.showmatch       = true                -- frash opening parenthesis when closed
 vim.opt.showtabline     = 2                   -- always show tabline"
 vim.opt.sidescrolloff   = 4                   -- minimum number of screen columns to keep in scroll
 vim.opt.smartcase       = true                -- automatically switch to case-sensitive search
