@@ -134,5 +134,14 @@ require("lazy").setup({
       dependencies = { "vim-textobj-user" },
       event = "VeryLazy",
     },
+
+    -- colorscheme
+
+    {
+      "sainnhe/sonokai",
+      config = function()
+        vim.cmd.colorscheme("sonokai")
+      end,
+    }
   },
 })
