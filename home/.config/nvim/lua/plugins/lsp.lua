@@ -143,6 +143,7 @@ return {
           ["<c-n>"] = cmp.mapping.select_next_item(),
           ["<c-p>"] = cmp.mapping.select_prev_item(),
         }),
+        preselect = cmp.PreselectMode.None,
       })
       cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
