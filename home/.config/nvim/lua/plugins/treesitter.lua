@@ -29,8 +29,8 @@ return {
         },
         sync_install = false,
         auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
+        highlight = { enable = false }, -- in favor of polyglot
+        indent = { enable = false }, -- in favor of polyglot
         context_commentstring = { enable = true, enable_autocmd = false },
       })
     end,
@@ -51,4 +51,9 @@ return {
       use_treesitter = true,
     },
   },
+
+  {
+    "sheerun/vim-polyglot",
+    event = "VeryLazy",
+  }
 }
