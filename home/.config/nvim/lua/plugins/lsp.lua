@@ -35,6 +35,26 @@ return {
             },
           })
         end,
+        ["pyright"] = function()
+          local venv_path = vim.trim(vim.fn.system("poetry config virtualenvs.path"))
+          local venv_name = vim.trim(vim.fn.system("poetry env list"))
+
+          local python_path = "python"
+          if #vim.split(venv_name, "\n") == 1 then
+            if vim.split(venv_name, " ")[1] == ".venv" then
+              python_path = ".venv/bin/python"
+            else
+              python_path = string.format("%s/%s/bin/python", venv_path, venv_name)
+            end
+          end
+          lspconfig.pyright.setup({
+            settings = {
+              python = {
+                pythonPath = python_path,
+              },
+            },
+          })
+        end,
         ["yamlls"] = function()
           lspconfig.yamlls.setup({
             capabilities = cmp_capabilities,
