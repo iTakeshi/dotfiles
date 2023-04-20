@@ -81,5 +81,4 @@ vim.api.nvim_create_autocmd("VimLeave", {
 vim.cmd [[
   match MyZenkakuSpace /　/
   highlight MyZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
-  colorscheme pastel
 ]]
