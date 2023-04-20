@@ -41,7 +41,8 @@ return {
 
           local python_path = "python"
           if #vim.split(venv_name, "\n") == 1 then
-            if vim.split(venv_name, " ")[1] == ".venv" then
+            venv_name = vim.split(venv_name, " ")[1]
+            if venv_name == ".venv" then
               python_path = ".venv/bin/python"
             else
               python_path = string.format("%s/%s/bin/python", venv_path, venv_name)
