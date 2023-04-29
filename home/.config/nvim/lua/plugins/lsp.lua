@@ -116,13 +116,11 @@ return {
       { "gq", "<cmd>Lspsaga code_action<cr>" },
       { "K", "<cmd>Lspsaga hover_doc<cr>" },
     },
-    config = function()
-      require("lspsaga").setup({
-        symbol_in_winbar = {
-          enable = false,
-        },
-      })
-    end,
+    opts = {
+      symbol_in_winbar = {
+        enable = false,
+      },
+    },
   },
 
   {
@@ -137,8 +135,7 @@ return {
       "hrsh7th/cmp-cmdline",
       {
         "uga-rosa/cmp-dictionary",
-        opts =
-        {
+        opts = {
           dic = {
             ["*"] = { "/usr/share/dict/words" },
           },
