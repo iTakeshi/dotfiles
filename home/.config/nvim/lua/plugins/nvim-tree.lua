@@ -1,3 +1,5 @@
+local _nvim_tree_node_cache = {}
+
 return {
   {
     "nvim-tree/nvim-tree.lua",
@@ -19,6 +21,14 @@ return {
             nowait = true,
           }
         end
+        local change_root_to_node = function()
+          local node = api.tree.get_node_under_cursor()
+          api.tree.change_root_to_node()
+          local line = _nvim_tree_node_cache[node.absolute_path]
+          if line ~= nil then
+            vim.api.nvim_win_set_cursor(0, { line, 0 })
+          end
+        end
         local change_root_to_parent = function()
           local line = vim.api.nvim_win_get_cursor(0)[1]
           api.tree.change_root_to_parent()
@@ -26,12 +36,13 @@ return {
           cursor[1] = cursor[1] - line + 1
           vim.api.nvim_win_set_cursor(0, cursor)
           api.tree.collapse_all()
+          _nvim_tree_node_cache[api.tree.get_node_under_cursor().absolute_path] = line
         end
         vim.keymap.set("n", "e", api.node.open.edit, opts("Open"))
         vim.keymap.set("n", "<cr>", api.node.open.edit, opts("Open"))
         vim.keymap.set("n", "E", api.node.open.vertical, opts("Open: Vertical Split"))
         vim.keymap.set("n", "o", api.node.run.system, opts("Run System"))
-        vim.keymap.set("n", "l", api.tree.change_root_to_node, opts("move into node"))
+        vim.keymap.set("n", "l", change_root_to_node, opts("move into node"))
         vim.keymap.set("n", "h", change_root_to_parent, opts("move to parent"))
         vim.keymap.set("n", "t", api.node.open.edit, opts("Open"))
         vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
