@@ -1,5 +1,3 @@
-local _nvim_tree_node_cache = {}
-
 return {
   {
     "nvim-tree/nvim-tree.lua",
@@ -7,7 +5,6 @@ return {
     event = "VeryLazy",
 
     config = function()
-      -- TODO: memorize tab-wise state
       local api = require("nvim-tree.api")
       local nvim_tree = require("nvim-tree")
 
@@ -21,14 +18,46 @@ return {
             nowait = true,
           }
         end
+
+        local move_cursor_down = function()
+          local node = api.tree.get_node_under_cursor()
+          local line = vim.api.nvim_win_get_cursor(0)[1]
+          local nvim_tree_cache = vim.t.nvim_tree_cache
+          nvim_tree_cache.lines[node.parent.absolute_path] = line < vim.api.nvim_buf_line_count(0) and line + 1 or line
+          vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
+          vim.t.nvim_tree_cache = nvim_tree_cache
+        end
+
+        local move_cursor_up = function()
+          local node = api.tree.get_node_under_cursor()
+          local line = vim.api.nvim_win_get_cursor(0)[1]
+          local nvim_tree_cache = vim.t.nvim_tree_cache
+          nvim_tree_cache.lines[node.parent.absolute_path] = line > 2 and line - 1 or line
+          vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
+          vim.t.nvim_tree_cache = nvim_tree_cache
+        end
+
+        local move_cursor_top = function()
+          local node = api.tree.get_node_under_cursor()
+          local nvim_tree_cache = vim.t.nvim_tree_cache
+          nvim_tree_cache.lines[node.parent.absolute_path] = 2
+          vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
+          vim.t.nvim_tree_cache = nvim_tree_cache
+        end
+
         local change_root_to_node = function()
           local node = api.tree.get_node_under_cursor()
           api.tree.change_root_to_node()
-          local line = _nvim_tree_node_cache[node.absolute_path]
-          if line ~= nil then
-            vim.api.nvim_win_set_cursor(0, { line, 0 })
+          local nvim_tree_cache = vim.t.nvim_tree_cache
+          if nvim_tree_cache.lines[node.absolute_path] == nil then
+            vim.api.nvim_win_set_cursor(0, { 2, 0 })
+          else
+            vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.absolute_path], 0 })
           end
+          nvim_tree_cache.last_dir = node.absolute_path
+          vim.t.nvim_tree_cache = nvim_tree_cache
         end
+
         local change_root_to_parent = function()
           local line = vim.api.nvim_win_get_cursor(0)[1]
           api.tree.change_root_to_parent()
@@ -36,27 +65,37 @@ return {
           cursor[1] = cursor[1] - line + 1
           vim.api.nvim_win_set_cursor(0, cursor)
           api.tree.collapse_all()
-          _nvim_tree_node_cache[api.tree.get_node_under_cursor().absolute_path] = line
+          local nvim_tree_cache = vim.t.nvim_tree_cache
+          local node = api.tree.get_node_under_cursor()
+          nvim_tree_cache.last_dir = node.parent.absolute_path
+          vim.t.nvim_tree_cache = nvim_tree_cache
         end
-        vim.keymap.set("n", "e", api.node.open.edit, opts("Open"))
-        vim.keymap.set("n", "<cr>", api.node.open.edit, opts("Open"))
-        vim.keymap.set("n", "E", api.node.open.vertical, opts("Open: Vertical Split"))
-        vim.keymap.set("n", "o", api.node.run.system, opts("Run System"))
-        vim.keymap.set("n", "l", change_root_to_node, opts("move into node"))
-        vim.keymap.set("n", "h", change_root_to_parent, opts("move to parent"))
-        vim.keymap.set("n", "t", api.node.open.edit, opts("Open"))
-        vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
-        vim.keymap.set("n", "y", api.fs.copy.filename, opts("Copy Name"))
-        vim.keymap.set("n", "Y", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
-        vim.keymap.set("n", "<c-n>", api.fs.create, opts("Create"))
-        vim.keymap.set("n", "<c-d>", api.fs.remove, opts("Delete"))
-        vim.keymap.set("n", "<c-x>", api.fs.cut, opts("Cut"))
-        vim.keymap.set("n", "<c-c>", api.fs.copy.node, opts("Copy"))
-        vim.keymap.set("n", "<c-v>", api.fs.paste, opts("Paste"))
-        vim.keymap.set("n", "<c-r>", api.fs.rename, opts("Rename"))
-        vim.keymap.set("n", "q", api.tree.close, opts("Close"))
-        vim.keymap.set("n", "<c-f>", api.tree.close, opts("Close"))
-        vim.keymap.set("n", "<esc><esc>", api.tree.close, opts("Close"))
+
+        Map("n", "j", move_cursor_down, opts("Down"))
+        Map("n", "k", move_cursor_up, opts("Up"))
+        Map("n", "gg", move_cursor_top, opts("Top"))
+        Map("n", "l", change_root_to_node, opts("move into node"))
+        Map("n", "h", change_root_to_parent, opts("move to parent"))
+
+        Map("n", "e", api.node.open.edit, opts("Open"))
+        Map("n", "<cr>", api.node.open.edit, opts("Open"))
+        Map("n", "E", api.node.open.vertical, opts("Open: Vertical Split"))
+        Map("n", "o", api.node.run.system, opts("Run System"))
+
+        Map("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
+        Map("n", "y", api.fs.copy.filename, opts("Copy Name"))
+        Map("n", "Y", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
+
+        Map("n", "<c-n>", api.fs.create, opts("Create"))
+        Map("n", "<c-d>", api.fs.remove, opts("Delete"))
+        Map("n", "<c-x>", api.fs.cut, opts("Cut"))
+        Map("n", "<c-c>", api.fs.copy.node, opts("Copy"))
+        Map("n", "<c-v>", api.fs.paste, opts("Paste"))
+        Map("n", "<c-r>", api.fs.rename, opts("Rename"))
+
+        Map("n", "q", api.tree.close, opts("Close"))
+        Map("n", "<c-f>", api.tree.close, opts("Close"))
+        Map("n", "<esc><esc>", api.tree.close, opts("Close"))
       end
 
       nvim_tree.setup({
@@ -89,6 +128,19 @@ return {
         }
         MergeTables(nvim_tree.get_config().view.float.open_win_config, open_win_config)
         vim.cmd("NvimTreeOpen")
+        local nvim_tree_cache = vim.t.nvim_tree_cache
+        if nvim_tree_cache == nil then
+          nvim_tree_cache = {
+            last_dir = vim.fn.getcwd(),
+            lines = {},
+          }
+        end
+        api.tree.change_root(nvim_tree_cache.last_dir)
+        if nvim_tree_cache.lines[nvim_tree_cache.last_dir] == nil then
+          nvim_tree_cache.lines[nvim_tree_cache.last_dir] = 2
+        end
+        vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[nvim_tree_cache.last_dir], 0 })
+        vim.t.nvim_tree_cache = nvim_tree_cache
       end
       Map("n", "<c-f>", open_nvim_tree)
     end,
