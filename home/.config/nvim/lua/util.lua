@@ -1,6 +1,7 @@
-function Dump(object, depth)
+function Dump(object, max_depth, depth)
+  max_depth = max_depth or 3
   depth = depth or 0
-  if depth > 5 then
+  if depth > max_depth then
     return "<<<overflow>>>"
   end
   if type(object) == "table" then
@@ -11,7 +12,7 @@ function Dump(object, depth)
       elseif type(k) ~= "number" then
         k = "'" .. k .. "'"
       end
-      res = res .. string.rep("  ", depth + 1) .. "[" .. k .. "] = " .. Dump(v, depth + 1) .. ",\n"
+      res = res .. string.rep("  ", depth + 1) .. "[" .. k .. "] = " .. Dump(v, max_depth, depth + 1) .. ",\n"
     end
     return res .. string.rep("  ", depth) .. "}"
   else
