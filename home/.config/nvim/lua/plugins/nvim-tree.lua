@@ -5,24 +5,13 @@ return {
     event = "VeryLazy",
     config = function()
       -- TODO: memorize tab-wise state
-      local width = vim.fn.min({ vim.o.columns - 30, 120 })
-      local height = vim.fn.min({ vim.o.lines - 8, 50 })
       local api = require("nvim-tree.api")
-      require("nvim-tree").setup({
-        git = {
-          enable = false,
-        },
+      local nvim_tree = require("nvim-tree")
+      nvim_tree.setup({
+        git = { enable = false },
         remove_keymaps = true,
         view = {
-          float = {
-            enable = true,
-            open_win_config = {
-              width = width,
-              height = height,
-              row = (vim.o.lines - height) / 2 - 2,
-              col = (vim.o.columns - width) / 2,
-            },
-          },
+          float = { enable = true },
           mappings = {
             list = {
               { key = { "e", "<cr>" }, action = "edit" }, -- TODO: `drop` behavior
@@ -52,6 +41,7 @@ return {
               { key = "<c-v>", action = "paste" },
               { key = "<c-r>", action = "rename" },
               { key = "q", action = "close" },
+              { key = "<c-f>", action = "close" },
               { key = "<esc><esc>", action = "close" },
             },
           },
@@ -67,7 +57,19 @@ return {
           },
         },
       })
-      Map("n", "<c-f>", "<cmd>NvimTreeToggle<cr>")
+      local open_nvim_tree = function()
+        local width = vim.fn.min({ vim.o.columns - 30, 120 })
+        local height = vim.fn.min({ vim.o.lines - 8, 50 })
+        local open_win_config = {
+          width = width,
+          height = height,
+          row = (vim.o.lines - height) / 2 - 2,
+          col = (vim.o.columns - width) / 2,
+        }
+        MergeTables(nvim_tree.get_config().view.float.open_win_config, open_win_config)
+        vim.cmd("NvimTreeOpen")
+      end
+      Map("n", "<c-f>", open_nvim_tree)
     end,
   },
 }

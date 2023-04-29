@@ -19,6 +19,18 @@ function Dump(object, depth)
   end
 end
 
+-- recursively merge two tables, overwriting `dst`'s fields with `src`'s fields
+function MergeTables(dst, src)
+  for k, v in pairs(src) do
+    if type(v) == "table" and type(dst[k]) == "table" then
+      MergeTables(dst[k], v)
+    else
+      dst[k] = v
+    end
+  end
+  return dst
+end
+
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
