@@ -23,6 +23,20 @@ require("lazy").setup({
     { import = "plugins" },
 
     {
+      "rcarriga/nvim-notify",
+      lazy = true,
+      opts = {
+        stages = "slide",
+      },
+    },
+
+    {
+      "folke/noice.nvim",
+      dependencies = { "MunifTanjim/nui.nvim", "nvim-notify" },
+      config = true,
+    },
+
+    {
       "nvim-tree/nvim-web-devicons",
       lazy = true,
     },

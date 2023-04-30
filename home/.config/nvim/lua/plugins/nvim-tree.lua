@@ -123,7 +123,7 @@ return {
         local open_win_config = {
           width = width,
           height = height,
-          row = (vim.o.lines - height) / 2 - 2,
+          row = (vim.o.lines - height) / 2,
           col = (vim.o.columns - width) / 2,
         }
         MergeTables(nvim_tree.get_config().view.float.open_win_config, open_win_config)
