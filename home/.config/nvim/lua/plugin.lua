@@ -37,6 +37,20 @@ require("lazy").setup({
     },
 
     {
+      "lewis6991/gitsigns.nvim",
+      event = "VeryLazy",
+      opts = {
+        current_line_blame_opts = {
+          virt_text_pos = "right_align",
+          delay = 300,
+        },
+        on_attach = function()
+          Map("n", "<plug>(my-toggle)b", require("gitsigns").toggle_current_line_blame)
+        end,
+      },
+    },
+
+    {
       "nvim-tree/nvim-web-devicons",
       lazy = true,
     },
