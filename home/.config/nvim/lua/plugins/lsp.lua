@@ -124,6 +124,23 @@ return {
   },
 
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    event = "VeryLazy",
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        border = "rounded",
+        debug = true,
+        sources = {
+          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.formatting.prettier,
+        },
+      })
+    end,
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
