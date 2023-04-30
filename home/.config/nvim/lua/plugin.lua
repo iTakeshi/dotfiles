@@ -12,8 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  change_detection = {
-    enabled = false,
+  ui = {
+    border = "rounded",
   },
   spec = {
     { import = "plugins" },
@@ -69,6 +69,8 @@ require("lazy").setup({
 
     {
       "sainnhe/sonokai",
+      lazy = false,
+      priority = 1000,
       config = function()
         vim.cmd.colorscheme("sonokai")
       end,
