@@ -15,6 +15,10 @@ require("lazy").setup({
   ui = {
     border = "rounded",
   },
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
   spec = {
     { import = "plugins" },
 
