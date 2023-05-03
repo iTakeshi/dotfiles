@@ -20,60 +20,79 @@ return {
         end
 
         local move_cursor_down = function()
+          local nvim_tree_cache = vim.t.nvim_tree_cache
           local node = api.tree.get_node_under_cursor()
           local line = vim.api.nvim_win_get_cursor(0)[1]
-          local nvim_tree_cache = vim.t.nvim_tree_cache
           nvim_tree_cache.lines[node.parent.absolute_path] = line < vim.api.nvim_buf_line_count(0) and line + 1 or line
           vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
           vim.t.nvim_tree_cache = nvim_tree_cache
         end
 
         local move_cursor_up = function()
+          local nvim_tree_cache = vim.t.nvim_tree_cache
           local node = api.tree.get_node_under_cursor()
           local line = vim.api.nvim_win_get_cursor(0)[1]
-          local nvim_tree_cache = vim.t.nvim_tree_cache
           nvim_tree_cache.lines[node.parent.absolute_path] = line > 2 and line - 1 or line
           vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
           vim.t.nvim_tree_cache = nvim_tree_cache
         end
 
         local move_cursor_top = function()
-          local node = api.tree.get_node_under_cursor()
           local nvim_tree_cache = vim.t.nvim_tree_cache
+          local node = api.tree.get_node_under_cursor()
           nvim_tree_cache.lines[node.parent.absolute_path] = 2
           vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
           vim.t.nvim_tree_cache = nvim_tree_cache
         end
 
-        local change_root_to_node = function()
-          local node = api.tree.get_node_under_cursor()
-          api.tree.change_root_to_node()
+        local move_cursor_bottom = function()
           local nvim_tree_cache = vim.t.nvim_tree_cache
-          if nvim_tree_cache.lines[node.absolute_path] == nil then
-            vim.api.nvim_win_set_cursor(0, { 2, 0 })
-          else
-            vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.absolute_path], 0 })
+          local node = api.tree.get_node_under_cursor()
+          nvim_tree_cache.lines[node.parent.absolute_path] = vim.api.nvim_buf_line_count(0)
+          vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.parent.absolute_path], 0 })
+          vim.t.nvim_tree_cache = nvim_tree_cache
+        end
+
+        local change_root_to_node = function()
+          if vim.api.nvim_buf_line_count(0) == 1 then
+            return
+          end
+          local nvim_tree_cache = vim.t.nvim_tree_cache
+          local node = api.tree.get_node_under_cursor()
+          if node.type ~= "directory" then
+            return
+          end
+          api.tree.change_root_to_node()
+          if vim.api.nvim_buf_line_count(0) > 1 then
+            if nvim_tree_cache.lines[node.absolute_path] == nil then
+              vim.api.nvim_win_set_cursor(0, { 2, 0 })
+            else
+              vim.api.nvim_win_set_cursor(0, { nvim_tree_cache.lines[node.absolute_path], 0 })
+            end
           end
           nvim_tree_cache.last_dir = node.absolute_path
           vim.t.nvim_tree_cache = nvim_tree_cache
         end
 
         local change_root_to_parent = function()
-          local line = vim.api.nvim_win_get_cursor(0)[1]
-          api.tree.change_root_to_parent()
-          local cursor = vim.api.nvim_win_get_cursor(0)
-          cursor[1] = cursor[1] - line + 1
-          vim.api.nvim_win_set_cursor(0, cursor)
-          api.tree.collapse_all()
           local nvim_tree_cache = vim.t.nvim_tree_cache
+          api.tree.change_root_to_parent()
+          api.tree.find_file({
+            buf = nvim_tree_cache.last_dir,
+            focus = true,
+          })
+          api.tree.collapse_all()
           local node = api.tree.get_node_under_cursor()
           nvim_tree_cache.last_dir = node.parent.absolute_path
+          local line = vim.api.nvim_win_get_cursor(0)[1]
+          nvim_tree_cache.lines[nvim_tree_cache.last_dir] = line
           vim.t.nvim_tree_cache = nvim_tree_cache
         end
 
         Map("n", "j", move_cursor_down, opts("Down"))
         Map("n", "k", move_cursor_up, opts("Up"))
         Map("n", "gg", move_cursor_top, opts("Top"))
+        Map("n", "G", move_cursor_bottom, opts("Bottom"))
         Map("n", "l", change_root_to_node, opts("move into node"))
         Map("n", "h", change_root_to_parent, opts("move to parent"))
 
@@ -109,6 +128,7 @@ return {
           add_trailing = true,
           highlight_opened_files = "icon",
           highlight_modified = "name",
+          root_folder_label = ":~:s?$?",
         },
         actions = {
           open_file = {
