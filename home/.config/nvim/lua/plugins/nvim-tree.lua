@@ -89,6 +89,22 @@ return {
           vim.t.nvim_tree_cache = nvim_tree_cache
         end
 
+        local create_file = function()
+          local node = api.tree.get_node_under_cursor()
+          local cwd = node.parent.absolute_path
+          api.fs.create(node.parent)
+          node = api.tree.get_node_under_cursor()
+          api.tree.collapse_all()
+          local relative = node.absolute_path:sub(#cwd + 2)
+          local point, _ = string.find(relative, "/")
+          if point then
+            api.tree.find_file({
+              buf = cwd .. "/" .. relative:sub(0, string.find(relative, "/")),
+              focus = true,
+            })
+          end
+        end
+
         Map("n", "j", move_cursor_down, opts("Down"))
         Map("n", "k", move_cursor_up, opts("Up"))
         Map("n", "gg", move_cursor_top, opts("Top"))
@@ -105,7 +121,7 @@ return {
         Map("n", "y", api.fs.copy.filename, opts("Copy Name"))
         Map("n", "Y", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
 
-        Map("n", "<c-n>", api.fs.create, opts("Create"))
+        Map("n", "<c-n>", create_file, opts("Create"))
         Map("n", "<c-d>", api.fs.remove, opts("Delete"))
         Map("n", "<c-x>", api.fs.cut, opts("Cut"))
         Map("n", "<c-c>", api.fs.copy.node, opts("Copy"))
