@@ -2,7 +2,7 @@ local tym = require("tym")
 
 tym.set_config({
     autohide          = true,
-    font              = "FantasqueSansMono Nerd Font 13",
+    font              = "FantasqueSansM Nerd Font 13",
     scrollback_length = 10000,
     silent            = true,
     uri_schemes       = "http https file mailto git",
