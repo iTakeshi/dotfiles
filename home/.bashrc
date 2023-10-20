@@ -102,9 +102,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
 export PATH="$POETRY_HOME/bin:$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
