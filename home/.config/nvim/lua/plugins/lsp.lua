@@ -123,7 +123,8 @@ return {
       { "g]", "<cmd>Lspsaga diagnostic_jump_next<cr>" },
       { "g[", "<cmd>Lspsaga diagnostic_jump_prev<cr>" },
       { "gd", "<cmd>Lspsaga peek_definition<cr>" },
-      { "gq", "<cmd>Lspsaga code_action<cr>" },
+      { "go", "<cmd>Lspsaga outline<cr>" },
+      { "gx", "<cmd>Lspsaga code_action<cr>" },
       { "K", "<cmd>Lspsaga hover_doc<cr>" },
     },
     opts = {
