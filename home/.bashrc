@@ -122,6 +122,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export DOCKER_BUILDKIT=1
 
 if command -v bat 1>/dev/null 2>&1; then
+  export MANROFFOPT="-c"
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
