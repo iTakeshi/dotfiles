@@ -3,8 +3,20 @@ return {
     "neovim/nvim-lspconfig",
     event = "CursorHold",
     dependencies = {
-      { "folke/neodev.nvim", config = true },
-      { "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
+      {
+        "folke/neodev.nvim",
+        config = true,
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+          {
+            "williamboman/mason.nvim",
+            lazy = true,
+            config = true,
+          },
+        },
+      },
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -102,12 +114,6 @@ return {
     "RubixDev/mason-update-all",
     dependencies = "mason.nvim",
     cmd = "MasonUpdateAll",
-    config = true,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    lazy = true,
     config = true,
   },
 

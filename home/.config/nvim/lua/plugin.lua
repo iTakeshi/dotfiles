@@ -23,16 +23,17 @@ require("lazy").setup({
     { import = "plugins" },
 
     {
-      "rcarriga/nvim-notify",
-      lazy = true,
-      opts = {
-        stages = "slide",
-      },
-    },
-
-    {
       "folke/noice.nvim",
-      dependencies = { "MunifTanjim/nui.nvim", "nvim-notify" },
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        {
+          "rcarriga/nvim-notify",
+          lazy = true,
+          opts = {
+            stages = "slide",
+          },
+        },
+      },
       config = true,
     },
 
@@ -56,21 +57,10 @@ require("lazy").setup({
     },
 
     {
-      "ntpeters/vim-better-whitespace",
+      "cappyzawa/trim.nvim",
       config = function()
-        vim.g.strip_whitespace_on_save = 1
-        vim.g.strip_whitespace_confirm = 0
-        vim.g.strip_whitelines_at_eof = 1
-        vim.g.show_spaces_that_precede_tabs = 1
-        local function toggle()
-          vim.cmd("ToggleStripWhitespaceOnSave")
-          if vim.b["strip_whitespace_on_save"] == 1 then -- use brackets to avoid "undefined-field" diagnostics
-            print("  stripwhitespace")
-          else
-            print("nostripwhitespace")
-          end
-        end
-        Map("n", "<plug>(my-toggle)W", toggle)
+        require("trim").setup()
+        Map("n", "<plug>(my-toggle)W", require("trim.trimmer").toggle)
       end,
     },
 

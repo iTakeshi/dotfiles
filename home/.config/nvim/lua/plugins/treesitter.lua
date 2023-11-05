@@ -39,15 +39,14 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
     dependencies = "nvim-treesitter",
+    main = "ibl",
     opts = {
-      char = "│",
-      char_blankline = " ",
-      context_char = "│",
-      show_current_context = true,
-      show_current_context_start = true,
-      show_end_of_line = true,
-      space_char_blankline = " ",
-      use_treesitter = true,
+      indent = {
+        char = "│",
+      },
+      scope = {
+        char = "│",
+      },
     },
   },
 

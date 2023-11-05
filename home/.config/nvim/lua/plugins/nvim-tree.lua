@@ -135,7 +135,6 @@ return {
 
       nvim_tree.setup({
         git = { enable = false },
-        remove_keymaps = true,
         view = {
           float = { enable = true },
         },
