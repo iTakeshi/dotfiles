@@ -49,3 +49,5 @@
     prune = true
 [init]
 	defaultBranch = main
+[protocol "codecommit"]
+	allow = always
