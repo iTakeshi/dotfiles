@@ -29,8 +29,8 @@
     l   = log               --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %C(blue)%ar%C(reset) %s %C(red)%d%C(reset)' --date=iso
     p   = push origin HEAD --tags
     pf  = push --force-with-lease
-    po  = pull origin master
-    pu  = pull upstream master
+    po  = pull origin
+    pu  = pull upstream
     ri  = rebase -i
     re  = restore
     s   = status
@@ -48,4 +48,4 @@
 [fetch]
     prune = true
 [init]
-	defaultBranch = master
+	defaultBranch = main
