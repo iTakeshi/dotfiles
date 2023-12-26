@@ -189,19 +189,19 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 if [ "$USER" = "itakeshi" ]; then
   PS1_USER=""
 else
-  PS1_USER="\[\033[1;36m\]\u\[\033[0m\]@"
+  PS1_USER="\[\e[1;36m\]\u\[\e[0m\]@"
 fi
 if [ "$SSH_CLIENT" = "" ]; then
   PS1_HOST="local"
 else
-  PS1_HOST="\[\033[1;31m\]\h\[\033[0m\]"
+  PS1_HOST="\[\e[1;31m\]\h\[\e[0m\]"
 fi
 if [ "$AWS_PROFILE" != "" ]; then
-  PS1_AWS=" \[\033[1;31m\]($AWS_PROFILE@$AWS_DEFAULT_REGION)\[\033[0m\]"
+  PS1_AWS=" \[\e[1;31m\]($AWS_PROFILE@$AWS_DEFAULT_REGION)\[\e[0m\]"
 else
   PS1_AWS=""
 fi
-PS1="\$(date "+%H:%M:%S") $PS1_USER$PS1_HOST:\[\033[1;33m\]\w\$(__git_ps1)$PS1_AWS \[\033[1;35m\]\$ \$(__virtualenv_ps1)\[\033[0m\]"
+PS1="\$(date "+%H:%M:%S") $PS1_USER$PS1_HOST:\[\e[1;33m\]\w\[\e[0m\]\$(__git_ps1)$PS1_AWS \[\e[1;35m\]\$ \[\e[0;35m\]\$(__virtualenv_ps1)\[\e[0m\]"
 
 ###############################################################################
 # Load Machine-Specific Config
