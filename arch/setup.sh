@@ -83,7 +83,7 @@ if [ "$setup_gui" != "N" ] && [ "$setup_gui" != "n" ]; then
     install -dm0 ~/.dropbox-dist
 
     yay --needed --removemake -S \
-        xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome tym-git \
+        xorg-server xorg-xev xorg-xauth xorg-xrdb lightdm lightdm-gtk-greeter awesome tym-git wezterm \
         fcitx fcitx-mozc fcitx-configtool fcitx-im scrot fontforge wireshark-qt xdotool \
         cbatticon freeglut alsa-utils arandr cups cups-filters gtk3-print-backends \
         mupdf pdfmod nomacs thunar texlive-core texlive-langjapanese texlive-localmanager-git ghostscript pstoedit imagemagick \
