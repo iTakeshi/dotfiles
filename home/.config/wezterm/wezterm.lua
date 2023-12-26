@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.color_scheme = 'Monokai Pro (Gogh)'
+config.color_scheme = 'Sonokai (Gogh)'
 config.colors = {
   cursor_bg = 'green',
 }
