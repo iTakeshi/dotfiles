@@ -23,8 +23,6 @@ config.window_padding = {
   bottom = 1,
 }
 
-config.enable_tab_bar = false
-
 config.audible_bell = 'Disabled'
 
 return config
