@@ -41,10 +41,10 @@ if command -v bat 1>/dev/null 2>&1; then
   alias cat="bat"
 fi
 
-if command -v exa 1>/dev/null 2>&1; then
-  alias ls="exa"
-  alias ll="exa -alF"
-  alias lt="exa -alFs modified"
+if command -v eza 1>/dev/null 2>&1; then
+  alias ls="eza"
+  alias ll="eza -alF"
+  alias lt="eza -alF -s modified"
 else
   alias ls="ls --color=auto"
   alias ll="ls --color=auto -alF"
