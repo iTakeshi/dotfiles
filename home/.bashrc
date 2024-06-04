@@ -1,5 +1,7 @@
 # Use English UI
-export LANG=en_US.utf8
+export LANG=en_US.UTF-8
+export LC_ALL=$LANG
+export LC_COLLATE=C
 
 # If not running interactively, don't do anything
 case $- in
