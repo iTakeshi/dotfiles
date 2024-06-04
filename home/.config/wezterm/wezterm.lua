@@ -23,6 +23,16 @@ config.window_padding = {
   bottom = 1,
 }
 
+config.keys = {}
+
+for i = 1, 8 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = 'CTRL|ALT',
+    action = wezterm.action.MoveTab(i - 1),
+  })
+end
+
 config.audible_bell = 'Disabled'
 
 return config
