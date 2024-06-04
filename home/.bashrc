@@ -89,6 +89,7 @@ export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export GOPATH="$HOME/projects/go"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export RLWRAP_HOME="$XDG_DATA_HOME/rlwrap"
+export RYE_HOME="$XDG_DATA_HOME/rye"
 
 alias amm="amm -h $XDG_DATA_HOME/ammonite"
 alias sbt="sbt -ivy $XDG_DATA_HOME/ivy2 -sbt-dir $XDG_DATA_HOME/sbt"
@@ -104,10 +105,12 @@ export PATH="$HOME/.local/bin:$PATH"
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export POETRY_HOME="$XDG_DATA_HOME/poetry"
 export PATH="$POETRY_HOME/bin:$PYENV_ROOT/bin:$PATH"
+export PIPENV_VENV_IN_PROJECT=true
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+source "$RYE_HOME/env"
 
 export PATH="$HOME/.rbenv/shims:$PATH"
 if command -v rbenv 1>/dev/null 2>&1; then

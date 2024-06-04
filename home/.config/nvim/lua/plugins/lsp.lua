@@ -49,10 +49,10 @@ return {
         end,
         ["pyright"] = function()
           local python_path = "python"
-          local virtual_env = os.getenv("VIRTUAL_ENV")
-          if virtual_env then
-            python_path = string.format("%s/bin/python", virtual_env)
-          elseif vim.fn.system("which poetry") then
+
+          -- Check Poetry.
+          vim.fn.system("poetry env info")
+          if vim.v.shell_error == 0 then
             local poetry_venv_path = vim.trim(vim.fn.system("poetry config virtualenvs.path"))
             local poetry_venv_name = vim.trim(vim.fn.system("poetry env list"))
             if #vim.split(poetry_venv_name, "\n") == 1 then
@@ -64,6 +64,20 @@ return {
               end
             end
           end
+
+          -- Check Rye.
+          vim.fn.system("rye show")
+          if vim.v.shell_error == 0 then
+            local rye_venv_path = vim.trim(vim.fn.system("rye show | grep venv: | cut -f 2 -d ' '"))
+            python_path = string.format("%s/bin/python", rye_venv_path)
+          end
+
+          -- Prioritize explicitly set VIRTUAL_ENV.
+          local virtual_env = os.getenv("VIRTUAL_ENV")
+          if virtual_env then
+            python_path = string.format("%s/bin/python", virtual_env)
+          end
+
           lspconfig.pyright.setup({
             settings = {
               python = {
