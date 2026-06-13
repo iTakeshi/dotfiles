@@ -50,7 +50,7 @@ export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
 
-export PATH="$PNPM_HOME:$BUN_INSTALL/bin:$HOME/.local/bin:$PATH"
+export PATH="$PNPM_HOME:$BUN_INSTALL/bin:$CARGO_HOME/bin:$HOME/.local/bin:$PATH"
 eval "$(mise activate zsh)"
 
 ###############################################################################
