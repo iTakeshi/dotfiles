@@ -1,0 +1,19 @@
+{
+  "model": "opus",
+  "worktree": {
+    "baseRef": "head"
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "deploy-on-aws@agent-plugins-for-aws": true
+  },
+  "extraKnownMarketplaces": {
+    "agent-plugins-for-aws": {
+      "source": {
+        "source": "github",
+        "repo": "awslabs/agent-plugins"
+      }
+    }
+  },
+  "theme": "dark"
+}

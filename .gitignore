@@ -5,3 +5,5 @@
 !/.gitignore
 !/.zshrc
 !/README.md
+
+**/.claude/settings.local.json

@@ -1,0 +1,36 @@
+[mgr]
+prepend_keymap = [
+  # ── File operations: new bindings ──────────────────────────────────────────
+  { on = "<C-x>",    run = "yank --cut", desc = "Cut files" },
+  { on = "<C-c>",    run = "yank",       desc = "Copy files" },
+  { on = "<C-v>",    run = "paste",      desc = "Paste files" },
+  { on = "<C-d>",    run = "remove",     desc = "Trash files" },
+  { on = "<C-n>",    run = "create",     desc = "Create file or directory" },
+  { on = "<C-r>",    run = "rename",     desc = "Rename" },
+  { on = "e",        run = "open",       desc = "Open/edit file" },
+
+  # ── Filename / path copy ───────────────────────────────────────────────────
+  { on = ["y", "y"], run = "copy filename", desc = "Copy filename" },
+  { on = "Y",        run = "copy path",     desc = "Copy full path" },
+
+  # ── Selection: move toggle off <Space> so nvim can use <Space>t… for tabs ──
+  { on = "m",        run = ["toggle", "arrow 1"], desc = "Toggle selection" },
+  { on = "<Space>",  run = "noop" },
+
+  # ── Disable default file operation keys ───────────────────────────────────
+  { on = "y", run = "noop" },
+  { on = "x", run = "noop" },
+  { on = "p", run = "noop" },
+  { on = "P", run = "noop" },
+  { on = "X", run = "noop" },
+  { on = "d", run = "noop" },
+  { on = "D", run = "noop" },
+  { on = "a", run = "noop" },
+  { on = "r", run = "noop" },
+
+  # ── Disable path copy chords ───────────────────────────────────────────────
+  { on = ["c", "c"], run = "noop" },
+  { on = ["c", "d"], run = "noop" },
+  { on = ["c", "f"], run = "noop" },
+  { on = ["c", "n"], run = "noop" },
+]

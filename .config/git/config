@@ -1,0 +1,55 @@
+[core]
+    editor = nvim
+    pager = "LESSCHARSET=utf-8 less"
+[user]
+    name = iTakeshi
+    email = itakeshi.net@gmail.com
+[color]
+    ui = true
+[alias]
+    a   = add
+    aa  = add -A
+    an  = add -N
+    ap  = add -p
+    b   = branch
+    ba  = branch -a
+    c   = commit -m
+    ca  = commit --amend
+    co  = checkout
+    cp  = cherry-pick
+    d   = diff
+    dc  = diff --color-words --word-diff-regex='\\w+|[^[:space:]]'
+    dn  = diff --name-only
+    dw  = diff          --word-diff
+    ds  = diff --staged
+    dsw = diff --staged --word-diff
+    f   = fetch --all
+    g   = log --graph --all --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %s %C(red)%d%C(reset)'
+    ig  = "!gi() { IFS=\",\"; curl -L -s \"https://www.toptal.com/developers/gitignore/api/$*\" | tee -a .gitignore;}; gi"
+    igl = "!curl -L -s 'https://www.toptal.com/developers/gitignore/api/list' | tr ',' '\\n' | sort | ${PAGER:-less}"
+    l   = log               --format='%C(yellow)%h%C(reset) %C(green)%an%C(reset) %C(magenta)%cd%C(reset) %C(blue)%ar%C(reset) %s %C(red)%d%C(reset)' --date=iso
+    p   = push origin HEAD --tags
+    pf  = push --force-with-lease
+    po  = pull origin
+    pu  = pull upstream
+    ri  = rebase -i
+    re  = restore
+    s   = status
+    st  = stash
+    sp  = stash pop
+    sl  = stash list
+    sw  = switch
+[push]
+    default = simple
+    autoSetupRemote = true
+[pull]
+    rebase = true
+[rebase]
+    autosquash = true
+    autostash = true
+[fetch]
+    prune = true
+[init]
+    defaultBranch = main
+[protocol "codecommit"]
+    allow = always
