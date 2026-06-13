@@ -1,6 +1,6 @@
 # Neovim 設定プロジェクト
 
-`~/.config/nvim` の Neovim 設定。chezmoi 管理（source: `~/.local/share/chezmoi/`）で git 管理外。変更後は対象ファイルを `chezmoi add` して追跡へ反映する。
+`~/.config/nvim` の Neovim 設定。yadm 管理（`$HOME` が work-tree）。変更後は対象ファイルを `yadm add` → `yadm commit` で追跡へ反映する（`spell/` は除外）。
 
 ## ドキュメント
 
