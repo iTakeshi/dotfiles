@@ -8,6 +8,9 @@ prepend_keymap = [
   { on = "<C-n>",    run = "create",     desc = "Create file or directory" },
   { on = "<C-r>",    run = "rename",     desc = "Rename" },
   { on = "e",        run = "open",       desc = "Open/edit file" },
+  # `E` = nvim で縦分割して開く。nvim 側の terminal マッピングだと rename 入力中の
+  # `E` まで横取りされるため、[mgr] 限定で DDS publish し yazi.nvim に処理させる。
+  { on = "E",        run = "shell 'ya pub-to 0 yazi-nvim-vsplit'", desc = "Open in vertical split (nvim)" },
 
   # ── Filename / path copy ───────────────────────────────────────────────────
   { on = ["y", "y"], run = "copy filename", desc = "Copy filename" },

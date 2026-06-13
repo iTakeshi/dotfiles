@@ -1,5 +1,27 @@
 local tab_states = {}
 
+-- yazi の manager モードで押した `E` を「nvim で縦分割して開く」へ橋渡しする。
+--
+-- nvim の terminal マッピングは yazi へ渡る前にキーを横取りし、yazi の内部モード
+-- （rename / create / filter 等の入力中か否か）を区別できない。そのため literal な
+-- `E` を nvim 側で張ると、rename 中のファイル名に含まれる `E` まで split 起動に化ける。
+-- 回避するには yazi 側で扱うしかない: keymap.toml の `[mgr]` 限定（入力モードでは
+-- 発火しない）で `E` → DDS publish し、その通知をここで受けて既存ヘルパを呼ぶ。
+-- これで literal `E` を維持しつつ rename 入力中は素通りする。
+local active_yazi = { api = nil, config = nil }
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "YaziDDSCustom",
+  callback = function(ev)
+    if ev.data.type == "yazi-nvim-vsplit" and active_yazi.api and active_yazi.config then
+      require("yazi.keybinding_helpers").open_file_in_vertical_split(
+        active_yazi.config,
+        active_yazi.api
+      )
+    end
+  end,
+})
+
 -- タブを閉じたら、無効になった tabpage ハンドルのエントリを掃除する。
 -- （TabClosed の <afile> はタブ番号でハンドルへ変換できないため、
 --  生き残っているハンドルだけを残す方式で漏れなく回収する。）
@@ -39,10 +61,14 @@ return {
       open_for_directories = true,
       highlight_hovered_buffers_in_same_directory = false,
       keymaps = false,
-      set_keymappings_function = function(buf, config, context)
-        vim.keymap.set("t", "E", function()
-          require("yazi.keybinding_helpers").open_file_in_vertical_split(config, context.api)
-        end, { buffer = buf })
+      -- yazi 側 keymap.toml の `[mgr]` で `E` が publish する DDS イベントを購読する。
+      forwarded_dds_events = { "nvim-cycle-buffer", "yazi-nvim-vsplit" },
+      set_keymappings_function = function(_buf, config, context)
+        -- `E`（縦分割）は nvim の terminal マッピングではなく yazi 側 `[mgr]` で扱う
+        -- （上部 YaziDDSCustom autocmd 参照）。DDS 通知から縦分割を起動できるよう、
+        -- 現在アクティブな yazi の api / config をここで捕捉しておく。
+        active_yazi.api = context.api
+        active_yazi.config = config
       end,
       hooks = {
         yazi_opened = function(_, buf, _)
