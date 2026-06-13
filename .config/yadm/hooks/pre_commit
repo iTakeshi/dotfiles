@@ -17,10 +17,14 @@ mapfile -d '' -t files < <(
 		diff --cached --name-only --diff-filter=ACM -z
 )
 
-[ ${#files[@]} -eq 0 ] && exit 0
+[ ${#files[@]} -eq 0 ] && { echo "detect-secrets: no staged files — skip" >&2; exit 0; }
 
 cd "$YADM_HOOK_WORK"
-exec uvx --from detect-secrets detect-secrets-hook \
+if uvx --from detect-secrets detect-secrets-hook \
 	--baseline "$baseline" \
 	--exclude-files "$exclude" \
-	-- "${files[@]}"
+	-- "${files[@]}"; then
+	echo "detect-secrets: ${#files[@]} staged file(s) scanned — no new secrets ✓" >&2
+else
+	exit 1  # detect-secrets-hook already printed its ERROR report above
+fi
