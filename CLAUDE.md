@@ -53,6 +53,26 @@ untracked を表示する方針なので、何を無視するかを `.gitignore`
 
 > `~/.config/git/ignore` は別物で、**全 git repo に効く core.excludesfile**（macOS ゴミ等のグローバル無視）。yadm の `.gitignore` 群とは役割が違う。
 
+### 秘密のスキャン — detect-secrets（pre_commit フック）
+
+`.gitignore` の allowlist 防御だけでは「追跡対象ファイルの中身にベタ書きされた秘密」は防げない。これを `Yelp/detect-secrets`（`uvx --from detect-secrets …`、システムには未インストール）で補う。**コミットのたびに自動実行し、baseline に無い未知の検出があれば commit を reject** する運用。
+
+構成（すべて yadm 追跡 → 他マシンでも `yadm clone` するだけで有効。`uvx` だけ前提）:
+
+- **フック**: `~/.config/yadm/hooks/pre_commit`（実行ビット必須）。yadm の pre_ フックは非ゼロ終了で `yadm commit` を中止する（`man yadm` HOOKS）。`YADM_HOOK_REPO`/`YADM_HOOK_WORK` でステージ済みファイル（`--diff-filter=ACM`）を取得し `detect-secrets-hook` に渡す。**注意: 標準 git の `pre-commit` ではなく yadm 独自フック名 `pre_commit`（アンダースコア）**。`yadm commit` 経由でのみ発火する（生 git commit では走らない）。
+- **ベースライン**: `~/.config/yadm/secrets.baseline`。`$HOME` 直下に置くと `~/.gitignore` の allowlist で弾かれて追跡できないため `.config/` 配下に置く。既知誤検知ゼロのクリーン状態（`results: {}`）。
+- **除外**: `lazy-lock\.json` を `--exclude-files` で除外（後述）。
+
+```bash
+# ベースライン再生成（追跡ファイルのみ・lazy-lock 除外）。$HOME 相対パスなので必ず ~ で
+cd ~ && uvx --from detect-secrets detect-secrets scan $(yadm ls-files) \
+  --exclude-files 'lazy-lock\.json' > ~/.config/yadm/secrets.baseline
+```
+
+新規ファイル追加で正規の秘密でない高エントロピー文字列が増えたら、上記でベースラインを再生成して `yadm add` し直す。`xargs -0` 経由は `>` がバッチ毎に上書きするので使わない（追跡セットはパスに空白なし＝`$(...)` で安全）。
+
+**既知の誤検知 — `lazy-lock.json`（exclude 運用に確定）**: lazy.nvim のロックファイルで各行が git コミットSHA（40桁 hex）。`Hex High Entropy String` として大量に拾われるが秘密ではない。更新のたびに `audit` し直すのは手間で、ここに手動で秘密を書くこともないため **`--exclude-files 'lazy-lock\.json'` で除外**する方針（フック・ベースライン生成の両方で指定）。2026-06-14 時点のフルスキャンで実際の秘密混入はゼロ。
+
 ## Shell — zsh + oh-my-zsh
 
 実シェルは **zsh**（`chsh -s /usr/bin/zsh`）。設定は `~/.zshrc`（追跡対象）。マシン固有の上書きは `~/.zshrc.local`（追跡しない）。
