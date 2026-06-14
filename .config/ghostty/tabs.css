@@ -1,0 +1,52 @@
+/* Make Ghostty's GTK (gtk-ng) top bar / tab bar thinner.
+ * Loaded via `gtk-custom-css = tabs.css` in config.ghostty.
+ *
+ * Confirmed gtk-ng node hierarchy:
+ *   headerbar                         (the titlebar — dominates the height)
+ *   tabbar > tabbox > tabboxchild > tab > label
+ *
+ * NOTE: libadwaita enforces a minimum height (~24px); you cannot make the
+ * bar arbitrarily thin. These rules push it down to that floor. */
+
+/* Titlebar — usually the real driver of the top-bar height. */
+headerbar {
+  min-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+headerbar button {
+  min-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Tab bar + individual tabs. */
+tabbar tabbox {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+tabbar tabbox tab {
+  min-height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+tabbar tabbox tab label {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Thin, subtle grey separator line below each individual tab. */
+tabbar tabbox tab {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Highlight the active (selected) tab with an accent underline + faint tint. */
+tabbar tabbox tab:selected {
+  border-bottom: 1px solid #9ed072;
+  background-color: rgba(158, 208, 114, 0.05);
+}

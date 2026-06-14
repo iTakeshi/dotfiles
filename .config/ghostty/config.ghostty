@@ -13,6 +13,9 @@ font-feature = -liga
 window-padding-x = 3
 window-padding-y = 3
 
+# Thinner tab bar (height) via custom GTK CSS — ghostty has no native option.
+gtk-custom-css = tabs.css
+
 # Tab management
 keybind = ctrl+t=new_tab
 # unbind Ghostty's default ctrl+shift+t (new_tab) so it passes through to the
